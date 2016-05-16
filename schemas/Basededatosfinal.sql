@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`users` (
   PRIMARY KEY (`username`)  COMMENT '')
 ENGINE = InnoDB;
 
+INSERT INTO 'users' VALUES ('Drae','$2y$10$RBzd0gnOEg5/xely5LD0bO8d2kPd04lmTDMSAyEHaBF4DvGbEqZYy',1);
 
 -- -----------------------------------------------------
 -- Table `proyecto_final`.`alumnos`
