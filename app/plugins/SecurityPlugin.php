@@ -83,23 +83,12 @@ class SecurityPlugin extends Plugin
             }
             //Recursos accesibles sólo a Jefes de Estudio
             $adminResources = array(
-                'configuration' => array('update', 'change'),
-                'users' => array('new', 'update', 'edit', 'create', 'save', 'delete'),
-                'departments' => array('new', 'update', 'edit', 'create', 'save', 'delete'),
-                'courses' => array('new', 'update', 'edit', 'create', 'save', 'delete'),
-                'tutorial' => array("admin")
             );
             foreach ($adminResources as $resource => $actions) {
                 $acl->addResource(new Resource($resource), $actions);
             }
             //Recursos accesibles por Jefes de Dpto y Jefes de Estudio.
             $userResources = array(
-                'configuration' => array('index'),
-                'users' => array('index', 'search'),
-                'userpanel' => array('index', 'changepassword', 'link', 'savepass'),
-                'departments' => array('index', 'search'),
-                'tutorial'=> array('index'),
-                'courses' => array('index', 'search')
             );
             foreach ($userResources as $resource => $actions) {
                 $acl->addResource(new Resource($resource), $actions);
