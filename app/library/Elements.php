@@ -17,6 +17,15 @@ class Elements extends Component
             'caption' => 'Tutorial',
             'action' => ''
         ),
+        'languages'=>array(
+            'caption' => 'Languages',
+            'action' => '',
+            'dropdown' => true,
+            'menu' => array(
+                'Spanish' => 'languages/spanish',
+                'English'=>'languages/english'
+            )
+        ),
         'management' => array(
             'caption' => 'Management',
             'action' => '',

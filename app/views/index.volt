@@ -1,20 +1,41 @@
 <!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Phalcon PHP Framework</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    </head>
-    <body>
-        <div class="container">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    {{ get_title() }}
+    {{ stylesheet_link("css/fontello.css") }}
+    {{ stylesheet_link("bower_components/bootstrap/dist/css/bootstrap.min.css") }}
+    {{ stylesheet_link("css/bootstrap-theme.css") }}
+    {{ stylesheet_link("bower_components/animate.css/animate.min.css") }}
+    {{ stylesheet_link("bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css") }}
+    {{ stylesheet_link("css/cupo.css") }}
+</head>
+<body>
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
             {{ content() }}
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>
+                        &copy; <a href="{{ url("index/easteregg") }}">Greg Bueno</a> 2016 - Built with Phalcon {{ version() }}
+                    </p>
+                </div>
+            </div>
         </div>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    </body>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+{{ javascript_include("bower_components/jquery/dist/jquery.min.js") }}
+<!-- Latest compiled and minified JavaScript -->
+{{ javascript_include("bower_components/bootstrap/dist/js/bootstrap.min.js") }}
+{{ javascript_include("bower_components/bootbox.js/bootbox.js") }}
+{{ javascript_include("bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js") }}
+{{ assets.outputJs() }}
+{{ flash.output() }}
+</body>
 </html>

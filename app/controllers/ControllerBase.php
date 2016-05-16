@@ -9,6 +9,15 @@ class ControllerBase extends Controller
 
     protected function initialize()
     {
+        $language=$this->session->get("language");
+        if ($language==null){
+            $this->session->set("language" ,0);
+        }
+        if ($language==0){
+            $this->view->setVar("language",True);
+        } else{
+            $this->view->setVar("language",False);
+        }
         $this->tag->prependTitle('Orientacion | ');
         $this->view->setTemplateAfter('main');
     }
