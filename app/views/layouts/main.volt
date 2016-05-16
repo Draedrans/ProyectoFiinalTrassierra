@@ -1,7 +1,7 @@
 <div class="masthead clearfix">
     <div class="inner">
         <h3 class="masthead-brand">
-            Cupo Project
+            Notebook
         </h3>
         {{ elements.getMenu() }}
     </div>
