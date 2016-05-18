@@ -5,7 +5,7 @@
 
 <p>You're now flying with Notebook. Great things are about to happen!</p>
 
-You may want before you start to log in.
+You may want to log in before you start.
 <p>
 </p>
 
