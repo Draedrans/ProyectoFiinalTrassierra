@@ -24,9 +24,9 @@
                 <td>{{ user.username }} (You)</td>
                 <td>
                     {% if user.is_admin %}
-                        School Supervisor
+                        Head of the school
                     {% else %}
-                        Head of Department
+                        Teacher
                     {% endif %}
                 </td>
                 {% if admin %}
@@ -44,9 +44,9 @@
                 <td>{{ user.username }}</td>
                 <td>
                     {% if user.is_admin %}
-                        School Supervisor
+                        Head of the school
                     {% else %}
-                        Head of Department
+                        Teacher
                     {% endif %}
                 </td>
                 {% if admin %}
