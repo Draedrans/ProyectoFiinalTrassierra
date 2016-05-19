@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: pedro
+ * User: Greg
  * Date: 30/01/16
  * Time: 14:07
  */
@@ -83,15 +83,15 @@ class UsersForm extends Form
         if (isset($options['edit'])) {
 
             $isAdmin = new Select("is_admin", array(
-                '1' => "School supervisor",
-                '0' => "Head of Department"
+                '0' => "Profesor",
+                '1' => "Direccion/Orientacion"
             ));
             $isAdmin->setLabel("Role");
             $this->add($isAdmin);
         } elseif (isset($options['create'])) {
             $isAdmin = new Select("is_admin", array(
-                '1' => "School supervisor",
-                '0' => "Head of Department"
+                '0' => "Profesor",
+                '1' => "Direccion/Orientacion"
             ));
             $isAdmin->setLabel("Role");
             $this->add($isAdmin);

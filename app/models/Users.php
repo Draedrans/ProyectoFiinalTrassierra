@@ -1,7 +1,13 @@
 <?php
 
+use Phalcon\Mvc\Model\Resultset\Simple as ResultSet;
+use Phalcon\Mvc\Model\Validator\Uniqueness;
+use Phalcon\Validation\Message;
+
 class Users extends \Phalcon\Mvc\Model
 {
+
+
 
     /**
      *
@@ -20,24 +26,6 @@ class Users extends \Phalcon\Mvc\Model
      * @var integer
      */
     public $is_admin;
-
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-        $this->hasMany('username', 'Comentarios', 'users_username', array('alias' => 'Comentarios'));
-    }
-
-    /**
-     * Returns table name mapped in the model.
-     *
-     * @return string
-     */
-    public function getSource()
-    {
-        return 'users';
-    }
 
     /**
      * Allows to query a set of records that match the specified conditions
@@ -60,6 +48,7 @@ class Users extends \Phalcon\Mvc\Model
     {
         return parent::findFirst($parameters);
     }
+
     public static function findAllWithFirst($username, $query = "%")
     {
 
@@ -72,5 +61,28 @@ class Users extends \Phalcon\Mvc\Model
 
         // Execute the query
         return new Resultset(null, $robot, $robot->getReadConnection()->query($sql));
+    }
+
+    /**
+     * Returns table name mapped in the model.
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return 'users';
+    }
+
+    public function validation()
+    {
+        $this->validate(new Uniqueness(array(
+            "field" => "username",
+            "message" => "This user is already registered"
+        )));/*
+        $this->validate(new \Phalcon\Mvc\Model\Validator\Inclusionin(array(
+            "field" => "is_admin",
+            "domain" => array('0', '1')
+        )));*/
+        return $this->validationHasFailed() != true;
     }
 }
