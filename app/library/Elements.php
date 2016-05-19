@@ -74,13 +74,11 @@ class Elements extends Component
                 'dropdown' => true,
                 'menu' => array(
                     'Your profile' => 'userpanel/index',
-                    'Settings' => 'configuration/index',
                     'Log Out' => 'session/end'
                 )
             );
             unset($this->_headerMenu['session']);
         } else {
-            unset($this->_headerMenu['configuration']);
             unset($this->_headerMenu['management']);
             unset($this->_headerMenu['tutorial']);
         }
