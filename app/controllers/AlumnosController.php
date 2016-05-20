@@ -131,17 +131,17 @@ class AlumnosController extends ControllerBase
             $this->forward("alumnos/new");
         } else {
             $alumno->apellidos = $this->request->getPost("apellidos");
-            $alumno->Nombre = $this->request->getPost("nombre");
-            $alumno->Direccion = $this->request->getPost("direccion");
+            $alumno->Nombre = $this->request->getPost("Nombre");
+            $alumno->Direccion = $this->request->getPost("Direccion");
             $alumno->DNI = $this->request->getPost("DNI");
             $alumno->Fecna = $this->request->getPost("fecna");
-            $alumno->Localidad = $this->request->getPost("localidad");
-            $alumno->Provincia = $this->request->getPost("provincia");
-            $alumno->Lugna = $this->request->getPost("lugna");
-            $alumno->Pasaporte = $this->request->getPost("pass");
+            $alumno->Localidad = $this->request->getPost("Localidad");
+            $alumno->Provincia = $this->request->getPost("Provincia");
+            $alumno->Lugna = $this->request->getPost("Lugna");
+            $alumno->Pasaporte = $this->request->getPost("Pasaporte");
             $alumno->UltimaMatricula = date("Y");
-            $alumno->Tlf = $this->request->getPost("tlf");
-            $alumno->TlfUrg = $this->request->getPost("tlfurg");
+            $alumno->Tlf = $this->request->getPost("Tlf");
+            $alumno->TlfUrg = $this->request->getPost("TlfUrg");
             if (!$alumno->save()) {
                 foreach ($alumno->getMessages() as $message) {
                     $this->flash->error($message);
@@ -196,21 +196,22 @@ class AlumnosController extends ControllerBase
         $form = new Alumnos($alumno, array('edit' => true));
         if (!$form->isValid($_POST)) {
             $this->flash->error($form->getMessages()[0]);
-            $this->forward("alumnos/edit/" . $alumno->NIE);
+            $this->forward("alumnos/edit/ $alumno->NIE");
         } else {
+            $alumno->NIE=$this->request->getPost("NIE");
             $alumno->apellidos = $this->request->getPost("apellidos");
-            $alumno->Nombre = $this->request->getPost("nombre");
-            $alumno->Direccion = $this->request->getPost("direccion");
+            $alumno->Nombre = $this->request->getPost("Nombre");
+            $alumno->Direccion = $this->request->getPost("Direccion");
             $alumno->DNI = $this->request->getPost("DNI");
             $alumno->NIE = $this->request->getPost("NIE");
             $alumno->Fecna = $this->request->getPost("fecna");
-            $alumno->Localidad = $this->request->getPost("localidad");
-            $alumno->Provincia = $this->request->getPost("provincia");
-            $alumno->Lugna = $this->request->getPost("lugna");
-            $alumno->Pasaporte = $this->request->getPost("pass");
-            $alumno->Tlf = $this->request->getPost("tlf");
-            $alumno->TlfUrg = $this->request->getPost("tlfurg");
-            $alumno->UltimaMatricula = $this->request->getPost("ultma");
+            $alumno->Localidad = $this->request->getPost("Localidad");
+            $alumno->Provincia = $this->request->getPost("Provincia");
+            $alumno->Lugna = $this->request->getPost("Lugna");
+            $alumno->Pasaporte = $this->request->getPost("Pasaporte");
+            $alumno->Tlf = $this->request->getPost("Tlf");
+            $alumno->TlfUrg = $this->request->getPost("TlfUrg");
+            $alumno->UltimaMatricula = $this->request->getPost("UltimaMatricula");
             if (!$alumno->save()) {
 
                 foreach ($alumno->getMessages() as $message) {
@@ -225,7 +226,7 @@ class AlumnosController extends ControllerBase
                 ));
             } else {
                 $form->clear(array(
-                    'NIE', 'apellidos', 'nombre', 'direccion', 'DNI', 'fecna', 'localidad', 'provincia', 'lugna', 'pass', 'tlf', 'tlfurg'
+                    'NIE', 'apellidos', 'Nombre', 'Direccion', 'DNI', 'fecna', 'Localidad', 'Provincia', 'Lugna', 'Pasaporte', 'Tlf', 'TlfUrg'
                 ));
             }
 

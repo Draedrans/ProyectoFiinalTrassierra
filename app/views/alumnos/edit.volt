@@ -4,7 +4,7 @@
 
 <div class="page-header">
     <h1>
-        Edit student
+        Editar alumno
     </h1>
 </div>
 
