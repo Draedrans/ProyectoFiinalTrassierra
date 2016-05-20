@@ -120,6 +120,8 @@ class Alumnos extends \Phalcon\Mvc\Model
         return parent::find($parameters);
     }
 
+    
+
     /**
      * Allows to query the first record that match the specified conditions
      *

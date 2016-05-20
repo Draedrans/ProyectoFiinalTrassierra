@@ -130,6 +130,7 @@ class AlumnosController extends ControllerBase
                         }*/
             $this->forward("alumnos/new");
         } else {
+            $alumno->NIE = $this->request->getPost("NIE");
             $alumno->apellidos = $this->request->getPost("apellidos");
             $alumno->Nombre = $this->request->getPost("nombre");
             $alumno->Direccion = $this->request->getPost("direccion");
@@ -139,7 +140,7 @@ class AlumnosController extends ControllerBase
             $alumno->Provincia = $this->request->getPost("provincia");
             $alumno->Lugna = $this->request->getPost("lugna");
             $alumno->Pasaporte = $this->request->getPost("pass");
-            $alumno->UltimaMatricula = date("Y");
+            $alumno->UltimaMatricula = "date";
             $alumno->Tlf = $this->request->getPost("tlf");
             $alumno->TlfUrg = $this->request->getPost("tlfurg");
             if (!$alumno->save()) {
