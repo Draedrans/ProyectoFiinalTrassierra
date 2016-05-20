@@ -276,5 +276,8 @@ class AlumnosController extends ControllerBase
             "action" => "index"
         ));
     }
+    public function verPerfil(){
+        
+    }
 
 }
