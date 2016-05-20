@@ -20,7 +20,7 @@
 {% endfor %}
 <div class="form-group">
     <div class="col-sm-8 col-sm-offset-2">
-        <?php echo $this->tag->submitButton(array("Save", "class" => "btn btn-primary form-control")) ?>
+        {{ submit_button("Modificar Alumno", "class": "btn btn-primary") }}
     </div>
 </div>
 {{ end_form() }}

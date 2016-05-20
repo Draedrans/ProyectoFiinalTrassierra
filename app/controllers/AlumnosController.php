@@ -8,7 +8,7 @@ class AlumnosController extends ControllerBase
 {
     public function initialize()
     {
-        $this->tag->setTitle("Manage users");
+        $this->tag->setTitle("Student");
         parent::initialize();
         $this->view->setVar("admin", $this->session->get("auth")["is_admin"]);
         $this->assets->addJs("js/modals.js");
@@ -83,7 +83,7 @@ class AlumnosController extends ControllerBase
 
                     /** @noinspection PhpVoidFunctionResultUsedInspection */
                     return $this->dispatcher->forward(array(
-                        "controller" => "users",
+                        "controller" => "alumnos",
                         "action" => "index"
                     ));
                 }
@@ -130,7 +130,6 @@ class AlumnosController extends ControllerBase
                         }*/
             $this->forward("alumnos/new");
         } else {
-            $alumno->NIE = $this->request->getPost("NIE");
             $alumno->apellidos = $this->request->getPost("apellidos");
             $alumno->Nombre = $this->request->getPost("nombre");
             $alumno->Direccion = $this->request->getPost("direccion");
@@ -140,7 +139,7 @@ class AlumnosController extends ControllerBase
             $alumno->Provincia = $this->request->getPost("provincia");
             $alumno->Lugna = $this->request->getPost("lugna");
             $alumno->Pasaporte = $this->request->getPost("pass");
-            $alumno->UltimaMatricula = "date";
+            $alumno->UltimaMatricula = date("Y");
             $alumno->Tlf = $this->request->getPost("tlf");
             $alumno->TlfUrg = $this->request->getPost("tlfurg");
             if (!$alumno->save()) {
@@ -194,69 +193,24 @@ class AlumnosController extends ControllerBase
                 "action" => "index"
             ));
         }
-        $apellidos = $alumno->apellidos;
-        $nombre = $alumno->Nombre;
-        $direccion = $alumno->Direccion;
-        $DNI = $alumno->DNI;
-        $Fecna = $alumno->Fecna;
-        $localidad = $alumno->Localidad;
-        $provincia = $alumno->Provincia;
-        $lugna = $alumno->Lugna;
-        $pass = $alumno->Pasaporte;
-        $mat = $alumno->UltimaMat;
-        $tlf = $alumno->Tlf;
-        $tlfUrg = $alumno->TlfUrg;
         $form = new Alumnos($alumno, array('edit' => true));
         if (!$form->isValid($_POST)) {
             $this->flash->error($form->getMessages()[0]);
             $this->forward("alumnos/edit/" . $alumno->NIE);
         } else {
-            $alumno->NIE = $this->request->getPost("NIE");
             $alumno->apellidos = $this->request->getPost("apellidos");
             $alumno->Nombre = $this->request->getPost("nombre");
             $alumno->Direccion = $this->request->getPost("direccion");
             $alumno->DNI = $this->request->getPost("DNI");
+            $alumno->NIE = $this->request->getPost("NIE");
             $alumno->Fecna = $this->request->getPost("fecna");
             $alumno->Localidad = $this->request->getPost("localidad");
             $alumno->Provincia = $this->request->getPost("provincia");
             $alumno->Lugna = $this->request->getPost("lugna");
             $alumno->Pasaporte = $this->request->getPost("pass");
-            $alumno->UltimaMatricula = $this->request->getPost("matricula");
             $alumno->Tlf = $this->request->getPost("tlf");
             $alumno->TlfUrg = $this->request->getPost("tlfurg");
-            if ($apellidos == $alumno->apellidos) {
-                $this->flash->success("Apellidos modificados");
-            }
-            if ($nombre!=$alumno->Nombre) {
-                $this->flash->success("Nombre modificado");
-            }
-            if ($DNI!=$alumno->DNI) {
-                $this->flash->success("DNI modificado");
-            }
-            if ($direccion!=$alumno->Direccion) {
-                $this->flash->success("Direccion modificada");
-            }
-            if ($Fecna!=$alumno->Fecna) {
-                $this->flash->success("Fecha de nacimiento modificada");
-            }
-            if ($localidad!=$alumno->Localidad) {
-                $this->flash->success("Localidad modificada");
-            }
-            if ($provincia!=$alumno->Provincia) {
-                $this->flash->success("Provincia modificada");
-            }
-            if ($lugna!=$alumno->Lugna) {
-                $this->flash->success("Lugar de nacimiento modificado");
-            }
-            if ($pass!=$alumno->Pasaporte) {
-                $this->flash->success("Pasaporte modificado");
-            }
-            if ($mat!=$alumno->UltimaMatricula) {
-                $this->flash->success("Matricula modificada");
-            }
-            if ($tlf!=$alumno->Tlf or $tlfUrg!=$alumno->TlfUrg){
-                $this->flash->success("Tlfs modificados");
-            }
+            $alumno->UltimaMatricula = $this->request->getPost("ultma");
             if (!$alumno->save()) {
 
                 foreach ($alumno->getMessages() as $message) {
@@ -271,7 +225,7 @@ class AlumnosController extends ControllerBase
                 ));
             } else {
                 $form->clear(array(
-                    'NIE', 'apellidos', 'nombre','direccion','DNI','fecna','localidad','provincia','lugna','pass','matricula','tlf','tlfurg'
+                    'NIE', 'apellidos', 'nombre', 'direccion', 'DNI', 'fecna', 'localidad', 'provincia', 'lugna', 'pass', 'tlf', 'tlfurg'
                 ));
             }
 
@@ -289,11 +243,10 @@ class AlumnosController extends ControllerBase
      *
      * @param string $username
      */
-    public
-    function deleteAction($NIE)
+    public function deleteAction($NIE)
     {
-        $user = Users::findFirst($NIE);
-        if (!$user) {
+        $alumno = Alumnos::findFirst($NIE);
+        if (!$alumno) {
             $this->flash->error("Alumno no encontrado");
 
             /** @noinspection PhpVoidFunctionResultUsedInspection */
@@ -303,9 +256,9 @@ class AlumnosController extends ControllerBase
             ));
         }
 
-        if (!$user->delete()) {
+        if (!$alumno->delete()) {
 
-            foreach ($user->getMessages() as $message) {
+            foreach ($alumno->getMessages() as $message) {
                 $this->flash->error($message);
             }
 
@@ -316,7 +269,7 @@ class AlumnosController extends ControllerBase
             ));
         }
 
-        $this->flash->success("User was deleted successfully");
+        $this->flash->success("Alumno borrado");
 
         /** @noinspection PhpVoidFunctionResultUsedInspection */
         return $this->dispatcher->forward(array(
