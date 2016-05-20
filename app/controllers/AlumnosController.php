@@ -213,11 +213,9 @@ class AlumnosController extends ControllerBase
             $alumno->TlfUrg = $this->request->getPost("TlfUrg");
             $alumno->UltimaMatricula = $this->request->getPost("UltimaMatricula");
             if (!$alumno->save()) {
-
                 foreach ($alumno->getMessages() as $message) {
                     $this->flash->error($message);
                 }
-
                 /** @noinspection PhpVoidFunctionResultUsedInspection */
                 return $this->dispatcher->forward(array(
                     "controller" => "alumnos",
