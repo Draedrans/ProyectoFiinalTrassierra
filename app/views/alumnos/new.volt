@@ -1,13 +1,13 @@
 <ul class="pager">
-    <li class="previous">{{ link_to("users/index", "Go back") }}</li>
+    <li class="previous">{{ link_to("alumnos/index", "Go back") }}</li>
 </ul>
 
 <div class="page-header">
     <h1>
-        Create new user
+        Introducir Alumno
     </h1>
 </div>
-{{ form("users/create") }}
+{{ form("alumnos/create") }}
 
     {% for element in form %}
         <div class="form-group">
@@ -20,6 +20,6 @@
 
 
     <div class="form-group">
-        {{ submit_button("Create user", "class": "btn btn-primary") }}
+        {{ submit_button("Introducir Alumno", "class": "btn btn-primary") }}
     </div>
 {{ end_form() }}

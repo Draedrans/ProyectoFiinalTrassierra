@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`alumnos` (
   `Fecna` DATE NULL COMMENT '',
   `Tlf` VARCHAR(13) NULL COMMENT '',
   `TlfUrg` VARCHAR(13) NULL COMMENT '',
-  `UltimaMatricula` INT(4) NULL COMMENT '',
+  `UltimaMatricula` INT(4) NOT NULL COMMENT '',
   PRIMARY KEY (`NIE`)  COMMENT '',
   UNIQUE INDEX `DNI_UNIQUE` (`DNI` ASC)  COMMENT '',
   UNIQUE INDEX `Pasaporte_UNIQUE` (`Pasaporte` ASC)  COMMENT '')

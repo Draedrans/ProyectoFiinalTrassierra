@@ -13,17 +13,17 @@ class Elements extends Component
             'caption' => 'Home',
             'action' => ''
         ),
-        'tutorial' => array(
-            'caption' => 'Tutorial',
+        'alumnos' => array(
+            'caption' => 'Alumnos',
             'action' => ''
         ),
         'languages'=>array(
-            'caption' => 'Languages',
+            'caption' => 'Idiomas',
             'action' => '',
             'dropdown' => true,
             'menu' => array(
-                'Spanish' => 'languages/spanish',
-                'English'=>'languages/english'
+                'Español' => 'languages/spanish',
+                'Ingles'=>'languages/english'
             )
         ),
         'management' => array(
@@ -79,8 +79,8 @@ class Elements extends Component
             );
             unset($this->_headerMenu['session']);
         } else {
+            unset($this->_headerMenu['alumnos']);
             unset($this->_headerMenu['management']);
-            unset($this->_headerMenu['tutorial']);
         }
         $controllerName = $this->view->getControllerName();
         echo '<nav>';

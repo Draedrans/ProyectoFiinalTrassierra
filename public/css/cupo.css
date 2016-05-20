@@ -8,6 +8,10 @@
     padding-left: 2em;
     padding-right: 2em;
 }
+.cover {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
 
 .jumbo-cover {
     background-color: rgba(40, 40, 40, 0);

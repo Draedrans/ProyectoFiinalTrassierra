@@ -13,9 +13,6 @@
 {% for element in form %}
     <div class="form-group">
         {{ element.label() }}
-        {% if strpos(strtoupper(element.label()), "PASSWORD") %}
-            <p class="help-block">Leave untouched to avoid changing user password</p>
-        {% endif %}
         <div>
             {{ element }}
         </div>
