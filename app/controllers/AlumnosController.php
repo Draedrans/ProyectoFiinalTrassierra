@@ -273,7 +273,9 @@ class AlumnosController extends ControllerBase
             "action" => "index"
         ));
     }
-    public function verPerfil(){
+    public function verPerfilAction($NIE){
+        $alumno=Alumnos::findFirst($NIE);
+        $observaciones=Observacionesalum::findFirstByalumnos_NIE(NIE);
 
     }
 

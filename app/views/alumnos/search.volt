@@ -26,7 +26,7 @@
                 </td>
                 {% if admin %}
                     <td>
-                        {{ link_to("alumnos/edit/" ~ alumno.NIE, "<i class='glyphicon glyphicon-edit'></i> Modificar", "class":"btn btn-default") }}
+                        {{ link_to("alumnos/verPerfil/" ~ alumno.NIE, "<i class='glyphicon glyphicon-edit'></i> Modificar", "class":"btn btn-default") }}
 
                     </td>
                 {% endif %}

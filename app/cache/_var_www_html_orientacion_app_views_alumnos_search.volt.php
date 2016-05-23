@@ -26,7 +26,7 @@
                 </td>
                 <?php if ($admin) { ?>
                     <td>
-                        <?php echo $this->tag->linkTo(array('alumnos/edit/' . $alumno->NIE, '<i class=\'glyphicon glyphicon-edit\'></i> Modificar', 'class' => 'btn btn-default')); ?>
+                        <?php echo $this->tag->linkTo(array('alumnos/verPerfil/' . $alumno->NIE, '<i class=\'glyphicon glyphicon-edit\'></i> Modificar', 'class' => 'btn btn-default')); ?>
 
                     </td>
                 <?php } ?>
