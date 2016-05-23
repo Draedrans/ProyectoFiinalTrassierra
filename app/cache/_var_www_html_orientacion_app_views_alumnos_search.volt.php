@@ -14,9 +14,7 @@
     <tr>
         <th>Nombre</th>
         <th>Apellidos</th>
-        <?php if ($admin) { ?>
             <th>Management</th>
-        <?php } ?>
     </tr>
     <?php foreach ($page->items as $alumno) { ?>
             <tr>
@@ -24,12 +22,10 @@
                 <td>
 <?php echo $alumno->apellidos; ?>
                 </td>
-                <?php if ($admin) { ?>
                     <td>
-                        <?php echo $this->tag->linkTo(array('alumnos/verPerfil/' . $alumno->NIE, '<i class=\'glyphicon glyphicon-edit\'></i> Modificar', 'class' => 'btn btn-default')); ?>
+                        <?php echo $this->tag->linkTo(array('alumnos/verPerfil/' . $alumno->NIE, '<i class=\'glyphicon glyphicon-edit\'></i> Ver Perfil', 'class' => 'btn btn-default')); ?>
 
                     </td>
-                <?php } ?>
             </tr>
     <?php } ?>
 </table>

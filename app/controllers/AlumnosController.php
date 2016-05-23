@@ -221,16 +221,15 @@ class AlumnosController extends ControllerBase
                 $form->clear(array(
                     'NIE', 'apellidos', 'Nombre', 'Direccion', 'DNI', 'fecna', 'Localidad', 'Provincia', 'Lugna', 'Pasaporte', 'Tlf', 'TlfUrg'
                 ));
-                return $this->response->redirect("alumnos/index");
+                return $this->response->redirect("alumnos/verPerfil/$NIE");
             }
 
             $this->flash->success("El alumno ha sido actualizado");
 
             /** @noinspection PhpVoidFunctionResultUsedInspection */
-            return $this->response->redirect("alumnos/index");
         }
-        return $this->response->redirect("alumnos/index");
-//        $this->view->form = $form;
+        return $this->response->redirect("alumnos/verPerfil/$NIE");
+        $this->view->form = $form;
 
     }
 
@@ -275,8 +274,9 @@ class AlumnosController extends ControllerBase
     }
     public function verPerfilAction($NIE){
         $alumno=Alumnos::findFirst($NIE);
-        $observaciones=Observacionesalum::findFirstByalumnos_NIE(NIE);
-
+        $this->view->setVar("alumno",$alumno);
+        $observaciones=Observacionesalum::findByalumnos_NIE(NIE);
+        $this->view->setVar("observaciones",$observaciones);
     }
 
 }

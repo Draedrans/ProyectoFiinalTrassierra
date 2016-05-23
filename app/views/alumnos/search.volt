@@ -14,9 +14,7 @@
     <tr>
         <th>Nombre</th>
         <th>Apellidos</th>
-        {% if admin %}
             <th>Management</th>
-        {% endif %}
     </tr>
     {% for alumno in page.items %}
             <tr>
@@ -24,12 +22,10 @@
                 <td>
 {{ alumno.apellidos }}
                 </td>
-                {% if admin %}
                     <td>
-                        {{ link_to("alumnos/verPerfil/" ~ alumno.NIE, "<i class='glyphicon glyphicon-edit'></i> Modificar", "class":"btn btn-default") }}
+                        {{ link_to("alumnos/verPerfil/" ~ alumno.NIE, "<i class='glyphicon glyphicon-edit'></i> Ver Perfil", "class":"btn btn-default") }}
 
                     </td>
-                {% endif %}
             </tr>
     {% endfor %}
 </table>
