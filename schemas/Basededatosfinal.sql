@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`Comentarios` (
   CONSTRAINT `fk_Comentarios_users1`
     FOREIGN KEY (`users_username`)
     REFERENCES `proyecto_final`.`users` (`username`)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Comentarios_alumnos1`
     FOREIGN KEY (`alumnos_NIE`)
@@ -186,6 +186,44 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`expediente` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
   ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto_final`.`MTrassierra`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `proyecto_final`.`MTrassierra` ;
+
+CREATE TABLE IF NOT EXISTS `proyecto_final`.`MTrassierra` (
+  `Year` INT NOT NULL COMMENT '',
+  `Alumnos_NIE` INT NOT NULL COMMENT '',
+  `Curso` VARCHAR(45) NOT NULL COMMENT '',
+  `Repite` TINYINT(1) NULL COMMENT '',
+  PRIMARY KEY (`Year`, `Alumnos_NIE`, `Curso`)  COMMENT '',
+  INDEX `fk_MTrassierra_alumnos1_idx` (`Alumnos_NIE` ASC)  COMMENT '',
+  CONSTRAINT `fk_MTrassierra_alumnos1`
+  FOREIGN KEY (`Alumnos_NIE`)
+  REFERENCES `proyecto_final`.`alumnos` (`NIE`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+  ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto_final`.`Fotos`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `proyecto_final`.`Fotos` ;
+
+CREATE TABLE IF NOT EXISTS `proyecto_final`.`Fotos` (
+  `Direccion` VARCHAR(45) NULL COMMENT '',
+  `alumnos_NIE` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`alumnos_NIE`)  COMMENT '',
+  CONSTRAINT `fk_Fotos_alumnos1`
+  FOREIGN KEY (`alumnos_NIE`)
+  REFERENCES `proyecto_final`.`alumnos` (`NIE`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+  ENGINE = InnoDB;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

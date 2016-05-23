@@ -18,7 +18,6 @@ class AlumnosForm extends Form
 {
     public function initialize($entity = null, $options = array())
     {
-
         $NIE = new Numeric("NIE", array('class' => 'form-control'));
         $NIE->setLabel("NIE");
         $NIE->setFilters(array("striptags", "string"));

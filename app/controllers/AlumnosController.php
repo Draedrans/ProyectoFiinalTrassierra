@@ -122,12 +122,7 @@ class AlumnosController extends ControllerBase
 
         $form = new AlumnosForm(null, array('create' => true));
         if (!$form->isValid($_POST)) {
-//            Imprime solo el primer mensaje
-            $this->flash->error($form->getMessages()[0]);
-            /*            foreach ($form->getMessages() as $message) {
-                            $this->flash->error($message);
-                            break;
-                        }*/
+            $this->flash->error($form->getMessages());
             $this->forward("alumnos/new");
         } else {
             $alumno->apellidos = $this->request->getPost("apellidos");
@@ -193,7 +188,7 @@ class AlumnosController extends ControllerBase
                 "action" => "index"
             ));
         }
-        $form = new Alumnos($alumno, array('edit' => true));
+        $form = new AlumnosForm($alumno, array('edit' => true));
         if (!$form->isValid($_POST)) {
             $this->flash->error($form->getMessages()[0]);
             $this->forward("alumnos/edit/ $alumno->NIE");
@@ -226,6 +221,7 @@ class AlumnosController extends ControllerBase
                 $form->clear(array(
                     'NIE', 'apellidos', 'Nombre', 'Direccion', 'DNI', 'fecna', 'Localidad', 'Provincia', 'Lugna', 'Pasaporte', 'Tlf', 'TlfUrg'
                 ));
+                return $this->response->redirect("alumnos/index");
             }
 
             $this->flash->success("El alumno ha sido actualizado");
@@ -233,7 +229,8 @@ class AlumnosController extends ControllerBase
             /** @noinspection PhpVoidFunctionResultUsedInspection */
             return $this->response->redirect("alumnos/index");
         }
-        $this->view->form = $form;
+        return $this->response->redirect("alumnos/index");
+//        $this->view->form = $form;
 
     }
 
@@ -277,7 +274,7 @@ class AlumnosController extends ControllerBase
         ));
     }
     public function verPerfil(){
-        
+
     }
 
 }
