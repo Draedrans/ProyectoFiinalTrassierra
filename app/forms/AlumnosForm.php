@@ -57,7 +57,7 @@ class AlumnosForm extends Form
         $TlfUrg = new Text("TlfUrg", array('class' => 'form-control'));
         $TlfUrg->setFilters(array("striptags", "string"));
         $TlfUrg->setLabel("Telefono en caso de urgencia");
-        $fecna = new Date("fecna", array('class' => 'form-control'));
+        $fecna = new Date("Fecna", array('class' => 'form-control'));
         $fecna->setFilters(array("striptags", "string"));
         $fecna->setLabel("Fecha de Nacimiento");
         $tutor= new Text("Tutor", array('class' => 'form-control'));

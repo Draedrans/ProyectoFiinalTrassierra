@@ -129,7 +129,7 @@ class AlumnosController extends ControllerBase
             $alumno->Nombre = $this->request->getPost("Nombre");
             $alumno->Direccion = $this->request->getPost("Direccion");
             $alumno->DNI = $this->request->getPost("DNI");
-            $alumno->Fecna = $this->request->getPost("fecna");
+            $alumno->Fecna = $this->request->getPost("Fecna");
             $alumno->Localidad = $this->request->getPost("Localidad");
             $alumno->Provincia = $this->request->getPost("Provincia");
             $alumno->Lugna = $this->request->getPost("Lugna");
@@ -137,6 +137,7 @@ class AlumnosController extends ControllerBase
             $alumno->UltimaMatricula = date("Y");
             $alumno->Tlf = $this->request->getPost("Tlf");
             $alumno->TlfUrg = $this->request->getPost("TlfUrg");
+            $alumno->Tutor=$this->request->getPost("Tutor");
             if (!$alumno->save()) {
                 foreach ($alumno->getMessages() as $message) {
                     $this->flash->error($message);
@@ -199,7 +200,7 @@ class AlumnosController extends ControllerBase
             $alumno->Direccion = $this->request->getPost("Direccion");
             $alumno->DNI = $this->request->getPost("DNI");
             $alumno->NIE = $this->request->getPost("NIE");
-            $alumno->Fecna = $this->request->getPost("fecna");
+            $alumno->Fecna = $this->request->getPost("Fecna");
             $alumno->Localidad = $this->request->getPost("Localidad");
             $alumno->Provincia = $this->request->getPost("Provincia");
             $alumno->Lugna = $this->request->getPost("Lugna");
@@ -207,18 +208,7 @@ class AlumnosController extends ControllerBase
             $alumno->Tlf = $this->request->getPost("Tlf");
             $alumno->TlfUrg = $this->request->getPost("TlfUrg");
             $alumno->UltimaMatricula = $this->request->getPost("UltimaMatricula");
-            $tute=$this->request->getPost("Tutor");
-            if ($tute){
-                $this->flash->error("Entra pero pasa del tema");
-                $tutor=new Tutor();
-                $tutor->Tutor=$this->request->getPost("Tutor");
-                $tutor->NIE=$alumno->NIE=$this->request->getPost("NIE");
-                if (!$tutor->save()) {
-                    foreach($tutor->getMessages() as $message){
-                        $this->flash->error($message);
-                    }
-                }
-            }
+            $alumno->Tutor=$this->request->getPost("Tutor");
             if (!$alumno->save()) {
                 foreach ($alumno->getMessages() as $message) {
                     $this->flash->error($message);
@@ -231,7 +221,7 @@ class AlumnosController extends ControllerBase
                 ));
             } else {
                 $form->clear(array(
-                    'NIE', 'apellidos', 'Nombre', 'Direccion', 'DNI', 'fecna', 'Localidad', 'Provincia', 'Lugna', 'Pasaporte', 'Tlf', 'TlfUrg'
+                    'NIE', 'apellidos', 'Nombre', 'Direccion', 'DNI', 'Fecna', 'Localidad', 'Provincia', 'Lugna', 'Pasaporte', 'Tlf', 'TlfUrg'
                 ));
                 return $this->response->redirect("alumnos/verPerfil/$NIE");
             }
@@ -289,6 +279,7 @@ class AlumnosController extends ControllerBase
         $this->view->setVar("alumno",$alumno);
         $observaciones=Observacionesalum::findByalumnos_NIE($NIE);
         $this->view->setVar("observaciones",$observaciones);
+        $this->view->setVar("Tutor", $this->session->get("auth")["username"]);
     }
 
 }

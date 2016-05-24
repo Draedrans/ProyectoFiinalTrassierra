@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`alumnos` (
   CONSTRAINT `fk_alumnos_users1`
   FOREIGN KEY (`Tutor`)
   REFERENCES `proyecto_final`.`users` (`username`)
-    ON DELETE SET NULL
+    ON DELETE NO ACTION
     ON UPDATE CASCADE)
   ENGINE = InnoDB;
 
