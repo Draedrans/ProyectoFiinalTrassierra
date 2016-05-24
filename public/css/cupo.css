@@ -76,3 +76,8 @@ input {
         content: "";
     }
 }
+.a25{
+    float: left;
+    width: 25%;
+    margin-bottom: 10px;
+}

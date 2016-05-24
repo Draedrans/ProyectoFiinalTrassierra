@@ -1,4 +1,4 @@
-<h1>{{ alumno.Nombre }} {{ alumno.apellidos }} </h1>
+
 <table class="table table-bordered table-striped">
     <tr>
         <td>NIE</td>

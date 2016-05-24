@@ -1,4 +1,4 @@
-<h1><?php echo $alumno->Nombre; ?> <?php echo $alumno->apellidos; ?> </h1>
+
 <table class="table table-bordered table-striped">
     <tr>
         <td>NIE</td>

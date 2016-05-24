@@ -137,7 +137,7 @@ class AlumnosController extends ControllerBase
             $alumno->UltimaMatricula = date("Y");
             $alumno->Tlf = $this->request->getPost("Tlf");
             $alumno->TlfUrg = $this->request->getPost("TlfUrg");
-            $alumno->Tutor=$this->request->getPost("Tutor");
+            $alumno->Tutor = $this->request->getPost("Tutor");
             if (!$alumno->save()) {
                 foreach ($alumno->getMessages() as $message) {
                     $this->flash->error($message);
@@ -194,7 +194,7 @@ class AlumnosController extends ControllerBase
             $this->flash->error($form->getMessages()[0]);
             $this->forward("alumnos/edit/ $alumno->NIE");
         } else {
-            $alumno->NIE=$this->request->getPost("NIE");
+            $alumno->NIE = $this->request->getPost("NIE");
             $alumno->apellidos = $this->request->getPost("apellidos");
             $alumno->Nombre = $this->request->getPost("Nombre");
             $alumno->Direccion = $this->request->getPost("Direccion");
@@ -208,7 +208,7 @@ class AlumnosController extends ControllerBase
             $alumno->Tlf = $this->request->getPost("Tlf");
             $alumno->TlfUrg = $this->request->getPost("TlfUrg");
             $alumno->UltimaMatricula = $this->request->getPost("UltimaMatricula");
-            $alumno->Tutor=$this->request->getPost("Tutor");
+            $alumno->Tutor = $this->request->getPost("Tutor");
             if (!$alumno->save()) {
                 foreach ($alumno->getMessages() as $message) {
                     $this->flash->error($message);
@@ -274,17 +274,23 @@ class AlumnosController extends ControllerBase
             "action" => "index"
         ));
     }
-    public function verObservacionesAction($NIE){
-        $alumno=Alumnos::findFirst($NIE);
-        $this->view->setVar("Tutor",strtolower($alumno->Tutor));
-        $observaciones=Observacionesalum::findByalumnos_NIE($NIE);
-        $this->view->setVar("observaciones",$observaciones);
+
+    public function verObservacionesAction($NIE)
+    {
+        $this->view->setTemplateAfter('AlumPerfil');
+        $alumno = Alumnos::findFirst($NIE);
+        $this->view->setVar("Tutor", strtolower($alumno->Tutor));
+        $observaciones = Observacionesalum::findByalumnos_NIE($NIE);
+        $this->view->setVar("observaciones", $observaciones);
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
     }
-    public function verPerfilAction($NIE){
-        $alumno=Alumnos::findFirst($NIE);
-        $this->view->setVar("alumno",$alumno);
+
+    public function verPerfilAction($NIE)
+    {
+        $this->view->setTemplateAfter('AlumPerfil');
+        $alumno = Alumnos::findFirst($NIE);
+        $this->view->setVar("alumno", $alumno);
     }
-        
+
 
 }

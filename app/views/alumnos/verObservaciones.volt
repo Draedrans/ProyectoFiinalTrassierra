@@ -13,8 +13,6 @@
                     <td>{{ item.Observacion }}</td>
                 </tr>
             {% endif %}
-
-
         {% endfor %}
     </table>
 {% endif %}
