@@ -5,7 +5,7 @@
 {% else %}
     <table class="table table-bordered table-striped">
         <tr>
-            <th>Comentarios</th>
+            <th>Observaciones</th>
         </tr>
         {% for item in observaciones %}
             {% if (item.Acceso==1 and (Tutor==Profesor or admin))or item.Acceso==0 %}
