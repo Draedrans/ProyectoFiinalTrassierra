@@ -51,6 +51,8 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`alumnos` (
 ENGINE = InnoDB;
 
 
+
+
 -- -----------------------------------------------------
 -- Table `proyecto_final`.`FamAlumno`
 -- -----------------------------------------------------
@@ -219,6 +221,27 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`Fotos` (
   PRIMARY KEY (`alumnos_NIE`)  COMMENT '',
   CONSTRAINT `fk_Fotos_alumnos1`
   FOREIGN KEY (`alumnos_NIE`)
+  REFERENCES `proyecto_final`.`alumnos` (`NIE`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+  ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto_final`.`Tutor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto_final`.`Tutor` (
+  `Tutor` VARCHAR(45) NOT NULL COMMENT '',
+  `NIE` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`Tutor`, `NIE`)  COMMENT '',
+  INDEX `fk_Tutor_alumnos1_idx` (`NIE` ASC)  COMMENT '',
+  CONSTRAINT `fk_Tutor_users1`
+  FOREIGN KEY (`Tutor`)
+  REFERENCES `proyecto_final`.`users` (`username`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Tutor_alumnos1`
+  FOREIGN KEY (`NIE`)
   REFERENCES `proyecto_final`.`alumnos` (`NIE`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
