@@ -274,18 +274,16 @@ class AlumnosController extends ControllerBase
             "action" => "index"
         ));
     }
+    public function verObservacionesAction($NIE){
+        $alumno=Alumnos::findFirst($NIE);
+        $this->view->setVar("Tutor",strtolower($alumno->Tutor));
+        $observaciones=Observacionesalum::findByalumnos_NIE($NIE);
+        $this->view->setVar("observaciones",$observaciones);
+        $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
+    }
     public function verPerfilAction($NIE){
         $alumno=Alumnos::findFirst($NIE);
         $this->view->setVar("alumno",$alumno);
-    }
-    
-    public function verObservaciones($NIE){
-        $alumno=Alumnos::findFirst($NIE);
-        $this->view->setVar("alumno",$alumno);
-        $observaciones=Observacionesalum::findByalumnos_NIE($NIE);
-        $this->view->setVar("observaciones",$observaciones);
-        $this->view->setVar("Tutor", $this->session->get("auth")["username"]);
-        
     }
         
 
