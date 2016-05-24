@@ -7,10 +7,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema proyecto_final
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema proyecto_final
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `proyecto_final` DEFAULT CHARACTER SET utf8 ;
 USE `proyecto_final` ;
 
@@ -46,9 +42,16 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`alumnos` (
   `Fecna` DATE NULL COMMENT '',
   `Tlf` VARCHAR(13) NULL COMMENT '',
   `TlfUrg` VARCHAR(13) NULL COMMENT '',
-  `UltimaMatricula` INT(4) NOT NULL COMMENT '',
-  PRIMARY KEY (`NIE`)  COMMENT '')
-ENGINE = InnoDB;
+  `UltimaMatricula` INT(4) NULL COMMENT '',
+  `Tutor` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`NIE`)  COMMENT '',
+  INDEX `fk_alumnos_users1_idx` (`Tutor` ASC)  COMMENT '',
+  CONSTRAINT `fk_alumnos_users1`
+  FOREIGN KEY (`Tutor`)
+  REFERENCES `proyecto_final`.`users` (`username`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE)
+  ENGINE = InnoDB;
 
 
 
@@ -221,27 +224,6 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`Fotos` (
   PRIMARY KEY (`alumnos_NIE`)  COMMENT '',
   CONSTRAINT `fk_Fotos_alumnos1`
   FOREIGN KEY (`alumnos_NIE`)
-  REFERENCES `proyecto_final`.`alumnos` (`NIE`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
-  ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `proyecto_final`.`Tutor`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `proyecto_final`.`Tutor` (
-  `Tutor` VARCHAR(45) NOT NULL COMMENT '',
-  `NIE` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`Tutor`, `NIE`)  COMMENT '',
-  INDEX `fk_Tutor_alumnos1_idx` (`NIE` ASC)  COMMENT '',
-  CONSTRAINT `fk_Tutor_users1`
-  FOREIGN KEY (`Tutor`)
-  REFERENCES `proyecto_final`.`users` (`username`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Tutor_alumnos1`
-  FOREIGN KEY (`NIE`)
   REFERENCES `proyecto_final`.`alumnos` (`NIE`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)

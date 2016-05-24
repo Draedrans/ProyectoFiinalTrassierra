@@ -207,6 +207,18 @@ class AlumnosController extends ControllerBase
             $alumno->Tlf = $this->request->getPost("Tlf");
             $alumno->TlfUrg = $this->request->getPost("TlfUrg");
             $alumno->UltimaMatricula = $this->request->getPost("UltimaMatricula");
+            $tute=$this->request->getPost("Tutor");
+            if ($tute){
+                $this->flash->error("Entra pero pasa del tema");
+                $tutor=new Tutor();
+                $tutor->Tutor=$this->request->getPost("Tutor");
+                $tutor->NIE=$alumno->NIE=$this->request->getPost("NIE");
+                if (!$tutor->save()) {
+                    foreach($tutor->getMessages() as $message){
+                        $this->flash->error($message);
+                    }
+                }
+            }
             if (!$alumno->save()) {
                 foreach ($alumno->getMessages() as $message) {
                     $this->flash->error($message);
@@ -275,7 +287,7 @@ class AlumnosController extends ControllerBase
     public function verPerfilAction($NIE){
         $alumno=Alumnos::findFirst($NIE);
         $this->view->setVar("alumno",$alumno);
-        $observaciones=Observacionesalum::findByalumnos_NIE(NIE);
+        $observaciones=Observacionesalum::findByalumnos_NIE($NIE);
         $this->view->setVar("observaciones",$observaciones);
     }
 

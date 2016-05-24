@@ -59,7 +59,10 @@ class AlumnosForm extends Form
         $TlfUrg->setLabel("Telefono en caso de urgencia");
         $fecna = new Date("fecna", array('class' => 'form-control'));
         $fecna->setFilters(array("striptags", "string"));
-        $fecna->setLabel("Fecha");
+        $fecna->setLabel("Fecha de Nacimiento");
+        $tutor= new Text("Tutor", array('class' => 'form-control'));
+        $tutor->setFilters(array("striptags", "string"));
+        $tutor->Setlabel("Tutor");
 
 
         if (!isset($options) || $options == null) {
@@ -98,6 +101,7 @@ class AlumnosForm extends Form
             $this->add($TlfUrg);
             if (isset($UltimaMatricula))
                 $this->add($UltimaMatricula);
+            $this->add($tutor);
         }
 
     }
