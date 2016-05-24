@@ -277,9 +277,16 @@ class AlumnosController extends ControllerBase
     public function verPerfilAction($NIE){
         $alumno=Alumnos::findFirst($NIE);
         $this->view->setVar("alumno",$alumno);
+    }
+    
+    public function verObservaciones($NIE){
+        $alumno=Alumnos::findFirst($NIE);
+        $this->view->setVar("alumno",$alumno);
         $observaciones=Observacionesalum::findByalumnos_NIE($NIE);
         $this->view->setVar("observaciones",$observaciones);
         $this->view->setVar("Tutor", $this->session->get("auth")["username"]);
+        
     }
+        
 
 }

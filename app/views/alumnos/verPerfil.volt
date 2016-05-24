@@ -50,11 +50,3 @@
 {% if admin %}
     {{ link_to("alumnos/edit/" ~ alumno.NIE, "<i class='glyphicon glyphicon-edit'></i> Modificar Datos", "class":"btn btn-default") }}
 {% endif %}
-<br>
-<br>
-<br>
-{% for observacion in observaciones %}
-    {% if Tutor==alumno.Tutor or admin %}
-        {{ observacion.Observacion }}
-    {% endif %}
-{% endfor %}

@@ -50,11 +50,3 @@
 <?php if ($admin) { ?>
     <?php echo $this->tag->linkTo(array('alumnos/edit/' . $alumno->NIE, '<i class=\'glyphicon glyphicon-edit\'></i> Modificar Datos', 'class' => 'btn btn-default')); ?>
 <?php } ?>
-<br>
-<br>
-<br>
-<?php foreach ($observaciones as $observacion) { ?>
-    <?php if ($Tutor == $alumno->Tutor || $admin) { ?>
-        <?php echo $observacion->Observacion; ?>
-    <?php } ?>
-<?php } ?>
