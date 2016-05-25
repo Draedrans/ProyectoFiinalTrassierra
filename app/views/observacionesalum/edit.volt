@@ -1,5 +1,5 @@
 <ul class="pager">
-    <li class="previous">{{ link_to("alumnos/verObservaciones/" , "Volver") }}</li>
+    <li class="previous">{{ link_to("alumnos/verObservaciones/"~ NIE , "Volver") }}</li>
 </ul>
 
 <div class="page-header">

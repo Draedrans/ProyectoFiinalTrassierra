@@ -12,8 +12,9 @@ class ObservacionesalumController extends ControllerBase
     public function editAction($ID)
     {
         if (isset($ID)) {
+            $observacion = ObservacionesAlum::findFirst($ID);
+            $this->view->setVar("NIE",$observacion->alumnos_NIE);
             if (!$this->request->isPost()) {
-                $observacion = ObservacionesAlum::findFirst($ID);
                 if (!$observacion) {
                     $this->flash->error("Observacion no encontrada");
 
@@ -30,12 +31,13 @@ class ObservacionesalumController extends ControllerBase
             }
 
         } else
-            return $this->response->redirect("alumnos/verObservaciones/$ID");
+            return $this->response->redirect("alumnos/");
     }
 
 
     public function newAction($NIE)
     {
+        $this->view->setVar("NIE",$NIE);
         $Observacion=new ObservacionesAlum();
         $Observacion-$NIE=$NIE;
         $this->view->form = new ObservacionesalumForm($Observacion, array('edit' => true));

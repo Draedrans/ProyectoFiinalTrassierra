@@ -1,5 +1,5 @@
 <ul class="pager">
-    <li class="previous"><?php echo $this->tag->linkTo(array('alumnos/verObservaciones/', 'Volver')); ?></li>
+    <li class="previous"><?php echo $this->tag->linkTo(array('alumnos/verObservaciones/' . $NIE, 'Volver')); ?></li>
 </ul>
 
 <div class="page-header">
