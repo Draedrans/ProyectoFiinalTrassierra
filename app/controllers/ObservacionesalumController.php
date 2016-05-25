@@ -33,5 +33,29 @@ class ObservacionesalumController extends ControllerBase
             return $this->response->redirect("alumnos/verObservaciones/$ID");
     }
 
+
+    public function newAction($NIE)
+    {
+        $Observacion=new ObservacionesAlum();
+        $Observacion-$NIE=$NIE;
+        $this->view->form = new ObservacionesalumForm($Observacion, array('edit' => true));
+    }
+
+
+
+    public function saveAction()
+    {
+        if (!$this->request->isPost()) {
+            return $this->dispatcher->forward(array(
+                "controller" => "alumnos",
+                "action" => "index"
+            ));
+        }
+        $ID=$this->request->getPost("ID");
+        if(!$ID or $ID==0 or ID==""){
+            echo "holi";
+        }
+    }
+
 }
 

@@ -1,5 +1,5 @@
 <ul class="pager">
-    <li class="previous">{{ link_to("observacionesalum/search", "Go back") }}</li>
+    <li class="previous">{{ link_to("alumnos/verObservaciones/" , "Volver") }}</li>
 </ul>
 
 <div class="page-header">
@@ -12,15 +12,19 @@
 
 {% for element in form %}
     <div class="form-group">
-        {{ element.label() }}
-        <div>
+        {% if element.getName()=="ID" or element.getName()=="alumnos_NIE" %}
             {{ element }}
-        </div>
+        {% else %}
+            {{ element.label() }}
+            <div>
+                {{ element }}
+            </div>
+        {% endif %}
     </div>
 {% endfor %}
 <div class="form-group">
     <div class="col-sm-8 col-sm-offset-2">
-        {{ submit_button("Modificar Alumno", "class": "btn btn-primary") }}
+        {{ submit_button("Modificar Observacion", "class": "btn btn-primary") }}
     </div>
 </div>
 {{ end_form() }}

@@ -95,8 +95,6 @@ class SecurityPlugin extends Plugin
                 'tutorial' => array('index'),
                 'users' => array('index', 'search'),
                 'observacionesalum' => array('edit', 'save'),
-                'observacionesAlum' => array('edit', 'save'),
-                'ObservacionesAlum' => array('edit', 'save'),
                 'alumnos' => array('index', 'search', 'verPerfil', 'verObservaciones'),
                 'userpanel' => array('index', 'changepassword', 'link', 'savepass')
             );

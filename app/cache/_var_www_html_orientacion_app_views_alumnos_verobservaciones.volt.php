@@ -15,7 +15,7 @@
                 <tr>
                     <td><?php echo $item->Observacion; ?></td>
                     <?php if ($admin) { ?>
-                        <td><?php echo $this->tag->linkTo(array('ObservacionesAlum/edit/' . $item->ID, 'Editar', 'class' => 'btn btn-primary')); ?></td>
+                        <td><?php echo $this->tag->linkTo(array('observacionesalum/edit/' . $item->ID, 'Editar', 'class' => 'btn btn-primary')); ?></td>
                     <?php } ?>
                 </tr>
             <?php } ?>
@@ -24,5 +24,5 @@
 <?php } ?>
 <br>
 <?php if ($Tutor == $Profesor || $admin) { ?>
-    <?php echo $this->tag->linkTo(array('ObservacionesAlum/new/' . $alumno->NIE, 'Añadir Observación', 'class' => 'btn btn-primary')); ?>
+    <?php echo $this->tag->linkTo(array('observacionesalum/new/' . $alumno->NIE, 'Añadir Observación', 'class' => 'btn btn-primary')); ?>
 <?php } ?>

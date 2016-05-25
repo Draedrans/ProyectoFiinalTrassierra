@@ -15,7 +15,7 @@
                 <tr>
                     <td>{{ item.Observacion }}</td>
                     {% if admin %}
-                        <td>{{ link_to("ObservacionesAlum/edit/"~ item.ID, "Editar", "class":"btn btn-primary") }}</td>
+                        <td>{{ link_to("observacionesalum/edit/"~ item.ID, "Editar", "class":"btn btn-primary") }}</td>
                     {% endif %}
                 </tr>
             {% endif %}
@@ -24,5 +24,5 @@
 {% endif %}
 <br>
 {% if Tutor==Profesor or admin %}
-    {{ link_to("ObservacionesAlum/new/"~ alumno.NIE, "Añadir Observación", "class":"btn btn-primary") }}
+    {{ link_to("observacionesalum/new/"~ alumno.NIE, "Añadir Observación", "class":"btn btn-primary") }}
 {% endif %}
