@@ -92,9 +92,12 @@ class SecurityPlugin extends Plugin
             //Recursos accesibles por Jefes de Dpto y Jefes de Estudio.
             $userResources = array(
                 'configuration' => array('index'),
-                'tutorial'=> array('index'),
+                'tutorial' => array('index'),
                 'users' => array('index', 'search'),
-                'alumnos' => array('index', 'search','verPerfil', 'verObservaciones'),
+                'observacionesalum' => array('edit', 'save'),
+                'observacionesAlum' => array('edit', 'save'),
+                'ObservacionesAlum' => array('edit', 'save'),
+                'alumnos' => array('index', 'search', 'verPerfil', 'verObservaciones'),
                 'userpanel' => array('index', 'changepassword', 'link', 'savepass')
             );
             foreach ($userResources as $resource => $actions) {
@@ -105,7 +108,7 @@ class SecurityPlugin extends Plugin
                 'index' => array('index', 'easteregg'),
                 'session' => array('start', 'end', 'index'),
                 'errors' => array('show401', 'show404', 'show500'),
-                'languages' => array('spanish','english')
+                'languages' => array('spanish', 'english')
             );
             foreach ($publicResources as $resource => $actions) {
                 $acl->addResource(new Resource($resource), $actions);

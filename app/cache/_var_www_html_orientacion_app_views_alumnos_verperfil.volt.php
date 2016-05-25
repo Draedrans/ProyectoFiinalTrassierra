@@ -48,5 +48,5 @@
 
 
 <?php if ($admin) { ?>
-    <?php echo $this->tag->linkTo(array('alumnos/edit/' . $alumno->NIE, '<i class=\'glyphicon glyphicon-edit\'></i> Modificar Datos', 'class' => 'btn btn-default')); ?>
+    <?php echo $this->tag->linkTo(array('alumnos/edit/' . $alumno->NIE, '<i class=\'glyphicon glyphicon-edit\'></i> Modificar Datos', 'class' => 'btn btn-primary')); ?>
 <?php } ?>

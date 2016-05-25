@@ -282,7 +282,7 @@ class AlumnosController extends ControllerBase
         $alumno = Alumnos::findFirst($NIE);
         $this->view->setVar("alumno", $alumno);
         $this->view->setVar("Tutor", strtolower($alumno->Tutor));
-        $observaciones = Observacionesalum::findByalumnos_NIE($NIE);
+        $observaciones = ObservacionesAlum::findByalumnos_NIE($NIE);
         $this->view->setVar("observaciones", $observaciones);
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
     }
