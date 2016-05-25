@@ -4,7 +4,7 @@ use Phalcon\Mvc\Model\Resultset\Simple as ResultSet;
 use Phalcon\Mvc\Model\Validator\Uniqueness;
 use Phalcon\Validation\Message;
 
-class Observacionesalum extends \Phalcon\Mvc\Model
+class ObservacionesAlum extends \Phalcon\Mvc\Model
 {
 
     /**
