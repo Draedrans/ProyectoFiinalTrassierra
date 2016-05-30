@@ -29,16 +29,13 @@ class ObservacionesalumForm extends Form
         )));
         $Observacion = new TextArea("Observacion", array('class' => 'form-control'));
         $Observacion->addValidator(new PresenceOf(array(
-            'message' => 'Hace falta el NIE'
+            'message' => 'Tienes que escribir algo en el campo de observacion'
         )));
-        $isAdmin = new Select("is_admin", array(
+        $isAdmin = new Select("Acceso", array(
             '0' => "Profesor",
             '1' => "Direccion/Orientacion/Tutor"
         ));
         $isAdmin->setLabel("Nivel de Acceso");
-
-
-
 
 
         $this->add($ID);
