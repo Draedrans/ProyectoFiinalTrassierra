@@ -95,7 +95,7 @@ class SecurityPlugin extends Plugin
                 'tutorial' => array('index'),
                 'users' => array('index', 'search'),
                 'observacionesalum' => array('edit', 'save','new','create'),
-                'alumnos' => array('index', 'search', 'verPerfil', 'verObservaciones'),
+                'alumnos' => array('index', 'search', 'verPerfil', 'verObservaciones', 'verIncidencias'),
                 'userpanel' => array('index', 'changepassword', 'link', 'savepass')
             );
             foreach ($userResources as $resource => $actions) {
