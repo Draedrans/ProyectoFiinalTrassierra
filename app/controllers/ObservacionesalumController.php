@@ -65,7 +65,6 @@ class ObservacionesalumController extends ControllerBase
                 $this->flash->error($message);
             }
         }
-
     }
 
     public function saveAction()

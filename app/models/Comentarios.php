@@ -1,9 +1,5 @@
 <?php
 
-use Phalcon\Mvc\Model\Resultset\Simple as ResultSet;
-use Phalcon\Mvc\Model\Validator\Uniqueness;
-use Phalcon\Validation\Message;
-
 class Comentarios extends \Phalcon\Mvc\Model
 {
 
@@ -39,9 +35,21 @@ class Comentarios extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var integer
+     * @var string
      */
-    public $TipoIncidencia;
+    public $Moitivo;
+
+    /**
+     *
+     * @var string
+     */
+    public $Asistentes;
+
+    /**
+     *
+     * @var string
+     */
+    public $Acuerdos;
 
     /**
      * Initialize method for model.
@@ -49,8 +57,8 @@ class Comentarios extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSource("Comentarios");
-        $this->belongsTo('alumnos_NIE', 'Alumnos', 'NIE', array('alias' => 'Alumnos'));
         $this->belongsTo('users_username', 'Users', 'username', array('alias' => 'Users'));
+        $this->belongsTo('alumnos_NIE', 'Alumnos', 'NIE', array('alias' => 'Alumnos'));
     }
 
     /**
