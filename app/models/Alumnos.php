@@ -93,14 +93,13 @@ class Alumnos extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->hasMany('NIE', 'Comentarios', 'alumnos_NIE', array('alias' => 'Comentarios'));
-        $this->hasMany('NIE', 'FamAlumno', 'alumnos_NIE', array('alias' => 'FamAlumno'));
         $this->hasMany('NIE', 'FamAlumno', 'alumnos_NIE_Familiar', array('alias' => 'FamAlumno'));
+        $this->hasMany('NIE', 'FamAlumno', 'alumnos_NIE', array('alias' => 'FamAlumno'));
         $this->hasMany('NIE', 'Familiares', 'alumnos_NIE', array('alias' => 'Familiares'));
         $this->hasMany('NIE', 'Fotos', 'alumnos_NIE', array('alias' => 'Fotos'));
         $this->hasMany('NIE', 'MTrassierra', 'Alumnos_NIE', array('alias' => 'MTrassierra'));
         $this->hasMany('NIE', 'Necesidades', 'alumnos_NIE', array('alias' => 'Necesidades'));
         $this->hasMany('NIE', 'ObservacionesAlum', 'alumnos_NIE', array('alias' => 'ObservacionesAlum'));
-        $this->hasMany('NIE', 'Tutor', 'NIE', array('alias' => 'Tutor'));
         $this->hasMany('NIE', 'Expediente', 'alumnos_NIE', array('alias' => 'Expediente'));
         $this->belongsTo('Tutor', 'Users', 'username', array('alias' => 'Users'));
     }
