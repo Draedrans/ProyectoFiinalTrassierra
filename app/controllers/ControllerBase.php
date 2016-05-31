@@ -9,7 +9,7 @@ class ControllerBase extends Controller
     {
         $language = $this->session->get("language");
         if (!$language) {
-            $this->session->set("language", 1);
+            $this->session->set("language", 0);
             $this->view->setVar("language", False);
         }
         if ($language == 0) {

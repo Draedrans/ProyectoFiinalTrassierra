@@ -47,6 +47,6 @@
 </table>
 
 
-{% if admin %}
+{% if admin or alumno.Tutor|lower==Profesor|lower %}
     {{ link_to("alumnos/edit/" ~ alumno.NIE, "<i class='glyphicon glyphicon-edit'></i> Modificar Datos", "class":"btn btn-primary") }}
 {% endif %}

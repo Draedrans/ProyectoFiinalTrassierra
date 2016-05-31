@@ -1,11 +1,11 @@
 
-<ul class="pager">
-    <li class="previous">{{ link_to("alumnos/verObservaciones/"~ NIE , "Volver") }}</li>
+    <ul class="pager">
+    <li class="previous">{{ link_to("alumnos/verIncidencias/"~ NIE , "Volver") }}</li>
 </ul>
 
 <div class="page-header">
     <h1>
-        Editar Observacion
+        Crear Incidencia
     </h1>
 </div>
 

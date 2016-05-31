@@ -277,7 +277,6 @@ class AlumnosController extends ControllerBase
 
     public function verObservacionesAction($NIE)
     {
-        $this->view->setVar("boton", 2);
         $this->view->setTemplateAfter('AlumPerfil');
         $alumno = Alumnos::findFirst($NIE);
         $this->view->setVar("alumno", $alumno);
@@ -288,7 +287,6 @@ class AlumnosController extends ControllerBase
     }
     public function verIncidenciasAction($NIE)
     {
-        $this->view->setVar("boton", 3);
         $this->view->setTemplateAfter('AlumPerfil');
         $alumno = Alumnos::findFirst($NIE);
         $this->view->setVar("alumno", $alumno);
@@ -300,11 +298,14 @@ class AlumnosController extends ControllerBase
 
     public function verPerfilAction($NIE)
     {
-        $this->view->setVar("boton", 1);
         $this->view->setTemplateAfter('AlumPerfil');
         $alumno = Alumnos::findFirst($NIE);
         $this->view->setVar("alumno", $alumno);
+        $this->view->setVar("Tutor", strtolower($alumno->Tutor));
+        $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
+
     }
+
 
 
 }

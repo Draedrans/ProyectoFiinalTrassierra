@@ -47,6 +47,6 @@
 </table>
 
 
-<?php if ($admin) { ?>
+<?php if ($admin || Phalcon\Text::lower($alumno->Tutor) == Phalcon\Text::lower($Profesor)) { ?>
     <?php echo $this->tag->linkTo(array('alumnos/edit/' . $alumno->NIE, '<i class=\'glyphicon glyphicon-edit\'></i> Modificar Datos', 'class' => 'btn btn-primary')); ?>
 <?php } ?>

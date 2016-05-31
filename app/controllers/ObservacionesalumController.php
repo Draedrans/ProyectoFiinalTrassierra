@@ -34,7 +34,7 @@ class ObservacionesalumController extends ControllerBase
             }
 
         } else
-            return $this->response->redirect("alumnos/");
+            return $this->response->redirect("alumnos/index");
     }
 
 
@@ -44,7 +44,7 @@ class ObservacionesalumController extends ControllerBase
         $Observacion = new ObservacionesAlum();
         $Observacion->alumnos_NIE = $NIE;
         $this->view->form = new ObservacionesalumForm($Observacion, array('edit' => true));
-    }
+   }
 
     public function createAction($NIE)
     {
@@ -55,16 +55,25 @@ class ObservacionesalumController extends ControllerBase
                 "action" => "index"
             ));
         }
-
         $Observacion = new ObservacionesAlum();
         $Observacion->Observacion = $this->request->getPost("Observacion");
         $Observacion->Acceso = $this->request->getPost("Acceso");
         $Observacion->alumnos_NIE = $this->request->getPost("alumnos_NIE");
+        $form = new ObservacionesalumForm(null, array('create' => true));
+        if (!$form->isValid($_POST)) {
+        $this->flash->error($form->getMessages()[0]);
+            return $this->response->redirect("alumnos/verObservaciones/$Observacion->alumnos_NIE");
+
+        }
         if (!$Observacion->save()) {
             foreach ($Observacion->getMessages() as $message) {
                 $this->flash->error($message);
+
             }
         }
+        return $this->response->redirect("alumnos/verObservaciones/$Observacion->alumnos_NIE");
+
+
     }
 
     public function saveAction()
