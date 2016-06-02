@@ -53,6 +53,5 @@ class ComentariosForm extends Form
         $this->add($Motivo);
         $this->add($Asistentes);
         $this->add($Acuerdos);
-
     }
 }
