@@ -25,6 +25,7 @@
         {% else %}
             {{ link_to("alumnos/verIncidencias/"~ alumno.NIE, "Incidencias", "class":"btn btn-default") }}
         {% endif %}
+        {% if admin %}
         {% if router.getActionName()=="verNecesidades" %}
             {{ link_to("alumnos/verFamilia/"~ alumno.NIE, "Necesidades   ", "class":"btn btn-primary") }}
         {% else %}
@@ -39,6 +40,7 @@
             {{ link_to("alumnos/verFamilia/"~ alumno.NIE, "Familia   ", "class":"btn btn-primary") }}
         {% else %}
             {{ link_to("alumnos/verFamilia/"~ alumno.NIE, "Familia   ", "class":"btn btn-default") }}
+        {% endif %}
         {% endif %}
     </h4>
     {{ content() }}

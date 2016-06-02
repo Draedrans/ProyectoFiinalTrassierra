@@ -83,7 +83,7 @@ class SecurityPlugin extends Plugin
             }
             //Recursos accesibles sólo a Jefes de Estudio
             $adminResources = array(
-                'users' => array('new', 'update', 'edit', 'create', 'save', 'delete'),
+                'users' => array('new', 'update', 'save', 'delete'),
                 'alumnos' => array('new', 'update', 'edit', 'create', 'save', 'delete')
             );
             foreach ($adminResources as $resource => $actions) {
@@ -96,7 +96,7 @@ class SecurityPlugin extends Plugin
                 'users' => array('index', 'search'),
                 'comentarios' => array('edit', 'save', 'new', 'create'),
                 'observacionesalum' => array('edit', 'save','new','create'),
-                'alumnos' => array('index', 'search', 'verPerfil', 'verObservaciones', 'verIncidencias'),
+                'alumnos' => array('index', 'edit', 'create', 'search', 'verPerfil', 'verObservaciones', 'verIncidencias'),
                 'userpanel' => array('index', 'changepassword', 'link', 'savepass')
             );
             foreach ($userResources as $resource => $actions) {

@@ -1,7 +1,6 @@
 <div class="page-header">
     <h1>Change password</h1>
 </div>
-{{ content() }}
 {{ form('userpanel/savepass') }}
 {% for element in form %}
     <div class="form-group">

@@ -31,12 +31,9 @@ class ComentariosForm extends Form
             '1' => "Direccion/Orientacion/Tutor"
         ));
         $isAdmin->setLabel("Nivel de Acceso");
-        $Incidencia = new Select("Incidencia", array(
-            '0' => "Profesor",
-            '1' => "Direccion/Orientacion/Tutor"
-        ));
+        $Incidencia = new Text("Incidencia", array('class' => 'form-control'));
         $Incidencia->setLabel("Tipo de Incidencia");
-        $Motivo = new TextArea("Motivo", array('class' => 'form-control'));
+        $Motivo = new TextArea("Moitivo", array('class' => 'form-control'));
         $Motivo->setLabel("Descripción");
         $Asistentes = new TextArea("Asistentes", array('class' => 'form-control'));
         $Asistentes->setLabel("Asistentes");

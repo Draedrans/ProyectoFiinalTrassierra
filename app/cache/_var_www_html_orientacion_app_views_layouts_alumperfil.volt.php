@@ -25,6 +25,7 @@
         <?php } else { ?>
             <?php echo $this->tag->linkTo(array('alumnos/verIncidencias/' . $alumno->NIE, 'Incidencias', 'class' => 'btn btn-default')); ?>
         <?php } ?>
+        <?php if ($admin) { ?>
         <?php if ($this->router->getActionName() == 'verNecesidades') { ?>
             <?php echo $this->tag->linkTo(array('alumnos/verFamilia/' . $alumno->NIE, 'Necesidades   ', 'class' => 'btn btn-primary')); ?>
         <?php } else { ?>
@@ -39,6 +40,7 @@
             <?php echo $this->tag->linkTo(array('alumnos/verFamilia/' . $alumno->NIE, 'Familia   ', 'class' => 'btn btn-primary')); ?>
         <?php } else { ?>
             <?php echo $this->tag->linkTo(array('alumnos/verFamilia/' . $alumno->NIE, 'Familia   ', 'class' => 'btn btn-default')); ?>
+        <?php } ?>
         <?php } ?>
     </h4>
     <?php echo $this->getContent(); ?>
