@@ -9,7 +9,7 @@
     </h1>
 </div>
 
-{{ form("comentarios/create") }}
+{{ form("comentarios/save") }}
 
 {% for element in form %}
     <div class="form-group">
@@ -25,7 +25,7 @@
 {% endfor %}
 <div class="form-group">
     <div class="col-sm-8 col-sm-offset-2">
-        {{ submit_button("Añadir Incidencia", "class": "btn btn-primary") }}
+        {{ submit_button("Editar Incidencia", "class": "btn btn-primary") }}
     </div>
 </div>
 {{ end_form() }}

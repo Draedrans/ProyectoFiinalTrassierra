@@ -12,17 +12,17 @@ use Phalcon\Forms\Element\TextArea;
 use Phalcon\Forms\Element\Numeric;
 use Phalcon\Forms\Element\Hidden;
 use Phalcon\Forms\Form;
-use Phalcon\Validation\Validator\Alnum;
-use Phalcon\Validation\Validator\PresenceOf;
-use Phalcon\Forms\Element\Date;
 
 class ComentariosForm extends Form
 {
     public function initialize($entity = null, $options = array())
     {
-        $Username = new Hidden("users_username", array('class' => 'form-control'));
-        $Date = new Hidden("date", array('class' => 'form-control'));
+        $Username = new Text("users_username", array('class' => 'form-control'));
+        $Username->setLabel("Profesor");
+        $Date = new Text("date", array('class' => 'form-control'));
+        $Date->setLabel("Fecha y hora");
         $NIE = new Hidden("alumnos_NIE", array('class' => 'form-control'));
+        $NIE->setLabel("NIE");
         $NIE->setAttribute("readonly", true);
         $Date->setAttribute("readonly", true);
         $Username->setAttribute("readonly", true);
@@ -32,8 +32,8 @@ class ComentariosForm extends Form
         ));
         $isAdmin->setLabel("Nivel de Acceso");
         $Incidencia = new Select("Incidencia", array(
-            'pi' => "Profesor",
-            '3pi/2' => "Direccion/Orientacion/Tutor"
+            '0' => "Profesor",
+            '1' => "Direccion/Orientacion/Tutor"
         ));
         $Incidencia->setLabel("Tipo de Incidencia");
         $Motivo = new TextArea("Motivo", array('class' => 'form-control'));

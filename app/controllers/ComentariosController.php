@@ -1,6 +1,6 @@
 <?php
 
-class ComentariosController extends \Phalcon\Mvc\Controller
+class ComentariosController extends ControllerBase
 {
 
     public function initialize()
@@ -11,10 +11,35 @@ class ComentariosController extends \Phalcon\Mvc\Controller
         $this->assets->addJs("js/modals.js");
     }
 
-    public function indexAction()
+    public function editAction($date)
     {
-        $this->persistent->parameters = null;
-        $this->view->form = new CometariosForm();
+        $Incidencia=Comentarios::findFirst(array(
+            'date = '=>$date,
+            'users_username = '=> $this->session->get("auth")["username"]
+        ));
+//        $Incidencia->;
+        $Incidencia->users_username=$this->session->get("auth")["username"];
+        $this->view->form = new ComentariosForm($Incidencia, array('edit' => true));
+        $this->view->setVar("NIE", $Incidencia->alumnos_NIE);
+    }
+
+    public function saveAction()
+    {
+
+    }
+
+    public function newAction($NIE)
+    {
+        $Incidencia=new Comentarios();
+        $Incidencia->alumnos_NIE=$NIE;
+        $Incidencia->users_username=$this->session->get("auth")["username"];
+        $this->view->form = new ComentariosForm($Incidencia, array('create' => true));
+        $this->view->setVar("NIE", $NIE);
+    }
+
+    public function createAction()
+    {
+
     }
 
 }

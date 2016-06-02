@@ -46,6 +46,9 @@
         </tr>
         {% endfor %}
     </table>
+    {% if Profesor==Tutor %}
+        {{ link_to("comentarios/edit/"~ item.date, "Editar Incidencia", "class":"btn btn-primary") }}
+    {% endif %}
     <nav>
         <ul class="pagination">
             <li>{{ link_to("alumnos/verIncidencias/"~alumno.NIE, "Primero") }}</li>

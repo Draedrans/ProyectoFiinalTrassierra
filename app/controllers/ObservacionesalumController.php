@@ -43,7 +43,7 @@ class ObservacionesalumController extends ControllerBase
         $this->view->setVar("NIE", $NIE);
         $Observacion = new ObservacionesAlum();
         $Observacion->alumnos_NIE = $NIE;
-        $this->view->form = new ObservacionesalumForm($Observacion, array('edit' => true));
+        $this->view->form = new ObservacionesalumForm($Observacion, array('create' => true));
    }
 
     public function createAction($NIE)
