@@ -10,6 +10,9 @@ a:hover {
 }
 
 /* Custom default button */
+h4>.btn{
+    margin-bottom: 10px;
+}
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {

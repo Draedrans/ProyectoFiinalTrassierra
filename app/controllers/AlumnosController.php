@@ -125,6 +125,7 @@ class AlumnosController extends ControllerBase
             $this->flash->error($form->getMessages());
             $this->forward("alumnos/new");
         } else {
+            $alumno->NIE = $this->request->getPost("NIE");
             $alumno->apellidos = $this->request->getPost("apellidos");
             $alumno->Nombre = $this->request->getPost("Nombre");
             $alumno->Direccion = $this->request->getPost("Direccion");
@@ -287,13 +288,35 @@ class AlumnosController extends ControllerBase
     }
     public function verIncidenciasAction($NIE)
     {
+        $numberPage = 1;
+        if ($this->request->isPost()) {
+            $query = Criteria::fromInput($this->di, 'Comentarios', $_POST);
+            $this->persistent->parameters = $query->getParams();
+        } else {
+            $numberPage = $this->request->getQuery("page", "int");
+        }
+
+        $parameters = $this->persistent->parameters;
+        if (!is_array($parameters)) {
+            $parameters = array();
+        }
+
         $this->view->setTemplateAfter('AlumPerfil');
         $alumno = Alumnos::findFirst($NIE);
         $this->view->setVar("alumno", $alumno);
         $this->view->setVar("Tutor", strtolower($alumno->Tutor));
-        $Incidencias = Comentarios::findByalumnos_NIE($NIE);
-        $this->view->setVar("Incidencias", $Incidencias);
+        $Incidencias = Comentarios::find(array(
+            'alumnos_NIE = '.$NIE.'',
+            'order'=>'date desc'
+        ));
+        $this->view->setVar("Incidencias",$Incidencias);
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
+        $paginator = new Paginator(array(
+            "data" => $Incidencias,
+            "limit" => 1,
+            "page" => $numberPage
+        ));
+        $this->view->page = $paginator->getPaginate();
     }
 
     public function verPerfilAction($NIE)
