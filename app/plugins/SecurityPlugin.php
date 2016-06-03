@@ -63,7 +63,8 @@ class SecurityPlugin extends Plugin
     {
         /*
          * IMPORTANTE: EL NIVEL DE ACCESO ES ESCALAR.
-         * CADA ROL TIENE ACCESO A TODOS SUS RECURSOS Y A LOS DE ROLES INFERIORES
+         * CADA ROL TIENE ACCESO A TODOS SUS RECURSOS Y A LOS DE ROLES INFERIORES.
+         * OJO CUIDAO CON CAMBIARLO, OJO CUIDAO.
          * */
 
         if (!isset($this->persistent->acl)) {
@@ -84,7 +85,8 @@ class SecurityPlugin extends Plugin
             //Recursos accesibles sólo a Jefes de Estudio
             $adminResources = array(
                 'users' => array('new', 'update', 'save', 'delete'),
-                'alumnos' => array('new', 'update', 'edit', 'create', 'save', 'delete')
+                'alumnos' => array('new', 'update', 'edit', 'create', 'save', 'delete'),
+                'auto'=> array('index', 'delete', 'add')
             );
             foreach ($adminResources as $resource => $actions) {
                 $acl->addResource(new Resource($resource), $actions);

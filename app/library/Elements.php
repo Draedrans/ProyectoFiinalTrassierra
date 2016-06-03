@@ -31,7 +31,8 @@ class Elements extends Component
             'action' => '',
             'dropdown' => true,
             'menu' => array(
-                'Users' => 'users/index'
+                'Users' => 'users/index',
+                'Procesos automatizados'=> 'auto/index'
             )
         ),
         /* Menú DESPLEGABLE. Lleva la opción dropdown a true
