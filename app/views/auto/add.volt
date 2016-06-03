@@ -1,4 +1,4 @@
-{{ form("auto") }}
+{{ form("auto/saveFile") }}
 {% for element in form %}
     <div class="form-group">
         {{ element.label() }}
