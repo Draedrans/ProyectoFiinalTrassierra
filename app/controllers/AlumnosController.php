@@ -120,7 +120,6 @@ class AlumnosController extends ControllerBase
             /** @noinspection PhpVoidFunctionResultUsedInspection */
             return $this->forward("alumnos/new");
         }
-
         $form = new AlumnosForm(null, array('create' => true));
         if (!$form->isValid($_POST)) {
             $this->flash->error($form->getMessages());
