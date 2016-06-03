@@ -1,5 +1,5 @@
 <button class="btn btn-default" value="modal"
-        onclick="confirmDeleteUser('{{ user.username }}')"><i
+        onclick="deleteAlumnos()"><i
             class="glyphicon glyphicon-trash"></i> Borrar alumnos antiguos
 </button>
 <br>

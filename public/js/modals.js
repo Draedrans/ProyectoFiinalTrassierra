@@ -5,29 +5,31 @@
 function confirmDeleteUser(username) {
     bootbox.confirm("Confirm deleting user: " + username + "?", function (result) {
         if (result) {
-            window.location.href = "/cupo/users/delete/" + username;
+            window.location.href = "/orientacion/users/delete/" + username;
         }
     })
 }
 
 function confirmDeleteDepartment(deptId) {
-        bootbox.confirm("Confirm deleting department: "+deptId+"?", function (result) {
-            if(result){
-                window.location.href = "/cupo/departments/delete/"+deptId;
-            }
-        })
-    }
+    bootbox.confirm("Confirm deleting department: " + deptId + "?", function (result) {
+        if (result) {
+            window.location.href = "/orientacion/departments/delete/" + deptId;
+        }
+    })
+}
 function confirmDeleteCourse(CourId) {
-        bootbox.confirm("Confirm deleting level: "+CourId+"?", function (result) {
-            if(result){
-                window.location.href = "/cupo/courses/delete/"+CourId;
-            }
-        })
-    }
-
+    bootbox.confirm("Confirm deleting level: " + CourId + "?", function (result) {
+        if (result) {
+            window.location.href = "/orientacion/courses/delete/" + CourId;
+        }
+    })
+}
+function deleteAlumnos() {
+    window.location.href = "/orientacion/alumnos/delete";
+}
 function confirmChangeMaxHours(horas) {
     alert(horas);
-    var sliderHtml = "<input id='ex1' data-slider-id='ex1Slider' type='text' data-slider-min='15' data-slider-max='35' data-slider-step='1' data-slider-value='"+Number(horas)+"'/>";
+    var sliderHtml = "<input id='ex1' data-slider-id='ex1Slider' type='text' data-slider-min='15' data-slider-max='35' data-slider-step='1' data-slider-value='" + Number(horas) + "'/>";
     //TODO bug del tooltip. Solucionar. Ver https://github.com/seiyria/bootstrap-slider/issues/523
     bootbox.confirm({
         message: sliderHtml,
@@ -40,10 +42,11 @@ function confirmChangeMaxHours(horas) {
         },
         tooltip: "always"
     });
-    function confirm(){
+
+    function confirm() {
         var a = slider.slider("getValue");
-        bootbox.confirm("New value: "+a+".<br>Are you totally sure?", function (result) {
-            if(result) window.location.href = "/cupo/configuration/update/"+a;
+        bootbox.confirm("New value: " + a + ".<br>Are you totally sure?", function (result) {
+            if (result) window.location.href = "/orientacion/configuration/update/" + a;
         })
     }
 }
