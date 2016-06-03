@@ -60,7 +60,7 @@ class AlumnosForm extends Form
         $fecna = new Date("Fecna", array('class' => 'form-control'));
         $fecna->setFilters(array("striptags", "string"));
         $fecna->setLabel("Fecha de Nacimiento");
-        $tutor= new Select("Tutor", Users::find(), array("using" => array("username", "username")));
+        $tutor= new Select("Tutor", Users::find(), array("using" => array("username", "username"),'class' => 'form-control'));
         $tutor->setFilters(array("striptags", "string"));
         $tutor->Setlabel("Tutor");
 

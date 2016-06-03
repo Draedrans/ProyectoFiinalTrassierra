@@ -18,7 +18,7 @@ class AutoController extends ControllerBase
 
     public function addAction()
     {
-        $this->view->form = new AutoForm(array('add' => true));
+        $this->view->form = new AutoForm(null, array('create' => true));
     }
 }
 

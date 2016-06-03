@@ -23,7 +23,9 @@ class ComentariosController extends ControllerBase
                 "action" => "index"
             ));
         }
-        $Incidencia->users_username = $this->session->get("auth")["username"];
+        if ($Incidencia->users_username != $this->session->get("auth")["username"]) {
+            return $this->response->redirect("alumnos/");
+        }
         $this->view->form = new ComentariosForm($Incidencia, array('edit' => true));
         $this->view->setVar("NIE", $Incidencia->alumnos_NIE);
     }

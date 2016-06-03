@@ -16,10 +16,10 @@ class AutoForm extends Form
     {
         $csv = new File("csv", array('class' => 'form-control'));
         $csv->setLabel("Archivo de Clase");
-        $tutor= new Select("Tutor", Users::find(), array("using" => array("username", "username")));
+        $tutor= new Select("Tutor", Users::find(), array("using" => array("username", "username"), 'class' => 'form-control'));
         $tutor->setFilters(array("striptags", "string"));
         $tutor->Setlabel("Tutor");
-        $this->add($tutor);
         $this->add($csv);
+        $this->add($tutor);
     }
 }
