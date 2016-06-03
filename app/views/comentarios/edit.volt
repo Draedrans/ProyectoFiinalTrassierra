@@ -1,5 +1,4 @@
-
-    <ul class="pager">
+<ul class="pager">
     <li class="previous">{{ link_to("alumnos/verIncidencias/"~ NIE , "Volver") }}</li>
 </ul>
 
@@ -9,11 +8,13 @@
     </h1>
 </div>
 
+{{ date }}
+
 {{ form("comentarios/save") }}
 
 {% for element in form %}
     <div class="form-group">
-        {% if element.getName()=="ID" or element.getName()=="alumnos_NIE" %}
+        {% if element.getName()=="users_username" or element.getName()=="alumnos_NIE" %}
             {{ element }}
         {% else %}
             {{ element.label() }}

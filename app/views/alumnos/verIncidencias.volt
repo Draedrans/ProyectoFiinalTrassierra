@@ -46,7 +46,7 @@
         </tr>
         {% endfor %}
     </table>
-    {% if item.users_username|lower==Tutor %}
+    {% if item.users_username|lower==Profesor %}
         {{ link_to("comentarios/edit/"~ item.date, "Editar Incidencia", "class":"btn btn-primary") }}
     {% endif %}
     <nav>

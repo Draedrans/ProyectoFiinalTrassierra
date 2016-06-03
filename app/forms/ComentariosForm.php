@@ -17,7 +17,7 @@ class ComentariosForm extends Form
 {
     public function initialize($entity = null, $options = array())
     {
-        $Username = new Text("users_username", array('class' => 'form-control'));
+        $Username = new Hidden("users_username", array('class' => 'form-control'));
         $Username->setLabel("Profesor");
         $Date = new Text("date", array('class' => 'form-control'));
         $Date->setLabel("Fecha y hora");
@@ -40,8 +40,9 @@ class ComentariosForm extends Form
         $Acuerdos = new TextArea("Acuerdos", array('class' => 'form-control'));
         $Acuerdos->setLabel("Acuerdos");
 
+
+        $this->add($NIE);
         if (isset($options['edit'])) {
-            $this->add($NIE);
             $this->add($Username);
             $this->add($Date);
         }
