@@ -116,7 +116,7 @@ class AlumnosController extends ControllerBase
 
         $foundAlumno = Alumnos::findFirst($alumno->NIE);
         if ($foundAlumno) {
-            $this->flash->error("El usuario ya existe");
+            $this->flash->error("El alumno ya existe");
             /** @noinspection PhpVoidFunctionResultUsedInspection */
             return $this->forward("alumnos/new");
         }
@@ -312,6 +312,17 @@ class AlumnosController extends ControllerBase
         $this->view->setVar("Tutor", strtolower($alumno->Tutor));
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
 
+    }
+
+ public function verExpedienteAction($NIE)
+    {
+        $this->view->setTemplateAfter('AlumPerfil');
+        $alumno = Alumnos::findFirst($NIE);
+        $this->view->setVar("alumno", $alumno);
+        $this->view->setVar("Tutor", strtolower($alumno->Tutor));
+        $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
+        $trassierra=Mtrassierra::findByAlumnos_NIE($NIE);
+        $this->view->setVar("trassierra", $trassierra);
     }
 
 
