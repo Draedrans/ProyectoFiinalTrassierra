@@ -47,7 +47,7 @@
         {% endfor %}
     </table>
     {% if item.users_username|lower==Profesor %}
-        {{ link_to("comentarios/edit/"~ item.date, "Editar Incidencia", "class":"btn btn-primary") }}
+        {{ link_to("comentarios/edit/"~ item.date, "<i class='glyphicon glyphicon-edit'></i> Editar Incidencia", "class":"btn btn-primary") }}
     {% endif %}
     <nav>
         <ul class="pagination">
@@ -63,5 +63,5 @@
     <br>
 {% endif %}
 {% if Tutor==Profesor or admin %}
-    {{ link_to("comentarios/new/"~ alumno.NIE, "Añadir Incidencias", "class":"btn btn-primary") }}
+    {{ link_to("comentarios/new/"~ alumno.NIE, "<i class='glyphicon glyphicon-plus'></i> Añadir Incidencias", "class":"btn btn-primary") }}
 {% endif %}

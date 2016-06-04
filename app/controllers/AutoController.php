@@ -26,7 +26,7 @@ class AutoController extends ControllerBase
         return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
     }
 
-    public function saveFileAction()
+    public function uploadAction()
     { 
         $path = '/orientacion/library/csv/';
         $form = new AutoForm(null, array('create' => true));

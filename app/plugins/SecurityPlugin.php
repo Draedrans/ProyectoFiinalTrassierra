@@ -86,7 +86,7 @@ class SecurityPlugin extends Plugin
             $adminResources = array(
                 'users' => array('new', 'update', 'save', 'delete', 'create'),
                 'alumnos' => array('new', 'update', 'edit', 'create', 'save', 'delete'),
-                'auto'=> array('index', 'delete', 'add', 'saveFile')
+                'auto'=> array('index', 'delete', 'add', 'upload')
             );
             foreach ($adminResources as $resource => $actions) {
                 $acl->addResource(new Resource($resource), $actions);
@@ -98,7 +98,7 @@ class SecurityPlugin extends Plugin
                 'users' => array('index', 'search'),
                 'comentarios' => array('edit', 'save', 'new', 'create'),
                 'observacionesalum' => array('edit', 'save','new','create'),
-                'alumnos' => array('index', 'edit', 'create', 'search', 'verPerfil', 'verObservaciones', 'verIncidencias'),
+                'alumnos' => array('index', 'edit', 'create', 'search', 'verPerfil', 'verObservaciones', 'verIncidencias', 'verExpediente'),
                 'userpanel' => array('index', 'changepassword', 'link', 'savepass')
             );
             foreach ($userResources as $resource => $actions) {
