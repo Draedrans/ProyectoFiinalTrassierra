@@ -33,7 +33,7 @@ class AlumnosForm extends Form
         $apellidos = new Text("apellidos", array('class' => 'form-control'));
         $apellidos->setFilters(array("striptags", "string"));
         $apellidos->setLabel("Apellidos");
-        $DNI = new Text("DNI", array('class' => 'form-control'));
+        $DNI = new Text("DNI/Pasaporte", array('class' => 'form-control'));
         $DNI->setFilters(array("striptags", "string"));
         $DNI->setLabel("DNI");
         $Direccion = new Text("Direccion", array('class' => 'form-control'));
@@ -48,9 +48,9 @@ class AlumnosForm extends Form
         $Lugna = new Text("Lugna", array('class' => 'form-control'));
         $Lugna->setFilters(array("striptags", "string"));
         $Lugna->setLabel("Lugar de nacimiento");
-        $Pasaporte = new Text("Pasaporte", array('class' => 'form-control'));
-        $Pasaporte->setFilters(array("striptags", "string"));
-        $Pasaporte->setLabel("Pasaporte");
+        $CursoActual = new Text("CursoActual", array('class' => 'form-control'));
+        $CursoActual->setFilters(array("striptags", "string"));
+        $CursoActual->setLabel("CursoActual");
         $Tlf = new Text("Tlf", array('class' => 'form-control'));
         $Tlf->setFilters(array("striptags", "string"));
         $Tlf->setLabel("Telefono");
@@ -66,7 +66,7 @@ class AlumnosForm extends Form
 
 
         if (!isset($options) || $options == null) {
-            $NIE->setAttribute("placeholder",
+            $CursoActual->setAttribute("placeholder",
                 "Cualquier campo que se deje en blanco no se aplicará como filtro");
             $nombre->setAttribute("placeholder",
                 "Cualquier campo que se deje en blanco no se aplicará como filtro");
@@ -86,17 +86,17 @@ class AlumnosForm extends Form
 
         $this->add($nombre);
         $this->add($apellidos);
-        $this->add($NIE);
+        $this->add($CursoActual);
 
 
         if ((isset($options['create'])) or (isset($options['edit']))) {
+            $this->add($NIE);
             $this->add($DNI);
             $this->add($Direccion);
             $this->add($Localidad);
             $this->add($Provincia);
             $this->add($Lugna);
             $this->add($fecna);
-            $this->add($Pasaporte);
             $this->add($Tlf);
             $this->add($TlfUrg);
             if (isset($UltimaMatricula))

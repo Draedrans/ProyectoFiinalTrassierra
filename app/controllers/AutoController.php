@@ -27,29 +27,33 @@ class AutoController extends ControllerBase
     }
 
     public function uploadAction()
-    { 
-        $path = '/orientacion/library/csv/';
+    {
         $form = new AutoForm(null, array('create' => true));
         if ($this->request->isPost()) {
-            $this->flash->notice("Pasa el post");
             if ($form->isValid($this->request->getPost())) {
-                $this->flash->notice("Pasa el form validation");
                 if ($this->request->hasFiles()) {
-                    $this->flash->notice("Pasa el tiene archivo");
-                    foreach ($this->request->getUploadedFiles(true) as $file) {
+                    $uploads = $this->request->getUploadedFiles();
+                    $kaboom=array();
+                    foreach ($uploads as $file) {
                         $this->flash->notice("coge el archivo");
                         /* @var $file \Phalcon\Http\Request\FileInterface */
                         $fileName = $file->getName();
                         $temporaryName = $file->getTempName();
-                        if ($file->moveTo($path . "archivo.csv") and endsWith($file->getTempName(),".csv")) {
-                            $this->flash->success("archivo subido correctamente");
-                            $fileIsLocatedAt = $path . "archivo.csv";
-                        } else {
-                            $this->flash->notice("Ha explotado un poquito");
-                            // Oops, there's been a problem uploading.
+                        $fila=1;
+                        if (($gestor = fopen($file->getTempName(), "r")) !== FALSE) {
+                            $this->flash->notice("Abre el tiene archivo");
+                            while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
+                                $numero = count($datos);
+                                if ($fila>1) {
+                                    array_push($kaboom, array($datos[2],$datos[3]));
+                                }
+                                $fila++;
+                            }
+                            fclose($gestor);
                         }
                     }
                 }
+                $this->view->setVar("kaboom", $kaboom);
             }
         }
     }

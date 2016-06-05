@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`alumnos` (
   `Nombre` VARCHAR(45) NULL COMMENT '',
   `apellidos` VARCHAR(60) NULL COMMENT '',
   `DNI` VARCHAR(45) NULL COMMENT '',
-  `Pasaporte` VARCHAR(45) NULL COMMENT '',
+  `CursoActual` VARCHAR(45) NULL COMMENT '',
   `Direccion` VARCHAR(60) NULL COMMENT '',
   `Localidad` VARCHAR(45) NULL COMMENT '',
   `Provincia` VARCHAR(40) NULL COMMENT '',

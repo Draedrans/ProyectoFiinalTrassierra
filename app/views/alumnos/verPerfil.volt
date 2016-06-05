@@ -5,12 +5,12 @@
         <td>{{ alumno.NIE }}</td>
     </tr>
     <tr>
-        <td>DNI</td>
+        <td>DNI/Pasaporte</td>
         <td>{{ alumno.DNI }}</td>
     </tr>
     <tr>
-        <td>Pasaporte</td>
-        <td>{{ alumno.Pasaporte }}</td>
+        <td>Curso Actual/Ultimo Curso</td>
+        <td>{{ alumno.CursoActual }}</td>
     </tr>
     <tr>
         <td>Provincia</td>

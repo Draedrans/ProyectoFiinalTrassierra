@@ -134,7 +134,7 @@ class AlumnosController extends ControllerBase
             $alumno->Localidad = $this->request->getPost("Localidad");
             $alumno->Provincia = $this->request->getPost("Provincia");
             $alumno->Lugna = $this->request->getPost("Lugna");
-            $alumno->Pasaporte = $this->request->getPost("Pasaporte");
+            $alumno->CursoActual = $this->request->getPost("CursoActual");
             $alumno->UltimaMatricula = date("Y");
             $alumno->Tlf = $this->request->getPost("Tlf");
             $alumno->TlfUrg = $this->request->getPost("TlfUrg");
@@ -205,7 +205,7 @@ class AlumnosController extends ControllerBase
             $alumno->Localidad = $this->request->getPost("Localidad");
             $alumno->Provincia = $this->request->getPost("Provincia");
             $alumno->Lugna = $this->request->getPost("Lugna");
-            $alumno->Pasaporte = $this->request->getPost("Pasaporte");
+            $alumno->CursoActual = $this->request->getPost("CursoActual");
             $alumno->Tlf = $this->request->getPost("Tlf");
             $alumno->TlfUrg = $this->request->getPost("TlfUrg");
             $alumno->UltimaMatricula = $this->request->getPost("UltimaMatricula");
@@ -222,7 +222,7 @@ class AlumnosController extends ControllerBase
                 ));
             } else {
                 $form->clear(array(
-                    'NIE', 'apellidos', 'Nombre', 'Direccion', 'DNI', 'Fecna', 'Localidad', 'Provincia', 'Lugna', 'Pasaporte', 'Tlf', 'TlfUrg'
+                    'NIE', 'apellidos', 'Nombre', 'Direccion', 'DNI', 'Fecna', 'Localidad', 'Provincia', 'Lugna', 'CursoActual', 'Tlf', 'TlfUrg'
                 ));
                 return $this->response->redirect("alumnos/verPerfil/$NIE");
             }

@@ -31,7 +31,7 @@ class Alumnos extends \Phalcon\Mvc\Model
      *
      * @var string
      */
-    public $Pasaporte;
+    public $CursoActual;
 
     /**
      *
@@ -93,8 +93,8 @@ class Alumnos extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->hasMany('NIE', 'Comentarios', 'alumnos_NIE', array('alias' => 'Comentarios'));
-        $this->hasMany('NIE', 'FamAlumno', 'alumnos_NIE_Familiar', array('alias' => 'FamAlumno'));
         $this->hasMany('NIE', 'FamAlumno', 'alumnos_NIE', array('alias' => 'FamAlumno'));
+        $this->hasMany('NIE', 'FamAlumno', 'alumnos_NIE_Familiar', array('alias' => 'FamAlumno'));
         $this->hasMany('NIE', 'Familiares', 'alumnos_NIE', array('alias' => 'Familiares'));
         $this->hasMany('NIE', 'Fotos', 'alumnos_NIE', array('alias' => 'Fotos'));
         $this->hasMany('NIE', 'MTrassierra', 'Alumnos_NIE', array('alias' => 'MTrassierra'));
