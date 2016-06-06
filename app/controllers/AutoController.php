@@ -27,6 +27,11 @@ class AutoController extends ControllerBase
         // search forward starting from end minus needle length characters
         return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
     }
+    
+    public function addphotoAction($NIE)
+    {
+        $this->view->form = new AutoForm(null, array('photo' => true));
+    }
 
     public function uploadAction()
     {
@@ -37,6 +42,7 @@ class AutoController extends ControllerBase
                     $uploads = $this->request->getUploadedFiles();
                     $kaboom = array();
                     foreach ($uploads as $file) {
+                        //TODO: asi se mueven las fotos lililililili$file->moveTo("/var/www/html/orientacion/app/library/csv/1.csv");
                         $this->flash->notice("coge el archivo");
                         $fileName = $file->getName();
                         $temporaryName = $file->getTempName();

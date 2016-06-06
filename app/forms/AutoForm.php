@@ -21,6 +21,8 @@ class AutoForm extends Form
         $tutor->setFilters(array("striptags", "string"));
         $tutor->Setlabel("Tutor");
         $this->add($csv);
-        $this->add($tutor);
+        if (isset($options['create'])) {
+            $this->add($tutor);
+        }
     }
 } 
