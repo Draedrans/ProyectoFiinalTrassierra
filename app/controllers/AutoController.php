@@ -69,7 +69,7 @@ class AutoController extends ControllerBase
                                         $counterino++;
                                     } else {
                                         $wrongerino++;
-                                    }
+                                    } 
                                 }
                                 $fila++;
                             }
