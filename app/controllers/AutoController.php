@@ -27,11 +27,50 @@ class AutoController extends ControllerBase
         // search forward starting from end minus needle length characters
         return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
     }
-    
+
     public function addphotoAction($NIE)
     {
-        $this->view->form = new AutoForm(null, array('photo' => true));
+        $alumno = Alumnos::findFirst($NIE);
+
+        //TODO: asi se mueven las fotos lililililili$file->moveTo("/var/www/html/orientacion/app/library/photos/1.photos");
+        //TODO: asi se borra unlink("/var/www/html/orientacion/app/library/photos/holi.twig");
+        $this->view->form = new AutoForm($alumno, array('photo' => true));
     }
+
+    public function uploadphotoAction()
+    {
+        $form = new AutoForm(null, array('photo' => true));
+        if ($this->request->isPost()) {
+            if ($form->isValid($this->request->getPost())) {
+                if ($this->request->hasFiles()) {
+                    $uploads = $this->request->getUploadedFiles();
+                    foreach ($uploads as $file) {
+                        $NIE = $this->request->getPost("NIE");
+                        $photo = Fotos::findFirst($NIE);
+                        if ($photo) {
+                            chmod("/var/www/html/orientacion/public/photos/", 0777);
+                            unlink("/var/www/html/orientacion/public/photos/".$photo->Direccion);
+                            chmod("/var/www/html/orientacion/public/photos/", 0755);
+                        } else {
+                            $photo = new Fotos();
+                        }
+                        $Nombre = substr($file->getName(), strrpos($file->getName(), "."));
+                        $photo->alumnos_NIE = $NIE;
+                        $photo->Direccion=($NIE.$Nombre);
+                        $file->moveTo("/var/www/html/orientacion/public/photos/" . $NIE . $Nombre);
+                        if (!$photo->save()) {
+                            $this->flash->error("fallo al guardar los datos");
+                            return $this->response->redirect("auto/addphoto/$NIE");
+                        }
+                        $this->flash->success("foto guardada correctamente");
+                            sleep(1);
+                        return $this->response->redirect("alumnos/verPerfil/$NIE");
+                    }
+                }
+            }
+        }
+    }
+
 
     public function uploadAction()
     {
@@ -40,10 +79,7 @@ class AutoController extends ControllerBase
             if ($form->isValid($this->request->getPost())) {
                 if ($this->request->hasFiles()) {
                     $uploads = $this->request->getUploadedFiles();
-                    $kaboom = array();
                     foreach ($uploads as $file) {
-                        //TODO: asi se mueven las fotos lililililili$file->moveTo("/var/www/html/orientacion/app/library/csv/1.csv");
-                        $this->flash->notice("coge el archivo");
                         $fileName = $file->getName();
                         $temporaryName = $file->getTempName();
                         $fila = 1;
@@ -54,7 +90,7 @@ class AutoController extends ControllerBase
                                 $numero = count($datos);
                                 if ($fila > 1) {
                                     $alumno = new Alumnos();
-                                        $alumno->NIE = \ForceUTF8\Encoding::toUTF8($datos[2]);
+                                    $alumno->NIE = \ForceUTF8\Encoding::toUTF8($datos[2]);
                                     $alumno->DNI = \ForceUTF8\Encoding::toUTF8($datos[3]);
                                     $alumno->Direccion = \ForceUTF8\Encoding::toUTF8($datos[4]);
                                     $alumno->Localidad = \ForceUTF8\Encoding::toUTF8($datos[6]);
@@ -70,11 +106,11 @@ class AutoController extends ControllerBase
                                     $alumno->UltimaMatricula = \ForceUTF8\Encoding::toUTF8($datos[29]);
                                     if ($alumno->save()) {
                                         $counterino++;
-                                        $matricula= new Mtrassierra();
-                                        $matricula->Alumnos_NIE=$alumno->NIE;
-                                        $matricula->Year=$alumno->UltimaMatricula;
-                                        $matricula->Curso=$alumno->CursoActual;
-                                        $matricula->Repite=(\ForceUTF8\Encoding::toUTF8($datos[30])!="1");
+                                        $matricula = new Mtrassierra();
+                                        $matricula->Alumnos_NIE = $alumno->NIE;
+                                        $matricula->Year = $alumno->UltimaMatricula;
+                                        $matricula->Curso = $alumno->CursoActual;
+                                        $matricula->Repite = (\ForceUTF8\Encoding::toUTF8($datos[30]) != "1");
                                         $matricula->save();
                                     } else {
                                         $wrongerino++;

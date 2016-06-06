@@ -44,7 +44,7 @@ body {
     width: 100%;
     height: 100%; /* For at least Firefox */
     min-height: 100%;
-    -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+
     box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
 }
 
@@ -66,7 +66,14 @@ body {
 /*
  * Header
  */
+.masthead{
+background-color: rgba(50, 50, 50, 1);
+    -webkit-box-shadow: inset 10px 0 20px rgba(0, 0, 0, .5);
+    box-shadow: inset 0 15px 20px -5px rgba(0, 0, 0, .5);
+}
+
 .masthead-brand {
+
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -131,6 +138,9 @@ body {
  */
 
 .mastfoot {
+    background-color: rgba(50, 50, 50, 1);
+    -webkit-box-shadow: inset 10px 0 20px rgba(0, 0, 0, .3);
+    box-shadow: inset 0 -25px 20px -10px rgba(0, 0, 0, .3);
     color: #999; /* IE8 proofing */
     color: rgba(255, 255, 255, .5);
     heigh: 5vh;

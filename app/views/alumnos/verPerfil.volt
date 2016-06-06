@@ -1,5 +1,11 @@
 
 <table class="table table-bordered table-striped">
+    {% if foto %}
+        <tr>
+            <td>Foto</td>
+            <td><img src="/orientacion/public/photos/{{ foto }}" height="100" width="100"></td>
+        </tr>
+    {% endif %}
     <tr>
         <td>NIE</td>
         <td>{{ alumno.NIE }}</td>
@@ -48,5 +54,8 @@
 
 
 {% if admin or alumno.Tutor|lower==Profesor|lower %}
+    <h4>
+    {{ link_to("auto/addphoto/" ~ alumno.NIE, "<i class='glyphicon glyphicon-edit'></i> Modificar/Añarir Foto", "class":"btn btn-primary") }}
     {{ link_to("alumnos/edit/" ~ alumno.NIE, "<i class='glyphicon glyphicon-edit'></i> Modificar Datos", "class":"btn btn-primary") }}
+    </h4>
 {% endif %}

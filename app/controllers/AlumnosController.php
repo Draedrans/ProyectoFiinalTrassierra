@@ -310,7 +310,8 @@ class AlumnosController extends ControllerBase
         $this->view->setVar("alumno", $alumno);
         $this->view->setVar("Tutor", strtolower($alumno->Tutor));
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
-
+        $foto= Fotos::findFirst($NIE);
+        $this->view->setVar("foto", $foto->Direccion);
     }
 
  public function verExpedienteAction($NIE)
