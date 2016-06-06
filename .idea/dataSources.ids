@@ -227,7 +227,7 @@ Tipo</columns>
       <column id="61" parent="7" name="DNI">
         <data-type>varchar(45)</data-type>
       </column>
-      <column id="62" parent="7" name="Pasaporte">
+      <column id="62" parent="7" name="CursoActual">
         <data-type>varchar(45)</data-type>
       </column>
       <column id="63" parent="7" name="Direccion">
