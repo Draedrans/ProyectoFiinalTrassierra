@@ -1,5 +1,7 @@
 <?php
 
+
+
 class AutoController extends ControllerBase
 {
 
@@ -45,7 +47,7 @@ class AutoController extends ControllerBase
                             while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
                                 $numero = count($datos);
                                 if ($fila>1) {
-                                    array_push($kaboom, array($datos[2],$datos[3]));
+                                    array_push($kaboom, array($datos[2],$datos[3],\ForceUTF8\Encoding::toUTF8($datos[0])));
                                 }
                                 $fila++;
                             }
