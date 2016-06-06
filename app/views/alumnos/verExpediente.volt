@@ -34,7 +34,7 @@
                     {% if element.Repite==0 %}
                         No
                     {% else %}
-                        Si
+                        Sí
                     {% endif %}
                 </td>
                 <td>

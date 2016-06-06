@@ -45,12 +45,10 @@ class AutoController extends ControllerBase
                         $counterino = 0;
                         $wrongerino = 0;
                         if (($gestor = fopen($file->getTempName(), "r")) !== FALSE) {
-                            $this->flash->notice("Abre el tiene archivo");
                             while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
                                 $numero = count($datos);
                                 if ($fila > 1) {
                                     $alumno = new Alumnos();
-                                    array_push($kaboom, array(\ForceUTF8\Encoding::toUTF8($datos[14])));
                                     $alumno->NIE = \ForceUTF8\Encoding::toUTF8($datos[2]);
                                     $alumno->DNI = \ForceUTF8\Encoding::toUTF8($datos[3]);
                                     $alumno->Direccion = \ForceUTF8\Encoding::toUTF8($datos[4]);
@@ -67,21 +65,26 @@ class AutoController extends ControllerBase
                                     $alumno->UltimaMatricula = \ForceUTF8\Encoding::toUTF8($datos[29]);
                                     if ($alumno->save()) {
                                         $counterino++;
+                                        $matricula= new Mtrassierra();
+                                        $matricula->Alumnos_NIE=$alumno->NIE;
+                                        $matricula->Year=$alumno->UltimaMatricula;
+                                        $matricula->Curso=$alumno->CursoActual;
+                                        $matricula->Repite=(\ForceUTF8\Encoding::toUTF8($datos[30])!="1");
+                                        $matricula->save();
                                     } else {
                                         $wrongerino++;
-                                    } 
+                                    }
                                 }
                                 $fila++;
                             }
                             fclose($gestor);
                             $this->flash->success("$counterino alumnos guardados");
-                            if ($wrongerino>0) {
+                            if ($wrongerino > 0) {
                                 $this->flash->error("$wrongerino alumnos no guardados");
                             }
                         }
                     }
                 }
-                $this->view->setVar("kaboom", $kaboom);
             }
         }
     }
