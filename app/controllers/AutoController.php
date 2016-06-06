@@ -38,7 +38,6 @@ class AutoController extends ControllerBase
                     $kaboom = array();
                     foreach ($uploads as $file) {
                         $this->flash->notice("coge el archivo");
-                        /* @var $file \Phalcon\Http\Request\FileInterface */
                         $fileName = $file->getName();
                         $temporaryName = $file->getTempName();
                         $fila = 1;
@@ -49,7 +48,7 @@ class AutoController extends ControllerBase
                                 $numero = count($datos);
                                 if ($fila > 1) {
                                     $alumno = new Alumnos();
-                                    $alumno->NIE = \ForceUTF8\Encoding::toUTF8($datos[2]);
+                                        $alumno->NIE = \ForceUTF8\Encoding::toUTF8($datos[2]);
                                     $alumno->DNI = \ForceUTF8\Encoding::toUTF8($datos[3]);
                                     $alumno->Direccion = \ForceUTF8\Encoding::toUTF8($datos[4]);
                                     $alumno->Localidad = \ForceUTF8\Encoding::toUTF8($datos[6]);
@@ -82,8 +81,10 @@ class AutoController extends ControllerBase
                             if ($wrongerino > 0) {
                                 $this->flash->error("$wrongerino alumnos no guardados");
                             }
+
                         }
                     }
+                    return $this->response->redirect("auto");
                 }
             }
         }
