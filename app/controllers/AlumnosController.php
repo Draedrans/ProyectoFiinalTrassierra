@@ -253,7 +253,6 @@ class AlumnosController extends ControllerBase
         }
         foreach ($alumnos as $alumno) {
             if ($alumno->delete()) {
-                $this->flash->success("alumno $alumno->NIE borrado");
             }
         }
         $this->flash->success("Se han borrado ".count($alumnos)." alumnos");

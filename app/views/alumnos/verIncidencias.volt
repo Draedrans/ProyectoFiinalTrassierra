@@ -63,5 +63,5 @@
     <br>
 {% endif %}
 {% if Tutor==Profesor or admin %}
-    {{ link_to("comentarios/new/"~ alumno.NIE, "<i class='glyphicon glyphicon-plus'></i> Añadir Incidencias", "class":"btn btn-primary") }}
+    {{ link_to("comentarios/new/"~ alumno.NIE, "<i class='glyphicon glyphicon-plus'></i> Añadir Incidencia", "class":"btn btn-primary") }}
 {% endif %}
