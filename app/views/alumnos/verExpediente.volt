@@ -16,11 +16,6 @@
             <th>
                 Repite
             </th>
-            {% if admin %}
-                <th>
-                    Acciones
-                </th>
-            {% endif %}
         </tr>
         {% for element in trassierra %}
             <tr>
@@ -37,14 +32,35 @@
                         Sí
                     {% endif %}
                 </td>
-                <td>
-                    {{ element.Year }}
-                </td>
             </tr>
         {% endfor %}
     </table>
 {% endif %}
 
 {% if admin %}
-
+    {% if expediente|legth==0 %}
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>
+                    Año
+                </th>
+                <th>
+                    Curso
+                </th>
+                <th>
+                    Asignatura
+                </th>
+                <th>
+                    Calificación
+                </th>
+            </tr>
+        {% for element in expediente %}
+            <tr>
+                <td>
+            {{ expediente.año }}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
 {% endif %}

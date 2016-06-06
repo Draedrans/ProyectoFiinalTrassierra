@@ -33,7 +33,7 @@ class AlumnosForm extends Form
         $apellidos = new Text("apellidos", array('class' => 'form-control'));
         $apellidos->setFilters(array("striptags", "string"));
         $apellidos->setLabel("Apellidos");
-        $DNI = new Text("DNI/Pasaporte", array('class' => 'form-control'));
+        $DNI = new Text("DNI", array('class' => 'form-control'));
         $DNI->setFilters(array("striptags", "string"));
         $DNI->setLabel("DNI");
         $Direccion = new Text("Direccion", array('class' => 'form-control'));
