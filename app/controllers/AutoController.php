@@ -19,7 +19,8 @@ class AutoController extends ControllerBase
 
     public function addexpedienteAction($NIE)
     {
-        $this->view->form = new AutoForm(null, array('photo' => true));
+        $alumno = Alumnos::findFirst($NIE);
+        $this->view->form = new AutoForm($alumno, array('photo' => true));
     }
 
     public function uploadexpediente()
