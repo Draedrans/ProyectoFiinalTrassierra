@@ -315,10 +315,10 @@ class AlumnosController extends ControllerBase
         $birthDate = $alumno->Fecna;
         //explode the date to get month, day and year
         $birthDate = explode("-", $birthDate);
-        $birthDate=array_reverse($birthDate);
-        $aux=$birthDate[0];
-        $birthDate[0]=$birthDate[1];
-        $birthDate[1]=$aux;
+        $birthDate = array_reverse($birthDate);
+        $aux = $birthDate[0];
+        $birthDate[0] = $birthDate[1];
+        $birthDate[1] = $aux;
         //get age from date or birthdate
         $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
             ? ((date("Y") - $birthDate[2]) - 1)
@@ -339,15 +339,34 @@ class AlumnosController extends ControllerBase
         $expediente = Expediente::find($NIE);
         $this->view->setVar("expediente", $expediente);
     }
+
     public function verFamiliaAction($NIE)
     {
         $this->view->setTemplateAfter('AlumPerfil');
         $alumno = Alumnos::findFirst($NIE);
+        $familia = Familiares::findByalumnos_NIE($NIE);
+        $familiaresalum = Famalumno::findByalumnos_NIE($NIE);
+        $family=array();
+        if ($familiaresalum) {
+            foreach ($familiaresalum as $familiar) {
+                $alumnofamiliar = Alumnos::findFirst($familiar->alumnos_NIE_Familiar);
+                $topo = new Familiares();
+                $topo->Nombre = $alumnofamiliar->Nombre;
+                $topo->apellidos = $alumnofamiliar->apellidos;
+                $topo->DNI = $alumnofamiliar->DNI;
+                $topo->Direccion = $alumnofamiliar->Direccion;
+                $topo->Localidad = $alumnofamiliar->Localidad;
+                $topo->Relacion = $familiar->Relacion;
+                $topo->Fecna = $alumnofamiliar->Fecna;
+                $family[]=$topo;
+            }
+        }
         $this->view->setVar("alumno", $alumno);
         $this->view->setVar("Tutor", strtolower($alumno->Tutor));
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
         $trassierra = Mtrassierra::findByAlumnos_NIE($NIE);
-        $this->view->setVar("trassierra", $trassierra);
+        $this->view->setVar("familia", $familia);
+        $this->view->setVar("family", $family);
         $expediente = Expediente::find($NIE);
         $this->view->setVar("expediente", $expediente);
     }
