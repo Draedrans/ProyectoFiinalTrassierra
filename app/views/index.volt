@@ -10,6 +10,7 @@
     {{ stylesheet_link("css/fontello.css") }}
     {{ stylesheet_link("bower_components/bootstrap/dist/css/bootstrap.min.css") }}
     {{ stylesheet_link("css/bootstrap-theme.css") }}
+    {{ stylesheet_link("css/familytree.css") }}
     {{ stylesheet_link("bower_components/animate.css/animate.min.css") }}
     {{ stylesheet_link("bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css") }}
     {{ stylesheet_link("css/cupo.css") }}

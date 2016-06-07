@@ -54,7 +54,7 @@ class AlumnosController extends ControllerBase
         }
         $paginator = new Paginator(array(
             "data" => $alumnos,
-            "limit" => 3,
+            "limit" => 5,
             "page" => $numberPage
         ));
         $this->view->page = $paginator->getPaginate();
@@ -347,11 +347,13 @@ class AlumnosController extends ControllerBase
         $alumno = Alumnos::findFirst($NIE);
         $familia = Familiares::findByalumnos_NIE($NIE);
         $familiaresalum = Famalumno::findByalumnos_NIE($NIE);
-        $family=array();
+        $family = array();
         if ($familiaresalum) {
             foreach ($familiaresalum as $familiar) {
                 $alumnofamiliar = Alumnos::findFirst($familiar->alumnos_NIE_Familiar);
                 $topo = new Familiares();
+                $topo->Fam_ID="hola";
+                $topo->alumnos_NIE = $alumnofamiliar->NIE;
                 $topo->Nombre = $alumnofamiliar->Nombre;
                 $topo->apellidos = $alumnofamiliar->apellidos;
                 $topo->DNI = $alumnofamiliar->DNI;
@@ -359,11 +361,11 @@ class AlumnosController extends ControllerBase
                 $topo->Localidad = $alumnofamiliar->Localidad;
                 $topo->Relacion = $familiar->Relacion;
                 $topo->Fecna = $alumnofamiliar->Fecna;
-                $family[]=$topo;
+                $family[] = $topo;
             }
         }
         if ($familia) {
-            foreach ($familia as $familiar){
+            foreach ($familia as $familiar) {
                 $topo = new Familiares();
                 $topo->Nombre = $familiar->Nombre;
                 $topo->apellidos = $familiar->apellidos;
@@ -372,7 +374,8 @@ class AlumnosController extends ControllerBase
                 $topo->Localidad = $familiar->Localidad;
                 $topo->Relacion = $familiar->Relacion;
                 $topo->Fecna = $familiar->Fecna;
-                $family[]=$topo;
+                $topo->Fam_ID=$familiar->Fam_ID;
+                $family[] = $topo;
             }
         }
         $topo = new Familiares();
@@ -383,15 +386,20 @@ class AlumnosController extends ControllerBase
         $topo->Localidad = $alumno->Localidad;
         $topo->Relacion = 1;
         $topo->Fecna = $alumno->Fecna;
-        $family[]=$topo;
+        $family[] = $topo;
         $this->view->setVar("alumno", $alumno);
         $this->view->setVar("Tutor", strtolower($alumno->Tutor));
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
-        usort($family, function($a, $b) {
+        usort($family, function ($a, $b) {
             return strtotime($a->Fecna) - strtotime($b->Fecna);
         });
-        $padres=0;
-        
+        $padres = 0;
+        foreach ($family as $tio) {
+            if ($tio->Relacion == 2) {
+                $padres++;
+            }
+        }
+        $this->view->setVar("padres", $padres);
         $this->view->setVar("family", $family);
         $expediente = Expediente::find($NIE);
         $this->view->setVar("expediente", $expediente);
