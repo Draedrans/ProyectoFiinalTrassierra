@@ -247,7 +247,7 @@ class AlumnosController extends ControllerBase
         $alumnos = $this->modelsManager->executeQuery("SELECT * FROM Alumnos WHERE UltimaMatricula < :date:", array(
             'date' => "$fecha"
         ));
-        if (count($alumnos)==0) {
+        if (count($alumnos) == 0) {
             $this->flash->notice("No se han borrado alumnos ");
             return $this->response->redirect("auto");
         }
@@ -255,7 +255,7 @@ class AlumnosController extends ControllerBase
             if ($alumno->delete()) {
             }
         }
-        $this->flash->success("Se han borrado ".count($alumnos)." alumnos");
+        $this->flash->success("Se han borrado " . count($alumnos) . " alumnos");
         return $this->response->redirect("auto");
     }
 
@@ -310,19 +310,21 @@ class AlumnosController extends ControllerBase
         $this->view->setVar("alumno", $alumno);
         $this->view->setVar("Tutor", strtolower($alumno->Tutor));
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
-        $foto= Fotos::findFirst($NIE);
+        $foto = Fotos::findFirst($NIE);
         $this->view->setVar("foto", $foto->Direccion);
     }
 
- public function verExpedienteAction($NIE)
+    public function verExpedienteAction($NIE)
     {
         $this->view->setTemplateAfter('AlumPerfil');
         $alumno = Alumnos::findFirst($NIE);
         $this->view->setVar("alumno", $alumno);
         $this->view->setVar("Tutor", strtolower($alumno->Tutor));
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
-        $trassierra=Mtrassierra::findByAlumnos_NIE($NIE);
+        $trassierra = Mtrassierra::findByAlumnos_NIE($NIE);
         $this->view->setVar("trassierra", $trassierra);
+        $expediente = Expediente::find($NIE);
+        $this->view->setVar("expediente", $expediente);
     }
 
 

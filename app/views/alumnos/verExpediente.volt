@@ -38,7 +38,7 @@
 {% endif %}
 
 {% if admin %}
-    {% if expediente|length!=0 %}
+    {% if expediente %}
         <table class="table table-bordered table-striped">
             <tr>
                 <th>

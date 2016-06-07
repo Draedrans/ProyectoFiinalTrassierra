@@ -67,7 +67,7 @@ class AutoController extends ControllerBase
 
                         }
                     }
-                    return $this->response->redirect("alumnos/verPerfil/$NIE");
+                    return $this->response->redirect("alumnos/verExpediente/$NIE");
                 }
             }
         }
