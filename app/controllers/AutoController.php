@@ -17,6 +17,16 @@ class AutoController extends ControllerBase
 
     }
 
+    public function addexpedienteAction($NIE)
+    {
+        $this->view->form = new AutoForm(null, array('photo' => true));
+    }
+
+    public function uploadexpediente()
+    {
+
+    }
+
     public function addAction()
     {
         $this->view->form = new AutoForm(null, array('create' => true));
@@ -24,16 +34,13 @@ class AutoController extends ControllerBase
 
     public function endsWith($haystack, $needle)
     {
-        // search forward starting from end minus needle length characters
+        // funcion endsWith como seria en Java/vb.net
         return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
     }
 
     public function addphotoAction($NIE)
     {
         $alumno = Alumnos::findFirst($NIE);
-
-        //TODO: asi se mueven las fotos lililililili$file->moveTo("/var/www/html/orientacion/app/library/photos/1.photos");
-        //TODO: asi se borra unlink("/var/www/html/orientacion/app/library/photos/holi.twig");
         $this->view->form = new AutoForm($alumno, array('photo' => true));
     }
 
@@ -41,11 +48,11 @@ class AutoController extends ControllerBase
     {
         $form = new AutoForm(null, array('photo' => true));
         if ($this->request->isPost()) {
+            $NIE = $this->request->getPost("NIE");
             if ($form->isValid($this->request->getPost())) {
                 if ($this->request->hasFiles()) {
                     $uploads = $this->request->getUploadedFiles();
                     foreach ($uploads as $file) {
-                        $NIE = $this->request->getPost("NIE");
                         $photo = Fotos::findFirst($NIE);
                         if ($photo) {
                             chmod("/var/www/html/orientacion/public/photos/", 0777);
@@ -63,12 +70,14 @@ class AutoController extends ControllerBase
                             return $this->response->redirect("auto/addphoto/$NIE");
                         }
                         $this->flash->success("foto guardada correctamente");
-                            sleep(1);
                         return $this->response->redirect("alumnos/verPerfil/$NIE");
                     }
                 }
             }
+            $this->flash->error($form->getMessages()[0]);
+            return $this->response->redirect("auto/addphoto/$NIE");
         }
+        
     }
 
 

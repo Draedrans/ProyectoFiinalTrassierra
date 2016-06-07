@@ -1,6 +1,6 @@
 
 <table class="table table-bordered table-striped">
-    {% if foto %}
+    {% if foto and foto!=alumno.NIE %}
         <tr>
             <td>Foto</td>
             <td><img src="/orientacion/public/photos/{{ foto }}" height="100" width="100"></td>
