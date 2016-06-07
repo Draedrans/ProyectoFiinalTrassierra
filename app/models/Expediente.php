@@ -13,7 +13,7 @@ class Expediente extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    public $año;
+    public $year;
 
     /**
      *

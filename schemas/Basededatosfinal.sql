@@ -181,12 +181,12 @@ DROP TABLE IF EXISTS `proyecto_final`.`expediente` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto_final`.`expediente` (
   `alumnos_NIE` INT NOT NULL COMMENT '',
-  `año` INT NOT NULL COMMENT '',
+  `year` INT NOT NULL COMMENT '',
   `curso` VARCHAR(45) NOT NULL COMMENT '',
   `asignatura` VARCHAR(45) NOT NULL COMMENT '',
   `centro` VARCHAR(100) NULL COMMENT '',
   `calificacion` VARCHAR(45) NULL COMMENT '',
-  PRIMARY KEY (`alumnos_NIE`, `año`, `asignatura`, `curso`)  COMMENT '',
+  PRIMARY KEY (`alumnos_NIE`, `year`, `asignatura`, `curso`)  COMMENT '',
   CONSTRAINT `fk_table1_alumnos1`
   FOREIGN KEY (`alumnos_NIE`)
   REFERENCES `proyecto_final`.`alumnos` (`NIE`)

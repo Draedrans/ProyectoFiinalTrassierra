@@ -25,7 +25,52 @@ class AutoController extends ControllerBase
 
     public function uploadexpediente()
     {
+        $form = new AutoForm(null, array('photo' => true));
+        if ($this->request->isPost()) {
+            if ($form->isValid($this->request->getPost())) {
+                if ($this->request->hasFiles()) {
+                    $uploads = $this->request->getUploadedFiles();
+                    foreach ($uploads as $file) {
+                        $fila = 1;
+                        $counterino = 0;
+                        $wrongerino = 0;
+                        if (($gestor = fopen($file->getTempName(), "r")) !== FALSE) {
+                            while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
+                                $numero = count($datos);
+                                if ($fila > 1) {
+                                    $NIE = $this->request->getPost("NIE");
+                                    $alumno = Alumnos::findFirst($NIE);
+                                    if ($alumno) {
+                                        if (\ForceUTF8\Encoding::toUTF8($datos[6])=="Ordinaria") {
+                                            $xp = new Expediente();
+                                            $xp->alumnos_NIE = $NIE;
+                                            $xp->year = \ForceUTF8\Encoding::toUTF8($datos[2]);
+                                            $xp->curso = \ForceUTF8\Encoding::toUTF8($datos[1]);
+                                            $xp->asignatura = \ForceUTF8\Encoding::toUTF8($datos[5]);
+                                            $xp->centro = \ForceUTF8\Encoding::toUTF8($datos[3]);
+                                            $xp->calificacion = \ForceUTF8\Encoding::toUTF8($datos[7]);
+                                            if ($xp->save()) {
+                                                $counterino++;
+                                            }else{
+                                                $wrongerino++;
+                                            }
+                                        }
+                                    }
+                                }
+                                $fila++;
+                            }
+                            fclose($gestor);
+                            $this->flash->success("$counterino asignaturas añadidas");
+                            if ($wrongerino > 0) {
+                                $this->flash->error("$wrongerino asignaturas con fallos");
+                            }
 
+                        }
+                    }
+                    return $this->response->redirect("alumnos/verPerfil/$NIE");
+                }
+            }
+        }
     }
 
     public function addAction()
@@ -57,14 +102,14 @@ class AutoController extends ControllerBase
                         $photo = Fotos::findFirst($NIE);
                         if ($photo) {
                             chmod("/var/www/html/orientacion/public/photos/", 0777);
-                            unlink("/var/www/html/orientacion/public/photos/".$photo->Direccion);
+                            unlink("/var/www/html/orientacion/public/photos/" . $photo->Direccion);
                             chmod("/var/www/html/orientacion/public/photos/", 0755);
                         } else {
                             $photo = new Fotos();
                         }
                         $Nombre = substr($file->getName(), strrpos($file->getName(), "."));
                         $photo->alumnos_NIE = $NIE;
-                        $photo->Direccion=($NIE.$Nombre);
+                        $photo->Direccion = ($NIE . $Nombre);
                         $file->moveTo("/var/www/html/orientacion/public/photos/" . $NIE . $Nombre);
                         if (!$photo->save()) {
                             $this->flash->error("fallo al guardar los datos");
@@ -78,7 +123,7 @@ class AutoController extends ControllerBase
             $this->flash->error($form->getMessages()[0]);
             return $this->response->redirect("auto/addphoto/$NIE");
         }
-        
+
     }
 
 
