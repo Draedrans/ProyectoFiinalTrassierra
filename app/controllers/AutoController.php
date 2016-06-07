@@ -23,7 +23,7 @@ class AutoController extends ControllerBase
         $this->view->form = new AutoForm($alumno, array('photo' => true));
     }
 
-    public function uploadexpediente()
+    public function uploadexpedienteAction()
     {
         $form = new AutoForm(null, array('photo' => true));
         if ($this->request->isPost()) {

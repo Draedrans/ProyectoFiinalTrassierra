@@ -1,6 +1,6 @@
-<h1>
+<h2>
     Matriculas IES Trassierra
-</h1>
+</h2>
 
 {% if trassierra|length==0 %}
     <h3>No hay registros </h3>
@@ -39,8 +39,14 @@
 
 {% if admin %}
     {% if expediente %}
+<h2>
+    Matriculas Anteriores
+</h2>
         <table class="table table-bordered table-striped">
             <tr>
+                <th>
+                    Centro
+                </th>
                 <th>
                     Año
                 </th>
@@ -57,10 +63,23 @@
         {% for element in expediente %}
             <tr>
                 <td>
-
+                    {{ element.centro }}
+                </td>
+                <td>
+                    {{ element.year }}
+                </td>
+                <td>
+                    {{ element.asignatura }}
+                </td>
+                <td>
+                    {{ element.curso }}
+                </td>
+                <td>
+                    {{ element.calificacion }}
                 </td>
             </tr>
         {% endfor %}
         </table>
+        {{ link_to("auto/addexpediente/" ~ alumno.NIE, "<i class='glyphicon glyphicon-plus'></i> Añadir expediente", "class":"btn btn-default") }}
     {% endif %}
 {% endif %}
