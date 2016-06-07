@@ -340,6 +340,7 @@ class AlumnosController extends ControllerBase
         $this->view->setVar("expediente", $expediente);
     }
 
+
     public function verFamiliaAction($NIE)
     {
         $this->view->setTemplateAfter('AlumPerfil');
@@ -361,14 +362,38 @@ class AlumnosController extends ControllerBase
                 $family[]=$topo;
             }
         }
+        if ($familia) {
+            foreach ($familia as $familiar){
+                $topo = new Familiares();
+                $topo->Nombre = $familiar->Nombre;
+                $topo->apellidos = $familiar->apellidos;
+                $topo->DNI = $familiar->DNI;
+                $topo->Direccion = $familiar->Direccion;
+                $topo->Localidad = $familiar->Localidad;
+                $topo->Relacion = $familiar->Relacion;
+                $topo->Fecna = $familiar->Fecna;
+                $family[]=$topo;
+            }
+        }
+        $topo = new Familiares();
+        $topo->Nombre = $alumno->Nombre;
+        $topo->apellidos = $alumno->apellidos;
+        $topo->DNI = $alumno->DNI;
+        $topo->Direccion = $alumno->Direccion;
+        $topo->Localidad = $alumno->Localidad;
+        $topo->Relacion = 1;
+        $topo->Fecna = $alumno->Fecna;
+        $family[]=$topo;
         $this->view->setVar("alumno", $alumno);
         $this->view->setVar("Tutor", strtolower($alumno->Tutor));
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
-        $trassierra = Mtrassierra::findByAlumnos_NIE($NIE);
-        $this->view->setVar("familia", $familia);
+        usort($family, function($a, $b) {
+            return strtotime($a->Fecna) - strtotime($b->Fecna);
+        });
+        $padres=0;
+        
         $this->view->setVar("family", $family);
         $expediente = Expediente::find($NIE);
         $this->view->setVar("expediente", $expediente);
     }
-
 }

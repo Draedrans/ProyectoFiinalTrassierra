@@ -1,12 +1,12 @@
-{% for element in familia %}
-    {{ element.Nombre }} {{ element.apellidos }}
-    <br>
-    {{ element.Relacion}}
-    <br>
-{% endfor %}
-{% for element in family %}
-    {{ element.Nombre }} {{ element.apellidos }}
-    <br>
-    {{ element.Relacion}}
-    <br>
-{% endfor %}
+<div class="tree">
+    <ul>
+    {% for element in family %}
+        {% if element.Relacion==2 %}
+        {% endif %}
+    {% endfor %}
+    {% for element in family %}
+        {% if element.Relacion==1 %}
+        {% endif %}
+    {% endfor %}
+    </ul>
+</div>
