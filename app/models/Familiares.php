@@ -1,9 +1,5 @@
 <?php
 
-use Phalcon\Mvc\Model\Resultset\Simple as ResultSet;
-use Phalcon\Mvc\Model\Validator\Uniqueness;
-use Phalcon\Validation\Message;
-
 class Familiares extends \Phalcon\Mvc\Model
 {
 
@@ -41,12 +37,6 @@ class Familiares extends \Phalcon\Mvc\Model
      *
      * @var string
      */
-    public $Pasaporte;
-
-    /**
-     *
-     * @var string
-     */
     public $Direccion;
 
     /**
@@ -60,6 +50,18 @@ class Familiares extends \Phalcon\Mvc\Model
      * @var string
      */
     public $Tlf;
+
+    /**
+     *
+     * @var integer
+     */
+    public $Relacion;
+
+    /**
+     *
+     * @var string
+     */
+    public $Fecna;
 
     /**
      * Initialize method for model.

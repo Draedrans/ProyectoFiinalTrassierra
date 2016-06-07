@@ -64,7 +64,7 @@ DROP TABLE IF EXISTS `proyecto_final`.`FamAlumno` ;
 CREATE TABLE IF NOT EXISTS `proyecto_final`.`FamAlumno` (
   `alumnos_NIE` INT NOT NULL COMMENT '',
   `alumnos_NIE_Familiar` INT NOT NULL COMMENT '',
-  `Relacion` INT NULL DEFAULT 1 COMMENT '',
+  `Relacion` INT NOT NULL DEFAULT 1 COMMENT '',
   PRIMARY KEY (`alumnos_NIE`, `alumnos_NIE_Familiar`)  COMMENT '',
   INDEX `fk_FamAlumno_alumnos1_idx` (`alumnos_NIE_Familiar` ASC)  COMMENT '',
   CONSTRAINT `fk_Familiares_alumnos`
@@ -91,10 +91,11 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`Familiares` (
   `Nombre` VARCHAR(45) NULL COMMENT '',
   `apellidos` VARCHAR(60) NULL COMMENT '',
   `DNI` VARCHAR(45) NULL COMMENT '',
-  `Pasaporte` VARCHAR(45) NULL COMMENT '',
   `Direccion` VARCHAR(60) NULL COMMENT '',
   `Localidad` VARCHAR(45) NULL COMMENT '',
   `Tlf` VARCHAR(13) NULL COMMENT '',
+  `Relacion` INT NOT NULL DEFAULT 1 COMMENT '',
+  `Fecna` DATE NULL COMMENT '',
   PRIMARY KEY (`Fam_ID`)  COMMENT '',
   INDEX `fk_Familiares_alumnos2_idx` (`alumnos_NIE` ASC)  COMMENT '',
   CONSTRAINT `fk_Familiares_alumnos2`

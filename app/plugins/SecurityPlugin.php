@@ -85,7 +85,7 @@ class SecurityPlugin extends Plugin
             //Recursos accesibles sólo a Jefes de Estudio
             $adminResources = array(
                 'users' => array('new', 'update', 'save', 'delete', 'create', 'edit'),
-                'alumnos' => array('new', 'update', 'edit', 'create', 'save', 'delete'),
+                'alumnos' => array('new', 'update', 'edit', 'create', 'save', 'delete', 'verFamilia'),
                 'auto'=> array('index', 'addphoto', 'add', 'upload', 'uploadphoto', 'addexpediente', 'uploadexpediente')
             );
             foreach ($adminResources as $resource => $actions) {

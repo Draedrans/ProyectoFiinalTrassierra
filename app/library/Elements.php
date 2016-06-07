@@ -26,15 +26,6 @@ class Elements extends Component
                 'Ingles'=>'languages/english'
             )
         ),
-        'management' => array(
-            'caption' => 'Management',
-            'action' => '',
-            'dropdown' => true,
-            'menu' => array(
-                'Users' => 'users/index',
-                'Procesos automatizados'=> 'auto/index'
-            )
-        ),
         /* Menú DESPLEGABLE. Lleva la opción dropdown a true
         Debe llevar un action aunque esté vacío
         Lleva otra opción que es menú, que es la lista de opciones desplegables
@@ -71,6 +62,17 @@ class Elements extends Component
 
         $auth = $this->session->get('auth');
         if ($auth) {
+            if($this->session->get('auth')['is_admin']){
+                $this->_headerMenu['Management']=array(
+                    'caption' => 'Management',
+                    'action' => '',
+                    'dropdown' => true,
+                    'menu' => array(
+                        'Users' => 'users/index',
+                        'Procesos automatizados'=> 'auto/index'
+                    )
+                );
+            }
             $this->_headerMenu['UserPanel'] = array(
                 'caption' => "User Panel",
                 'action' => '',

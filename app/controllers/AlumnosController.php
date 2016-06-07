@@ -311,6 +311,19 @@ class AlumnosController extends ControllerBase
         $this->view->setVar("Tutor", strtolower($alumno->Tutor));
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
         $foto = Fotos::findFirst($NIE);
+        //date in mm/dd/yyyy format; or it can be in other formats as well
+        $birthDate = $alumno->Fecna;
+        //explode the date to get month, day and year
+        $birthDate = explode("-", $birthDate);
+        $birthDate=array_reverse($birthDate);
+        $aux=$birthDate[0];
+        $birthDate[0]=$birthDate[1];
+        $birthDate[1]=$aux;
+        //get age from date or birthdate
+        $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+            ? ((date("Y") - $birthDate[2]) - 1)
+            : (date("Y") - $birthDate[2]));
+        $this->view->setVar("edad", $age);
         $this->view->setVar("foto", $foto->Direccion);
     }
 
@@ -326,6 +339,17 @@ class AlumnosController extends ControllerBase
         $expediente = Expediente::find($NIE);
         $this->view->setVar("expediente", $expediente);
     }
-
+    public function verFamiliaAction($NIE)
+    {
+        $this->view->setTemplateAfter('AlumPerfil');
+        $alumno = Alumnos::findFirst($NIE);
+        $this->view->setVar("alumno", $alumno);
+        $this->view->setVar("Tutor", strtolower($alumno->Tutor));
+        $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
+        $trassierra = Mtrassierra::findByAlumnos_NIE($NIE);
+        $this->view->setVar("trassierra", $trassierra);
+        $expediente = Expediente::find($NIE);
+        $this->view->setVar("expediente", $expediente);
+    }
 
 }

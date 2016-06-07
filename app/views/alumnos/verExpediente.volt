@@ -38,10 +38,10 @@
 {% endif %}
 
 {% if admin %}
-    {% if expediente %}
-<h2>
-    Matriculas Anteriores
-</h2>
+    {% if expediente|length!=0 %}
+        <h2>
+            Matriculas Anteriores
+        </h2>
         <table class="table table-bordered table-striped">
             <tr>
                 <th>
@@ -60,26 +60,26 @@
                     Calificación
                 </th>
             </tr>
-        {% for element in expediente %}
-            <tr>
-                <td>
-                    {{ element.centro }}
-                </td>
-                <td>
-                    {{ element.year }}
-                </td>
-                <td>
-                    {{ element.asignatura }}
-                </td>
-                <td>
-                    {{ element.curso }}
-                </td>
-                <td>
-                    {{ element.calificacion }}
-                </td>
-            </tr>
-        {% endfor %}
+            {% for element in expediente %}
+                <tr>
+                    <td>
+                        {{ element.centro }}
+                    </td>
+                    <td>
+                        {{ element.year }}
+                    </td>
+                    <td>
+                        {{ element.asignatura }}
+                    </td>
+                    <td>
+                        {{ element.curso }}
+                    </td>
+                    <td>
+                        {{ element.calificacion }}
+                    </td>
+                </tr>
+            {% endfor %}
         </table>
-        {{ link_to("auto/addexpediente/" ~ alumno.NIE, "<i class='glyphicon glyphicon-plus'></i> Añadir expediente", "class":"btn btn-default") }}
     {% endif %}
+    {{ link_to("auto/addexpediente/" ~ alumno.NIE, "<i class='glyphicon glyphicon-plus'></i> Añadir expediente", "class":"btn btn-primary") }}
 {% endif %}

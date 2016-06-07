@@ -18,6 +18,15 @@
         <td>Curso Actual/Ultimo Curso</td>
         <td>{{ alumno.CursoActual }}</td>
     </tr>
+
+    <tr>
+        <td>Edad</td>
+        <td>{{ edad }}</td>
+    </tr>
+    <tr>
+        <td>Fecha de Nacimiento</td>
+        <td>{{ alumno.Fecna }}</td>
+    </tr>
     <tr>
         <td>Provincia</td>
         <td>{{ alumno.Provincia }}</td>
@@ -31,20 +40,16 @@
         <td>{{ alumno.Direccion }}</td>
     </tr>
     <tr>
+        <td>Lugar de Nacimiento</td>
+        <td>{{ alumno.Lugna }}</td>
+    </tr>
+    <tr>
         <td>Telefono</td>
         <td>{{ alumno.Tlf }}</td>
     </tr>
     <tr>
         <td>Telefono de Urgencia</td>
         <td>{{ alumno.TlfUrg }}</td>
-    </tr>
-    <tr>
-        <td>Fecha de Nacimiento</td>
-        <td>{{ alumno.Fecna }}</td>
-    </tr>
-    <tr>
-        <td>Lugar de Nacimiento</td>
-        <td>{{ alumno.Lugna }}</td>
     </tr>
     <tr>
         <td>Tutor</td>
