@@ -358,7 +358,7 @@ class AlumnosController extends ControllerBase
                 $topo->apellidos = $alumnofamiliar->apellidos;
                 $topo->DNI = $alumnofamiliar->DNI;
                 $topo->Direccion = $alumnofamiliar->Direccion;
-                $topo->Localidad = $alumnofamiliar->Localidad;
+                $topo->Localidad = "/orientacion/alumnos/verPerfil/$familiar->NIE";
                 $topo->Relacion = $familiar->Relacion;
                 $topo->Fecna = $alumnofamiliar->Fecna;
                 $family[] = $topo;
@@ -367,11 +367,11 @@ class AlumnosController extends ControllerBase
         if ($familia) {
             foreach ($familia as $familiar) {
                 $topo = new Familiares();
+                $topo->Localidad="/orientacion/alumnos/index";
                 $topo->Nombre = $familiar->Nombre;
                 $topo->apellidos = $familiar->apellidos;
                 $topo->DNI = $familiar->DNI;
                 $topo->Direccion = $familiar->Direccion;
-                $topo->Localidad = $familiar->Localidad;
                 $topo->Relacion = $familiar->Relacion;
                 $topo->Fecna = $familiar->Fecna;
                 $topo->Fam_ID=$familiar->Fam_ID;
@@ -380,6 +380,7 @@ class AlumnosController extends ControllerBase
         }
         $topo = new Familiares();
         $topo->Nombre = $alumno->Nombre;
+        $topo->Fam_ID="alumno";
         $topo->apellidos = $alumno->apellidos;
         $topo->DNI = $alumno->DNI;
         $topo->Direccion = $alumno->Direccion;

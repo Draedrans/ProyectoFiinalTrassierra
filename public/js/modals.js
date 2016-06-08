@@ -1,6 +1,44 @@
 /**
  * Created by pedro on 31/01/16.
  */
+function holi(){
+    jQuery.ajax({
+        type: 'POST',
+        url: $(this).attr('href'),
+        success: function(data) {
+            bootbox.dialog({
+                message: data,
+                title: "Custom title",
+                buttons: {
+                    success: {
+                        label: "Success!",
+                        className: "btn-success",
+                    },
+                }
+            });
+        }
+    });
+}
+
+
+function familyTree() {
+    jQuery.ajax({
+        type: 'POST',
+        url: $(this).attr('id'),
+        success: function(data) {
+            bootbox.dialog({
+                message: data,
+                title: "Custom title",
+                buttons: {
+                    success: {
+                        label: "Success!",
+                        className: "btn-success",
+                    },
+                }
+            });
+        }
+    });
+}
 
 function confirmDeleteUser(username) {
     bootbox.confirm("Confirm deleting user: " + username + "?", function (result) {

@@ -7,7 +7,7 @@
                     {% for element in family %}
                         {% if element.Relacion==1 %}
                             <li>
-                                <a href="#">{{ element.Nombre }} {{ element.apellidos }}</a>
+                                <a href="#" id="{{ element.Localidad }}" onclick="familyTree()">{{ element.Nombre }} {{ element.apellidos }}</a>
                                 {% if element.Fam_ID!="hola" %}
                                     <br> {{ element.Fam_ID }}
                                 {% else %}
@@ -23,7 +23,7 @@
             <li>
                 {% for element in family %}
                     {% if element.Relacion==2 %}
-                        <a href="#">{{ element.Nombre }} {{ element.apellidos }}</a>
+                        <a href="#" id="{{ element.Localidad }}" onclick="familyTree()">{{ element.Nombre }} {{ element.apellidos }}</a>
                         {% if element.Fam_ID!="hola" %}
                             <br> {{ element.Fam_ID }}
                         {% else %}
@@ -33,11 +33,9 @@
                             {% for element in family %}
                                 {% if element.Relacion==1 %}
                                     <li>
-                                        <a href="#">{{ element.Nombre }} {{ element.apellidos }}</a>
+                                        <a href="#" id="{{ element.Localidad }}" onclick="familyTree()">{{ element.Nombre }} {{ element.apellidos }}</a>
                                         {% if element.Fam_ID!="hola" %}
-                                            <br> {{ element.Fam_ID }}
                                         {% else %}
-                                            <br>{{ element.alumnos_NIE }}
                                         {% endif %}
                                     </li>
                                 {% endif %}

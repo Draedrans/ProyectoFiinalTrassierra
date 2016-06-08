@@ -20,13 +20,7 @@
     <div class="site-wrapper-inner">
         <div class="cover-container">
             <?php echo $this->getContent(); ?>
-            <div class="mastfoot">
-                <div class="inner">
-                    <p>
-                        &copy; <a href="<?php echo $this->url->get('index/easteregg'); ?>">Greg Bueno</a> 2016 - Built with Phalcon <?php echo Phalcon\Version::get(); ?>
-                    </p>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>
