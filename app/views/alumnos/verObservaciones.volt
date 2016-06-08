@@ -1,7 +1,6 @@
 {% if observaciones|length==0 %}
     Este alumno no tiene ningún dato
     <br>
-    <h1>:3</h1>
 {% else %}
     <table class="table table-bordered table-striped">
         <tr>

@@ -1,7 +1,6 @@
 {% if page.items|length==0 %}
     Este alumno no tiene ninguna incidencia
     <br>
-    <h1>:3</h1>
 {% else %}
     <table class="table table-bordered table-striped">
         <tr>
