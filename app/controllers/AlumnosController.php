@@ -358,7 +358,7 @@ class AlumnosController extends ControllerBase
                 $topo->apellidos = $alumnofamiliar->apellidos;
                 $topo->DNI = $alumnofamiliar->DNI;
                 $topo->Direccion = $alumnofamiliar->Direccion;
-                $topo->Localidad = "/orientacion/alumnos/verPerfil/$familiar->NIE";
+                $topo->Localidad = "/orientacion/familia/edit/$familiar->NIE";
                 $topo->Relacion = $familiar->Relacion;
                 $topo->Fecna = $alumnofamiliar->Fecna;
                 $family[] = $topo;
@@ -367,7 +367,7 @@ class AlumnosController extends ControllerBase
         if ($familia) {
             foreach ($familia as $familiar) {
                 $topo = new Familiares();
-                $topo->Localidad="/orientacion/alumnos/index";
+                $topo->Localidad="/orientacion/familia/edit/$familiar->Fam_ID";
                 $topo->Nombre = $familiar->Nombre;
                 $topo->apellidos = $familiar->apellidos;
                 $topo->DNI = $familiar->DNI;
@@ -384,7 +384,7 @@ class AlumnosController extends ControllerBase
         $topo->apellidos = $alumno->apellidos;
         $topo->DNI = $alumno->DNI;
         $topo->Direccion = $alumno->Direccion;
-        $topo->Localidad = $alumno->Localidad;
+        $topo->Localidad = "#";
         $topo->Relacion = 1;
         $topo->Fecna = $alumno->Fecna;
         $family[] = $topo;
@@ -395,11 +395,15 @@ class AlumnosController extends ControllerBase
             return strtotime($a->Fecna) - strtotime($b->Fecna);
         });
         $padres = 0;
+        $hijos = 0;
         foreach ($family as $tio) {
             if ($tio->Relacion == 2) {
                 $padres++;
+            }if ($tio->Relacion == 0) {
+                $hijos++;
             }
         }
+        $this->view->setVar("hijos", $hijos);
         $this->view->setVar("padres", $padres);
         $this->view->setVar("family", $family);
         $expediente = Expediente::find($NIE);

@@ -21,7 +21,6 @@ class ControllerBase extends Controller
 
     protected function initialize()
     {
-
         $this->tag->prependTitle('Orientacion | ');
         $this->view->setTemplateAfter('main');
     }
