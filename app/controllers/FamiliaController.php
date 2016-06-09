@@ -19,6 +19,8 @@ class FamiliaController extends ControllerBase
         $this->view->form = new FamiliaForm($familiar, null);
         $this->view->setVar("ID", $ID);
     }
+
+
     
     public function deletefamiliarAction($ID)
     {
@@ -27,6 +29,18 @@ class FamiliaController extends ControllerBase
         if ($familiar->delete()) {
             $this->flash->success("El familiar ha sido borrado");
         }
+        return $this->response->redirect("alumnos/verFamilia/$NIE");
+    }
+
+    public function deleteAction()
+    {
+        $NIE=$this->request->get("NIE");
+        $aNIE=$this->request->get("aNIE");
+        $familiar=Famalumno::findFirst(array(
+            "alumnos_NIE = '$NIE'",
+            "alumnos_NIE_Familiar = '$aNIE'"
+        ));
+        $familiar->delete();
         return $this->response->redirect("alumnos/verFamilia/$NIE");
     }
     
@@ -38,8 +52,30 @@ class FamiliaController extends ControllerBase
             "alumnos_NIE = '$NIE'",
             "alumnos_NIE_Familiar = '$aNIE'"
         ));
+        $this->view->setVar("NIE",$NIE);
+        $this->view->setVar("aNIE",$aNIE);
         $this->view->form = new FamalumnoForm($familiar, null);
+    }
 
+    public function saveAction()
+    {
+        $familiar=new Famalumno();
+        $familiar->alumnos_NIE=$this->request->getPost("alumnos_NIE");
+        $NIE=$this->request->getPost("alumnos_NIE");
+        $familiar->alumnos_NIE_Familiar=$this->request->getPost("alumnos_NIE_Familiar");
+        $familiar->Relacion=$this->request->getPost("Relacion");
+        if ($familiar->save()) {
+            $this->flash->success("Relacion creada");
+        }
+        return $this->response->redirect("alumnos/verFamilia/$NIE");
+    }
+
+
+    public function createAction($NIE)
+    {
+        $familiar=new Famalumno();
+        $familiar->alumnos_NIE=$NIE;
+        $this->view->form = new FamalumnoForm($familiar, null);
     }
 
 
