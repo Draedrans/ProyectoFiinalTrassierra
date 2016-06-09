@@ -1,6 +1,6 @@
 <?php
 
-class FamiliaController extends \Phalcon\Mvc\Controller
+class FamiliaController extends ControllerBase
 {
 
     
@@ -16,13 +16,30 @@ class FamiliaController extends \Phalcon\Mvc\Controller
     public function editAction($ID)
     {
         $familiar = Familiares::findFirst($ID);
-        $this->view->form = new FamiliaForm($familiar, array('photo' => true));
+        $this->view->form = new FamiliaForm($familiar, null);
+        $this->view->setVar("ID", $ID);
+    }
+    
+    public function deletefamiliarAction($ID)
+    {
+        $familiar = Familiares::findFirst($ID);
+        $NIE=$familiar->alumnos_NIE;
+        if ($familiar->delete()) {
+            $this->flash->success("El familiar ha sido borrado");
+        }
+        return $this->response->redirect("alumnos/verFamilia/$NIE");
     }
     
     public function editalumAction()
     {
-        $familiar = Familiares::findFirst($ID);
-        $this->view->form = new FamiliaForm($familiar, array('photo' => true));
+        $NIE=$this->request->get("NIE");
+        $aNIE=$this->request->get("aNIE");
+        $familiar=Famalumno::findFirst(array(
+            "alumnos_NIE = '$NIE'",
+            "alumnos_NIE_Familiar = '$aNIE'"
+        ));
+        $this->view->form = new FamalumnoForm($familiar, null);
+
     }
 
 

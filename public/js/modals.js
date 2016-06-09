@@ -1,6 +1,7 @@
-/**
- * Created by pedro on 31/01/16.
+/** 
+ * Created by Fyah on 31/01/16.
  */
+
 
 
 function confirmDeleteUser(username) {

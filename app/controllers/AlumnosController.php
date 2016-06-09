@@ -45,7 +45,7 @@ class AlumnosController extends ControllerBase
 
         $alumnos = Alumnos::find($parameters);
         if (count($alumnos) == 0) {
-            $this->flash->notice("The search did not find any levels");
+            $this->flash->notice("La busqueda no ha encontrado ningún alumno");
 
             return $this->dispatcher->forward(array(
                 "controller" => "alumnos",
@@ -358,7 +358,7 @@ class AlumnosController extends ControllerBase
                 $topo->apellidos = $alumnofamiliar->apellidos;
                 $topo->DNI = $alumnofamiliar->DNI;
                 $topo->Direccion = $alumnofamiliar->Direccion;
-                $topo->Localidad = "/orientacion/familia/edit/$familiar->NIE";
+                $topo->Localidad = "/orientacion/familia/editalum/?NIE=$familiar->alumnos_NIE&aNIE=$familiar->alumnos_NIE_Familiar";
                 $topo->Relacion = $familiar->Relacion;
                 $topo->Fecna = $alumnofamiliar->Fecna;
                 $family[] = $topo;
