@@ -14,7 +14,7 @@ class Elements extends Component
             'action' => ''
         ),
         'alumnos' => array(
-            'caption' => 'Alumnos',
+            'caption' => 'Alumnado',
             'action' => ''
         ),
         'languages'=>array(

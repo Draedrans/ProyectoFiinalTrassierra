@@ -2,49 +2,54 @@
     Este alumno no tiene ninguna incidencia
     <br>
 {% else %}
-    <table class="table table-bordered table-striped">
-        <tr>
-            {% for item in page.items %}
-            <th>
-                Usuario : {{ item.users_username }}
-            </th>
-            <th>
-                {{ item.date }}
-            </th>
-            <th>
-                Tipo de incidencia : {{ item.Incidencia }}
-            </th>
-        </tr>
-        <tr>
-            <td>
-                Descripcion
-            </td>
-            <td colspan="2">
-                {{ item.Moitivo }}
-            </td>
-        </tr>
-        <tr>
-            {% if not item.Asistentes|length==0 %}
-            <td>
-                Asistentes
-            </td>
-            <td colspan="2">
-                {{ item.Asistentes }}
-            </td>
-        </tr>
+    {% for item in page.items %}
+        {% if item.acceso==1 and alumno.Tutor!=Profesor and not admin %}
+            Su nivel de acceso no es el adecuado para veer esta incidencia
+        {% else %}
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        Usuario : {{ item.users_username }}
+                    </th>
+                    <th>
+                        {{ item.date }}
+                    </th>
+                    <th>
+                        Tipo de incidencia : {{ item.Incidencia }}
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Descripcion
+                    </td>
+                    <td colspan="2">
+                        {{ item.Moitivo }}
+                    </td>
+                </tr>
+                <tr>
+                    {% if not item.Asistentes|length==0 %}
+                    <td>
+                        Asistentes
+                    </td>
+                    <td colspan="2">
+                        {{ item.Asistentes }}
+                    </td>
+                </tr>
+                {% endif %}
+                <tr>
+                    {% if not item.Acuerdos|length==0 %}
+                        <td>
+                            Acuerdos
+                        </td>
+                        <td colspan="2">
+                            {{ item.Acuerdos }}
+                        </td>
+                    {% endif %}
+                </tr>
+            </table>
         {% endif %}
-        <tr>
-            {% if not item.Acuerdos|length==0 %}
-                <td>
-                    Acuerdos
-                </td>
-                <td colspan="2">
-                    {{ item.Acuerdos }}
-                </td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-    </table>
+
+    {% endfor %}
     {% if item.users_username|lower==Profesor %}
         {{ link_to("comentarios/edit/"~ item.date, "<i class='glyphicon glyphicon-edit'></i> Editar Incidencia", "class":"btn btn-primary") }}
     {% endif %}
@@ -61,6 +66,6 @@
     </p>
     <br>
 {% endif %}
-{% if Tutor==Profesor or admin %}
-    {{ link_to("comentarios/new/"~ alumno.NIE, "<i class='glyphicon glyphicon-plus'></i> Añadir Incidencia", "class":"btn btn-primary") }}
-{% endif %}
+        {% if Tutor==Profesor or admin %}
+            {{ link_to("comentarios/new/"~ alumno.NIE, "<i class='glyphicon glyphicon-plus'></i> Añadir Incidencia", "class":"btn btn-primary") }}
+        {% endif %}

@@ -352,7 +352,7 @@ class AlumnosController extends ControllerBase
             foreach ($familiaresalum as $familiar) {
                 $alumnofamiliar = Alumnos::findFirst($familiar->alumnos_NIE_Familiar);
                 $topo = new Familiares();
-                $topo->Fam_ID="hola";
+                $topo->Fam_ID = "hola";
                 $topo->alumnos_NIE = $alumnofamiliar->NIE;
                 $topo->Nombre = $alumnofamiliar->Nombre;
                 $topo->apellidos = $alumnofamiliar->apellidos;
@@ -367,20 +367,20 @@ class AlumnosController extends ControllerBase
         if ($familia) {
             foreach ($familia as $familiar) {
                 $topo = new Familiares();
-                $topo->Localidad="/orientacion/familia/edit/$familiar->Fam_ID";
+                $topo->Localidad = "/orientacion/familia/edit/$familiar->Fam_ID";
                 $topo->Nombre = $familiar->Nombre;
                 $topo->apellidos = $familiar->apellidos;
                 $topo->DNI = $familiar->DNI;
                 $topo->Direccion = $familiar->Direccion;
                 $topo->Relacion = $familiar->Relacion;
                 $topo->Fecna = $familiar->Fecna;
-                $topo->Fam_ID=$familiar->Fam_ID;
+                $topo->Fam_ID = $familiar->Fam_ID;
                 $family[] = $topo;
             }
         }
         $topo = new Familiares();
         $topo->Nombre = $alumno->Nombre;
-        $topo->Fam_ID="alumno";
+        $topo->Fam_ID = "alumno";
         $topo->apellidos = $alumno->apellidos;
         $topo->DNI = $alumno->DNI;
         $topo->Direccion = $alumno->Direccion;
@@ -399,7 +399,8 @@ class AlumnosController extends ControllerBase
         foreach ($family as $tio) {
             if ($tio->Relacion == 2) {
                 $padres++;
-            }if ($tio->Relacion == 0) {
+            }
+            if ($tio->Relacion == 0) {
                 $hijos++;
             }
         }
@@ -408,5 +409,10 @@ class AlumnosController extends ControllerBase
         $this->view->setVar("family", $family);
         $expediente = Expediente::find($NIE);
         $this->view->setVar("expediente", $expediente);
+    }
+
+    public function verNecesidades($NIE)
+    {
+        
     }
 }

@@ -32,9 +32,9 @@
         {% endif %}
         {% if admin %}
         {% if router.getActionName()=="verNecesidades" %}
-            {{ link_to("alumnos/verFamilia/"~ alumno.NIE, "Necesidades   ", "class":"btn btn-primary") }}
+            {{ link_to("alumnos/verNecesidades/"~ alumno.NIE, "Necesidades   ", "class":"btn btn-primary") }}
         {% else %}
-            {{ link_to("alumnos/verFamilia/"~ alumno.NIE, "Necesidades   ", "class":"btn btn-default") }}
+            {{ link_to("alumnos/verNecesidades/"~ alumno.NIE, "Necesidades   ", "class":"btn btn-default") }}
         {% endif %}
         {% if router.getActionName()=="verFamilia" %}
             {{ link_to("alumnos/verFamilia/"~ alumno.NIE, "Familia   ", "class":"btn btn-primary") }}

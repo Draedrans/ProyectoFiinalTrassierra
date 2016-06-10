@@ -6,7 +6,7 @@ class AutoController extends ControllerBase
 
     public function initialize()
     {
-        $this->tag->setTitle("Student");
+        $this->tag->setTitle("The cool stuff");
         parent::initialize();
         $this->view->setVar("admin", $this->session->get("auth")["is_admin"]);
         $this->assets->addJs("js/modals.js");

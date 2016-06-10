@@ -12,7 +12,8 @@
 <div class="form-group">
     <div class="col-sm-8 col-sm-offset-2">
         <h4>
-            {{ submit_button("Cambiar familiar", "class": "btn btn-primary") }}
+            <a href="/orientacion/alumnos/verPerfil/{{ aNIE }}" class="btn btn-success" ><i class="glyphicon glyphicon-arrow-right"></i> Ir al perfil del alumno</a>
+            {{ submit_button('Cambiar familiar', "class": "btn btn-primary") }}
             <a href="/orientacion/familia/delete/?NIE={{ NIE }}&aNIE={{ aNIE }}" class="btn btn-danger" ><i class="glyphicon glyphicon-trash"></i> Borrar familiar</a>
         </h4>
     </div>
