@@ -12,7 +12,7 @@
 <div class="form-group">
     <div class="col-sm-8 col-sm-offset-2">
         <h4>
-            {{ submit_button("Cambiar familiar", "class": "btn btn-primary") }}
+            {{ submit_button("Crear familiar", "class": "btn btn-primary") }}
         </h4>
     </div>
 </div>

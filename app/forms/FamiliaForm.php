@@ -20,7 +20,7 @@ class FamiliaForm extends Form
     {
         $ID= new Hidden("Fam_ID", array('class' => 'form-control'));
         $ID->setLabel("");
-        $alumnos_NIE = new Select("alumnos_NIE", Alumnos::find(), array("using" => array("NIE", "NIE"), 'class' => 'form-control'));
+        $alumnos_NIE = new Text("alumnos_NIE",array( 'class' => 'form-control'));
         $alumnos_NIE->setLabel("NIE del alumno");
         $alumnos_NIE->setAttribute("readonly", true);
         $Relacion = new Select("Relacion", array("Familiares" => array('0' => "Hij@ del alumn@", '1' => "Herman@ del alumn@", '2' => "Madre/Padre del alumn@")), array('class' => 'form-control'));

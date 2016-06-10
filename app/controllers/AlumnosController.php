@@ -358,7 +358,7 @@ class AlumnosController extends ControllerBase
                 $topo->apellidos = $alumnofamiliar->apellidos;
                 $topo->DNI = $alumnofamiliar->DNI;
                 $topo->Direccion = $alumnofamiliar->Direccion;
-                $topo->Localidad = "/orientacion/familia/editalum/?NIE=$familiar->alumnos_NIE&aNIE=$familiar->alumnos_NIE_Familiar";
+                $topo->Localidad = "/orientacion/familia/editalum?NIE=$familiar->alumnos_NIE&aNIE=$familiar->alumnos_NIE_Familiar";
                 $topo->Relacion = $familiar->Relacion;
                 $topo->Fecna = $alumnofamiliar->Fecna;
                 $family[] = $topo;

@@ -3,8 +3,8 @@
 class FamiliaController extends ControllerBase
 {
 
-    
-    
+
+
     public function initialize()
     {
         $this->tag->setTitle("Student");
@@ -21,7 +21,7 @@ class FamiliaController extends ControllerBase
     }
 
 
-    
+
     public function deletefamiliarAction($ID)
     {
         $familiar = Familiares::findFirst($ID);
@@ -37,20 +37,20 @@ class FamiliaController extends ControllerBase
         $NIE=$this->request->get("NIE");
         $aNIE=$this->request->get("aNIE");
         $familiar=Famalumno::findFirst(array(
-            "alumnos_NIE = '$NIE'",
-            "alumnos_NIE_Familiar = '$aNIE'"
+            '(alumnos_NIE = :NIE:) AND (alumnos_NIE_Familiar = :aNIE:)',
+            'bind' => array('NIE' => $NIE, 'aNIE' => $aNIE)
         ));
         $familiar->delete();
         return $this->response->redirect("alumnos/verFamilia/$NIE");
     }
-    
+
     public function editalumAction()
     {
         $NIE=$this->request->get("NIE");
         $aNIE=$this->request->get("aNIE");
         $familiar=Famalumno::findFirst(array(
-            "alumnos_NIE = '$NIE'",
-            "alumnos_NIE_Familiar = '$aNIE'"
+            '(alumnos_NIE = :NIE:) AND (alumnos_NIE_Familiar = :aNIE:)',
+            'bind' => array('NIE' => $NIE, 'aNIE' => $aNIE)
         ));
         $this->view->setVar("NIE",$NIE);
         $this->view->setVar("aNIE",$aNIE);
@@ -69,6 +69,26 @@ class FamiliaController extends ControllerBase
         }
         return $this->response->redirect("alumnos/verFamilia/$NIE");
     }
+    public function savefamiliarAction()
+    {
+        $familiar=new Familiares();
+        $ID=$this->request->getPost("Fam_ID");
+            $familiar->Fam_ID=$ID;
+        $familiar->alumnos_NIE=$this->request->getPost("alumnos_NIE");
+        $familiar->Nombre=$this->request->getPost("Nombre");
+        $familiar->apellidos=$this->request->getPost("apellidos");
+        $familiar->Relacion=$this->request->getPost("Relacion");
+        $familiar->Localidad=$this->request->getPost("Localidad");
+        $familiar->DNI=$this->request->getPost("DNI");
+        $familiar->Fecna=$this->request->getPost("Fecna");
+        $familiar->Tlf=$this->request->getPost("Tlf");
+        $familiar->Direccion=$this->request->getPost("Direccion");
+        $NIE=$this->request->getPost("alumnos_NIE");
+        if ($familiar->save()) {
+            $this->flash->success("Familiar creado");
+        }
+        return $this->response->redirect("alumnos/verFamilia/$NIE");
+    }
 
 
     public function createAction($NIE)
@@ -78,6 +98,11 @@ class FamiliaController extends ControllerBase
         $this->view->form = new FamalumnoForm($familiar, null);
     }
 
+    public function newAction($NIE){
+        $familiar=new Familiares();
+        $familiar->alumnos_NIE=$NIE;
+        $this->view->form = new FamiliaForm($familiar, null);
+    }
 
 }
 

@@ -12,8 +12,7 @@
 <div class="form-group">
     <div class="col-sm-8 col-sm-offset-2">
         <h4>
-            {{ submit_button("Cambiar familiar", "class": "btn btn-primary") }}
-            <a href="/orientacion/familia/deletefamiliar/{{ ID }}" class="btn btn-danger" ><i class="glyphicon glyphicon-trash"></i> Borrar familiar</a>
+            {{ submit_button("Crear familiar", "class": "btn btn-primary") }}
         </h4>
     </div>
 </div>
