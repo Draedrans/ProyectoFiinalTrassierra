@@ -1,0 +1,18 @@
+<xml>
+    <NEE id="Médicas Específicas">
+        <tipo id="Educativas">
+
+        </tipo>
+        <tipo id="Asistenciales">
+
+        </tipo>
+    </NEE>
+    <NEE id="Recursos Específicos">
+        <tipo id="Personales">
+
+        </tipo>
+        <tipo id="Materiales">
+
+        </tipo>
+    </NEE>
+</xml>

@@ -411,8 +411,12 @@ class AlumnosController extends ControllerBase
         $this->view->setVar("expediente", $expediente);
     }
 
-    public function verNecesidades($NIE)
+    public function verNecesidadesAction($NIE)
     {
-        
+        $alumno = Alumnos::findFirst($NIE);
+        $this->view->setVar("alumno", $alumno);
+        $this->view->setTemplateAfter('AlumPerfil');
+        $Necesidades= Necesidades::findByalumnos_NIE($NIE);
+        $this->view->setVar("Necesidades", $Necesidades);
     }
 }

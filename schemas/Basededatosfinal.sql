@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`users` (
 ENGINE = InnoDB;
 
 INSERT INTO `users` VALUES ('Drae','$2y$10$RBzd0gnOEg5/xely5LD0bO8d2kPd04lmTDMSAyEHaBF4DvGbEqZYy',1);
+INSERT INTO `users` VALUES ('Admin','$2y$10$RBzd0gnOEg5/xely5LD0bO8d2kPd04lmTDMSAyEHaBF4DvGbEqZYy',1);
 
 -- -----------------------------------------------------
 -- Table `proyecto_final`.`alumnos`
@@ -143,10 +144,9 @@ DROP TABLE IF EXISTS `proyecto_final`.`Necesidades` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto_final`.`Necesidades` (
   `alumnos_NIE` INT NOT NULL COMMENT '',
-  `NEE` TINYINT(1) NOT NULL COMMENT '',
-  `MedRec` TINYINT(1) NOT NULL COMMENT '',
-  `Tipo` INT NOT NULL COMMENT '',
-  `Comentario` VARCHAR(1000) NULL COMMENT '',
+  `NEE` VARCHAR(40) NOT NULL COMMENT '',
+  `MedRec` VARCHAR(40) NOT NULL COMMENT '',
+  `Tipo` VARCHAR(100) NOT NULL COMMENT '',
   PRIMARY KEY (`alumnos_NIE`, `NEE`, `MedRec`, `Tipo`)  COMMENT '',
   CONSTRAINT `fk_Necesidades_alumnos1`
     FOREIGN KEY (`alumnos_NIE`)

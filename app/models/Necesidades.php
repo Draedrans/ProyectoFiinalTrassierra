@@ -1,9 +1,5 @@
 <?php
 
-use Phalcon\Mvc\Model\Resultset\Simple as ResultSet;
-use Phalcon\Mvc\Model\Validator\Uniqueness;
-use Phalcon\Validation\Message;
-
 class Necesidades extends \Phalcon\Mvc\Model
 {
 
@@ -15,27 +11,21 @@ class Necesidades extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var integer
+     * @var string
      */
     public $NEE;
 
     /**
      *
-     * @var integer
+     * @var string
      */
     public $MedRec;
 
     /**
      *
-     * @var integer
-     */
-    public $Tipo;
-
-    /**
-     *
      * @var string
      */
-    public $Comentario;
+    public $Tipo;
 
     /**
      * Initialize method for model.

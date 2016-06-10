@@ -86,6 +86,7 @@ class SecurityPlugin extends Plugin
             $adminResources = array(
                 'familia' => array('new', 'save', 'savefamiliar', 'delete', 'deletefamiliar', 'create', 'edit', 'editalum'),
                 'users' => array('new', 'update', 'save', 'delete', 'create', 'edit'),
+                'necesidades' => array('new', 'save', 'delete'),
                 'alumnos' => array('new', 'update', 'edit', 'create', 'save', 'delete', 'verFamilia', 'verNecesidades'),
                 'auto'=> array('index', 'addphoto', 'add', 'upload', 'uploadphoto', 'addexpediente', 'uploadexpediente')
             );

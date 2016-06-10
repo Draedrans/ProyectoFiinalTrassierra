@@ -12,10 +12,24 @@ class NecesidadesController extends ControllerBase
     }
 
 
-    public function indexAction()
+    public function newAction($NIE)
+    {
+        $this->assets->addJs("js/form.js");
+        $Necesidad= new Necesidades();
+        $Necesidad->alumnos_NIE=$NIE;
+        $this->view->form= new NecesidadesForm($Necesidad);
+    }
+
+    public function saveAction()
     {
 
     }
+
+    public function deleteAction()
+    {
+
+    }
+
 
 }
 
