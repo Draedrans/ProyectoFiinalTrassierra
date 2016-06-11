@@ -1,18 +1,59 @@
 <xml>
-    <NEE id="Médicas Específicas">
-        <tipo id="Educativas">
+    <Medicas>
+        <Asistenciales>
+<tipo>
+Alimentación
+</tipo>
+<tipo>
+Desplazamiento
+</tipo>
+<tipo>
+Control Postural/Sedestación
+</tipo>
+<tipo>
+Transporte Adaptado
+</tipo>
+<tipo>
+Control de Esfínteres
+</tipo>
+<tipo>
+Uso WC
+</tipo>
+<tipo>
+Higiene y aseo personal
+</tipo>
+<tipo>
 
-        </tipo>
-        <tipo id="Asistenciales">
+</tipo>
+<tipo>
+Supervisión Especializada
+</tipo>
+        </Asistenciales>
+        <Educativas>
+            <tipo>
+                Adaptaciones de Acceso(AAC)
+            </tipo>
+            <tipo>
+                Adaptaciones Curriculares No Significativas(ACNS)
+            </tipo>
+            <tipo>
+                Adaptaciones Curriculares Significativas(ACS)
+            </tipo>
+            <tipo>
+                Programas Específicos(PE)
+            </tipo>
+            <tipo>
+                Permanencia Extraordinaria(2º Ciclo E.I y educación básica)
+            </tipo>
+        </Educativas>
+    </Medicas>
+    <Recursos>
+        <Personales>
 
-        </tipo>
-    </NEE>
-    <NEE id="Recursos Específicos">
-        <tipo id="Personales">
+        </Personales>
+        <Materiales>
 
-        </tipo>
-        <tipo id="Materiales">
-
-        </tipo>
-    </NEE>
+        </Materiales>
+    </Recursos>
+    >
 </xml>
