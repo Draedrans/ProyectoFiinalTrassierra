@@ -4,15 +4,18 @@
 {% else %}
     <table class="table table-bordered table-striped">
         <tr>
-            <th>Necesidades</th>
-            <td>MedRec</td>
-            <td></td>
+            <th>NEE</th>
+            <td>Medidas/RecUrsos</td>
+            <td>Necesidad</td>
+            <td>Acciones</td>
         </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+        {% for item in Necesidades %}
+            <tr>
+                <td>{{ item.NEE }}</td>
+                <td>{{ item.MedRec }}</td>
+                <td>{{ item.Tipo }}</td>
+                <td>{{ link_to("necesidades/delete?alumnos_NIE="~item.alumnos_NIE~"&NEE="~item.NEE~"&MedRec="~item.MedRec~"&Tipo="~item.Tipo, "<i class='glyphicon glyphicon-trash'></i> Borrar Necesidad", "class":"btn btn-danger") }}</td>
+        {% endfor %}
     </table>
 {% endif %}
 <br>

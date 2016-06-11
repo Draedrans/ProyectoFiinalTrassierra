@@ -27,9 +27,7 @@ function cargarEspec() {
             $("#Tipo").html("");
             var Tipo = [];
             $(xml).find($("#MedRec option:selected").val()+ "> tipo").each(function () {
-                alert($("#NEE option:selected").val());
                 Tipo[Tipo.length] = $(this).text();
-                alert(Tipo[Tipo.length-1]);
             });
             for (i = 0; i < Tipo.length; i++) {
                 $("#Tipo").append("<option value='" + Tipo[i] + "'>" + Tipo[i] + "</option>");

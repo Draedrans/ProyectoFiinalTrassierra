@@ -9,6 +9,13 @@
 </div>
 
 {{ form("necesidades/save") }}
+{% for element in form %}
+<div class="form-group">
+        <div>
+            {{ element }}
+        </div>
+</div>
+{% endfor %}
 
 <div class="form-group">
     <label for="NEE">NEE</label>

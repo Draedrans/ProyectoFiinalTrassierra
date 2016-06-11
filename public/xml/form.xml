@@ -1,59 +1,47 @@
 <xml>
     <Medicas>
         <Asistenciales>
-<tipo>
-Alimentación
-</tipo>
-<tipo>
-Desplazamiento
-</tipo>
-<tipo>
-Control Postural/Sedestación
-</tipo>
-<tipo>
-Transporte Adaptado
-</tipo>
-<tipo>
-Control de Esfínteres
-</tipo>
-<tipo>
-Uso WC
-</tipo>
-<tipo>
-Higiene y aseo personal
-</tipo>
-<tipo>
-
-</tipo>
-<tipo>
-Supervisión Especializada
-</tipo>
+            <tipo>Alimentación</tipo>
+            <tipo>Desplazamiento</tipo>
+            <tipo>Control Postural/Sedestación</tipo>
+            <tipo>Transporte Adaptado</tipo>
+            <tipo>Control de Esfínteres</tipo>
+            <tipo>Uso WC</tipo>
+            <tipo>Higiene y aseo personal</tipo>
+            <tipo>Vigilancia</tipo>
+            <tipo>Supervisión Especializada</tipo>
         </Asistenciales>
         <Educativas>
-            <tipo>
-                Adaptaciones de Acceso(AAC)
-            </tipo>
-            <tipo>
-                Adaptaciones Curriculares No Significativas(ACNS)
-            </tipo>
-            <tipo>
-                Adaptaciones Curriculares Significativas(ACS)
-            </tipo>
-            <tipo>
-                Programas Específicos(PE)
-            </tipo>
-            <tipo>
-                Permanencia Extraordinaria(2º Ciclo E.I y educación básica)
-            </tipo>
+            <tipo>Adaptaciones de Acceso(AAC)</tipo>
+            <tipo>Adaptaciones Curriculares No Significativas(ACNS)</tipo>
+            <tipo>Adaptaciones Curriculares Significativas(ACS)</tipo>
+            <tipo>Programas Específicos(PE)</tipo>
+            <tipo>Permanencia Extraordinaria(2º Ciclo E.I y educación básica)</tipo>
         </Educativas>
     </Medicas>
     <Recursos>
         <Personales>
-
+            <tipo>PT</tipo>
+            <tipo>AL</tipo>
+            <tipo>AL-LS</tipo>
+            <tipo>Profesores de los equipos especificos de atencion al alumnado con discapacidad visual(ONCE)</tipo>
+            <tipo>Apoyo Curricular Motórico/Auditivo</tipo>
+            <tipo>PTIS</tipo>
+            <tipo>PTILS-ILSE(Secundaria)</tipo>
+            <tipo>FISIOTERAPEUTA</tipo>
         </Personales>
         <Materiales>
-
+            <tipo>Barreras Arquitectónicas</tipo>
+            <tipo>Mobiliario Adaptado</tipo>
+            <tipo>AT Desplazamiento</tipo>
+            <tipo>AT Control Postural</tipo>
+            <tipo>AT uso WC</tipo>
+            <tipo>AT Comunicacion</tipo>
+            <tipo>AT Comunicacion Auditiva</tipo>
+            <tipo>Ayudas Ópticas, no ópticas o electrónicas</tipo>
+            <tipo>Ayudas Tiflotécnicas</tipo>
+            <tipo>AT Homologadas</tipo>
+            <tipo>AT No Homologadas: periféricos/software/equipos</tipo>
         </Materiales>
     </Recursos>
-    >
 </xml>
