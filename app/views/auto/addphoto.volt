@@ -11,7 +11,11 @@
 {% endfor %}
 <div class="form-group">
     <div class="col-sm-8 col-sm-offset-2">
-        {{ submit_button("Insertar foto", "class": "btn btn-primary") }}
+        {% if language %}
+            {{ submit_button("Add foto", "class": "btn btn-primary") }}
+        {% else %}
+            {{ submit_button("Insertar foto", "class": "btn btn-primary") }}
+        {% endif %}
     </div>
 </div>
 {{ end_form() }}

@@ -13,7 +13,7 @@
     {{ stylesheet_link("css/familytree.css") }}
     {{ stylesheet_link("bower_components/animate.css/animate.min.css") }}
     {{ stylesheet_link("bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css") }}
-    {{ stylesheet_link("css/cupo.css") }}
+    {{ stylesheet_link("css/notebook.css") }}
 </head>
 <body>
 <div class="site-wrapper">

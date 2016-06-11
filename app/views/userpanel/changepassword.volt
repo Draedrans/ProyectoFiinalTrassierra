@@ -1,17 +1,37 @@
-<div class="page-header">
+{% if language %}
+    <div class="page-header">
     <h1>Change password</h1>
 </div>
-{{ form('userpanel/savepass') }}
-{% for element in form %}
-    <div class="form-group">
-        {{ element.label() }}
-        <div>
-            {{ element }}
+    {{ form('userpanel/savepass') }}
+    {% for element in form %}
+        <div class="form-group">
+            {{ element.label() }}
+            <div>
+                {{ element }}
+            </div>
         </div>
+    {% endfor %}
+    <div class="form-group">
+        {{ submit_button("Save", "class":"btn btn-primary") }}
+        {{ link_to("userpanel/index", "Cancel", "class":"btn btn-default") }}
     </div>
-{% endfor %}
-<div class="form-group">
-    {{ submit_button("Save", "class":"btn btn-primary") }}
-    {{ link_to("userpanel/index", "Cancel", "class":"btn btn-default") }}
+    {{ end_form() }}
+{% else %}
+    <div class="page-header">
+    <h1>Change password</h1>
 </div>
-{{ end_form() }}
+    {{ form('userpanel/savepass') }}
+    {% for element in form %}
+        <div class="form-group">
+            {{ element.label() }}
+            <div>
+                {{ element }}
+            </div>
+        </div>
+    {% endfor %}
+    <div class="form-group">
+        {{ submit_button("Save", "class":"btn btn-primary") }}
+        {{ link_to("userpanel/index", "Cancel", "class":"btn btn-default") }}
+    </div>
+    {{ end_form() }}
+{% endif %}

@@ -13,7 +13,7 @@
     <?php echo $this->tag->stylesheetLink('css/familytree.css'); ?>
     <?php echo $this->tag->stylesheetLink('bower_components/animate.css/animate.min.css'); ?>
     <?php echo $this->tag->stylesheetLink('bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css'); ?>
-    <?php echo $this->tag->stylesheetLink('css/cupo.css'); ?>
+    <?php echo $this->tag->stylesheetLink('css/notebook.css'); ?>
 </head>
 <body>
 <div class="site-wrapper">

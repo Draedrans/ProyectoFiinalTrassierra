@@ -252,6 +252,12 @@ class AlumnosController extends ControllerBase
             return $this->response->redirect("auto");
         }
         foreach ($alumnos as $alumno) {
+            $photo = Fotos::findFirst($NIE);
+            if ($photo) {
+                chmod("/var/www/html/orientacion/public/photos/", 0777);
+                unlink("/var/www/html/orientacion/public/photos/" . $photo->Direccion);
+                chmod("/var/www/html/orientacion/public/photos/", 0755);
+            }
             if ($alumno->delete()) {
             }
         }

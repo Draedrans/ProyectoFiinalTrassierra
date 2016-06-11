@@ -12,7 +12,11 @@
 <div class="form-group">
     <div class="col-sm-8 col-sm-offset-2">
         <h4>
-            {{ submit_button("Crear familiar", "class": "btn btn-primary") }}
+            {% if language %}
+                {{ submit_button("Add", "class": "btn btn-primary") }}
+            {% else %}
+                {{ submit_button("Crear familiar", "class": "btn btn-primary") }}
+            {% endif %}
         </h4>
     </div>
 </div>
