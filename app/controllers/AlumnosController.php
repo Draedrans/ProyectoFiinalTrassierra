@@ -54,7 +54,7 @@ class AlumnosController extends ControllerBase
         }
         $paginator = new Paginator(array(
             "data" => $alumnos,
-            "limit" => 5,
+            "limit" => 25,
             "page" => $numberPage
         ));
         $this->view->page = $paginator->getPaginate();
