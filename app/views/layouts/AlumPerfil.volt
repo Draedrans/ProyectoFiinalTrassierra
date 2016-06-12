@@ -77,9 +77,9 @@
                 {{ link_to("alumnos/verObservaciones/"~ alumno.NIE, "Observaciones", "class":"btn btn-default") }}
             {% endif %}
             {% if router.getActionName()=="verIncidencias" %}
-                {{ link_to("alumnos/verIncidencias/"~ alumno.NIE, "Incidencias", "class":"btn btn-primary") }}
+                {{ link_to("alumnos/verIncidencias/"~ alumno.NIE, "Intervenciones", "class":"btn btn-primary") }}
             {% else %}
-                {{ link_to("alumnos/verIncidencias/"~ alumno.NIE, "Incidencias", "class":"btn btn-default") }}
+                {{ link_to("alumnos/verIncidencias/"~ alumno.NIE, "Intervenciones", "class":"btn btn-default") }}
             {% endif %}
             {% if router.getActionName()=="verExpediente" %}
                 {{ link_to("alumnos/verExpediente/"~ alumno.NIE, "Expediente   ", "class":"btn btn-primary") }}

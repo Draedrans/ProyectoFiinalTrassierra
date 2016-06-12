@@ -15,6 +15,7 @@
         <tr>
             <th>Name</th>
             <th>Surname</th>
+            <th>Class</th>
             <th>Management</th>
         </tr>
         {% for alumno in page.items %}
@@ -22,6 +23,9 @@
                 <td>{{ alumno.Nombre }} </td>
                 <td>
                     {{ alumno.apellidos }}
+                </td>
+                <td>
+                    {{ alumno.CursoActual }}
                 </td>
                 <td>
                     {{ link_to("alumnos/verPerfil/" ~ alumno.NIE, "<i class='glyphicon glyphicon-edit'></i> View Profile", "class":"btn btn-default") }}
@@ -60,6 +64,7 @@
         <tr>
             <th>Nombre</th>
             <th>Apellidos</th>
+            <th>Clase</th>
             <th>Acciones</th>
         </tr>
         {% for alumno in page.items %}
@@ -67,6 +72,9 @@
                 <td>{{ alumno.Nombre }} </td>
                 <td>
                     {{ alumno.apellidos }}
+                </td>
+                <td>
+                    {{ alumno.CursoActual }}
                 </td>
                 <td>
                     {{ link_to("alumnos/verPerfil/" ~ alumno.NIE, "<i class='glyphicon glyphicon-edit'></i> Ver Perfil", "class":"btn btn-default") }}
@@ -85,7 +93,7 @@
         </ul>
     </nav>
     <p class="pagination" style="line-height: 1.42857;padding: 6px 12px;">
-        Page {{ page.current }} de {{ page.total_pages }}
+        Página {{ page.current }} de {{ page.total_pages }}
     </p>
 
 {% endif %}
