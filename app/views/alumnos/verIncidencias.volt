@@ -4,7 +4,7 @@
         <br>
     {% else %}
         {% for item in page.items %}
-            {% if item.acceso==1 and alumno.Tutor!=Profesor and not admin %}
+            {% if item.acceso==1 and alumno.Tutor!=Profesor and not admin and item.users_username|lower!=Profesor %}
                 Access Denied
             {% else %}
                 <table class="table table-bordered table-striped">
@@ -75,8 +75,8 @@
         <br>
     {% else %}
         {% for item in page.items %}
-            {% if item.acceso==1 and alumno.Tutor!=Profesor and not admin %}
-                Su nivel de acceso no es el adecuado para veer esta incidencia
+            {% if item.acceso==1 and alumno.Tutor!=Profesor and not admin and item.users_username|lower!=Profesor %}
+                Su nivel de acceso no es el adecuado para ver esta incidencia
             {% else %}
                 <table class="table table-bordered table-striped">
                     <tr>
