@@ -67,9 +67,8 @@
         </p>
         <br>
     {% endif %}
-    {% if Tutor==Profesor or admin %}
         {{ link_to("comentarios/new/"~ alumno.NIE, "<i class='glyphicon glyphicon-plus'></i> Add", "class":"btn btn-primary") }}
-    {% endif %}
+
 {% else %}
     {% if page.items|length==0 %}
         Este alumno no tiene ninguna incidencia
@@ -139,7 +138,5 @@
         </p>
         <br>
     {% endif %}
-    {% if Tutor==Profesor or admin %}
-        {{ link_to("comentarios/new/"~ alumno.NIE, "<i class='glyphicon glyphicon-plus'></i> Añadir", "class":"btn btn-primary") }}
-    {% endif %}
+    {{ link_to("comentarios/new/"~ alumno.NIE, "<i class='glyphicon glyphicon-plus'></i> Añadir", "class":"btn btn-primary") }}
 {% endif %}
