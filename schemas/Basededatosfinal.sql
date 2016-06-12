@@ -71,8 +71,8 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`FamAlumno` (
   CONSTRAINT `fk_Familiares_alumnos`
     FOREIGN KEY (`alumnos_NIE`)
     REFERENCES `proyecto_final`.`alumnos` (`NIE`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_FamAlumno_alumnos1`
     FOREIGN KEY (`alumnos_NIE_Familiar`)
     REFERENCES `proyecto_final`.`alumnos` (`NIE`)
