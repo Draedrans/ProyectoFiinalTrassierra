@@ -57,8 +57,15 @@
     </ul>
 </div>
 <div class="clearboth">
+    {% if language %}
+        <a href="/orientacion/familia/create/{{ alumno.NIE }}" class="btn btn-primary"><i
+                    class="glyphicon glyphicon-plus"></i> Create relationship</a>
+        <a href="/orientacion/familia/new/{{ alumno.NIE }}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>
+            Create Relative</a>
+    {% else %}
     <a href="/orientacion/familia/create/{{ alumno.NIE }}" class="btn btn-primary"><i
                 class="glyphicon glyphicon-plus"></i> Crear relacion</a>
     <a href="/orientacion/familia/new/{{ alumno.NIE }}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>
         Crear Familiar</a>
+    {% endif %}
 </div>
