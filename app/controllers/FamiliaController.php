@@ -52,6 +52,8 @@ class FamiliaController extends ControllerBase
             '(alumnos_NIE = :NIE:) AND (alumnos_NIE_Familiar = :aNIE:)',
             'bind' => array('NIE' => $NIE, 'aNIE' => $aNIE)
         ));
+        $alumnos=Alumnos::find();
+        $this->view->setVar("alumnos",$alumnos);
         $this->view->setVar("NIE",$NIE);
         $this->view->setVar("aNIE",$aNIE);
         $this->view->form = new FamalumnoForm($familiar, null);
@@ -93,6 +95,8 @@ class FamiliaController extends ControllerBase
 
     public function createAction($NIE)
     {
+        $alumnos=Alumnos::find();
+        $this->view->setVar("alumnos",$alumnos);
         $familiar=new Famalumno();
         $familiar->alumnos_NIE=$NIE;
         $this->view->form = new FamalumnoForm($familiar, null);
