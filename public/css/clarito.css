@@ -1,0 +1,84 @@
+
+.jumbotron {
+    background-color: rgba(40, 40, 40, 1);
+    border-radius: 5px;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+.cover {
+    padding-top: 12vh;
+    padding-bottom: 20vh;
+}
+
+.jumbo-cover {
+    background-color: rgba(40, 40, 40, 0);
+    border-radius: 5px;
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background-color: transparent;
+    border-color: #B3B3B3;
+}
+
+.dropdown-menu {
+    background-color: #252525;
+}
+
+.dropdown-menu > li > a {
+    color: #BFBFBF;
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    color: #ebebeb;
+    text-decoration: none;
+    background-color: #404040;
+}
+
+.pager li > a, .pager li > span, .pagination > li > a, .pagination > li > span {
+    background-color: #333;
+    color: white;
+}
+
+.pager li > a:hover, .pager li > span:hover, .pagination > li > a:hover, .pagination > li > span:hover {
+    background-color: #666;
+    color: white;
+}
+
+.table-striped tr:nth-child(odd) td {
+    background-color: #222;
+
+}
+
+.table-striped th {
+    background-color: #222;
+    text-align: center;
+    vertical-align: middle;
+}
+.modal-content{
+    background-color: #4b4b4b;
+}
+select{
+    color:#444;
+}
+
+input {
+    text-align: center;
+}
+
+@media print {
+    .masthead {
+        display: none;
+    }
+
+    a[href]:after {
+        content: "";
+    }
+}
+.a25{
+    float: left;
+    width: 25%;
+    margin-bottom: 10px;
+}
+td{
+    glyph-orientation-vertical: middle;
+}

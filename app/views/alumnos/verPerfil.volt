@@ -54,7 +54,7 @@
         </tr>
         <tr>
             <td>Teacher</td>
-            <td>{{ alumno.Tutor }}</td>
+            <td>{{ terminator.Nombre }}</td>
         </tr>
     </table>
 

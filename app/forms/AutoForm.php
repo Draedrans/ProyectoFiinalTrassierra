@@ -18,7 +18,7 @@ class AutoForm extends Form
     {
         $csv = new File("photos", array('class' => 'form-control'));
         $csv->setLabel("Archivo de Clase");
-        $tutor = new Select("Tutor", Users::find(), array("using" => array("username", "username"), 'class' => 'form-control'));
+        $tutor = new Select("Tutor", Nombres::find(), array("using" => array("users_username", "Nombre"), 'class' => 'form-control'));
         $tutor->setFilters(array("striptags", "string"));
         $tutor->Setlabel("Tutor");
         $this->add($csv);

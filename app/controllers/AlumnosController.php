@@ -314,6 +314,9 @@ class AlumnosController extends ControllerBase
         $this->view->setTemplateAfter('AlumPerfil');
         $alumno = Alumnos::findFirst($NIE);
         $this->view->setVar("alumno", $alumno);
+        $halo=$alumno->Tutor;
+        $Tutor=Nombres::findFirstByusers_username($halo);
+        $this->view->setVar("terminator",$Tutor);
         $this->view->setVar("Tutor", strtolower($alumno->Tutor));
         $this->view->setVar("Profesor", strtolower($this->session->get("auth")["username"]));
         $foto = Fotos::findFirst($NIE);
