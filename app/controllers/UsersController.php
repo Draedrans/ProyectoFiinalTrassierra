@@ -148,6 +148,11 @@ class UsersController extends ControllerBase
                     "controller" => "users",
                     "action" => "new"
                 ));
+            } else {
+                $nombre=new Nombres();
+                $nombre->users_username=$user->username;
+                $nombre->Nombre=$this->request->getPost("name");
+                $nombre->save();
             }
 
             $this->flash->success("user was created successfully");

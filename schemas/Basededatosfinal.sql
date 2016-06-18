@@ -233,6 +233,22 @@ CREATE TABLE IF NOT EXISTS `proyecto_final`.`Fotos` (
   ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `proyecto_final`.`Nombres`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `proyecto_final`.`Nombres` ;
+
+CREATE TABLE IF NOT EXISTS `proyecto_final`.`Nombres` (
+  `users_username` VARCHAR(16) NOT NULL COMMENT '',
+  `Nombre` VARCHAR(60) NOT NULL COMMENT '',
+  INDEX `fk_Nombres_users1_idx` (`users_username` ASC)  COMMENT '',
+  PRIMARY KEY (`users_username`)  COMMENT '',
+  CONSTRAINT `fk_Nombres_users1`
+  FOREIGN KEY (`users_username`)
+  REFERENCES `proyecto_final`.`users` (`username`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+  ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

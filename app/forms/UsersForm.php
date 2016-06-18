@@ -20,7 +20,14 @@ class UsersForm extends Form
             $name = new Text("username", array(
                 'class' => 'form-control'
             ));
-
+            $nombre = new Text("name", array(
+                'class' => 'form-control'
+            ));
+            $nombre->setLabel('Nombre del profesor');
+            $nombre->addValidator(new Phalcon\Validation\Validator\PresenceOf(array(
+                'message' => 'Nombre es obligatorio'
+            )));
+            $this->add($nombre);
         } else {
             $name = new Text("username", array(
                 'class' => 'form-control',
@@ -28,7 +35,7 @@ class UsersForm extends Form
             ));
         }
 
-        $name->setLabel("Username");
+        $name->setLabel("Usuario");
         $name->setFilters(array('striptags', 'string'));
         $name->addValidators(array(
             new PresenceOf(array(
@@ -48,7 +55,7 @@ class UsersForm extends Form
                 'class' => 'form-control'
             ));
 
-            $password->setLabel('New password');
+            $password->setLabel('Contraseña');
 
             $this->add($password);
 
@@ -56,7 +63,7 @@ class UsersForm extends Form
             $repeatPassword = new Password('repeatPassword', array(
                 'class' => 'form-control'
             ));
-            $repeatPassword->setLabel('Confirm password');
+            $repeatPassword->setLabel('Confirmar contraseña');
 
             if (isset($options['edit'])) {
                 $name->setAttribute("readonly", true);

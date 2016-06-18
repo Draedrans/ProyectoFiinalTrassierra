@@ -10,7 +10,7 @@ class Elements extends Component
         Si se pone vacía se toma la acción 'index'
         */
         'index' => array(
-            'caption' => 'Home',
+            'caption' => 'Inicio',
             'action' => ''
         ),
         'alumnos' => array(
@@ -110,7 +110,7 @@ private $_headerMenu_en = array(
         if ($auth) {
             if($this->session->get('auth')['is_admin']){
                 $this->_headerMenu['Management']=array(
-                    'caption' => 'Management',
+                    'caption' => 'Administración',
                     'action' => '',
                     'dropdown' => true,
                     'menu' => array(
@@ -120,7 +120,7 @@ private $_headerMenu_en = array(
                 );
             }
             $this->_headerMenu['UserPanel'] = array(
-                'caption' => "User Panel",
+                'caption' => "Usuario",
                 'action' => '',
                 'dropdown' => true,
                 'menu' => array(
