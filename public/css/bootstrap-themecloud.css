@@ -18,7 +18,7 @@ h4>.btn{
 .btn-default:focus {
     color: #333;
     text-shadow: none; /* Prevent inheritence from `body` */
-    background-color: #fff;
+    background-color: #aaa;
     border: 1px solid #fff;
 }
 
@@ -26,26 +26,27 @@ h4>.btn{
  * Base structure
  */
 
-html,
-body {
-    height: 100%;
-    background-color: purple;
-}
+/*html,*/
+/*body {*/
+    /*height: 100%;*/
+    /*background-color: purple;*/
+/*}*/
 
 body {
-    color: #fff;
+    color: #000;
     text-align: center;
     text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
+    position: absolute;
+    top:0;
     display: table;
     width: 100%;
     height: 100%; /* For at least Firefox */
     min-height: 100%;
 
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
 }
 
 .site-wrapper-inner {
@@ -73,7 +74,7 @@ background-color: rgba(50, 50, 50, 1);
 }
 
 .masthead-brand {
-
+    color: #fff;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -183,4 +184,8 @@ background-color: rgba(50, 50, 50, 1);
     .cover-container {
         width: 700px;
     }
+}
+
+.perifquillo{
+    color: #fff;
 }

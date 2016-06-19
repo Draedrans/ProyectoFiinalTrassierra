@@ -1,5 +1,5 @@
 {% if language %}
-    <div class="masthead clearfix">
+    <div class="masthead clearfix perifquillo">
         <div class="inner">
             <h3 class="masthead-brand">
                 Notebook

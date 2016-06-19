@@ -1,7 +1,7 @@
 {% if language %}
     <div class="masthead clearfix">
         <div class="inner">
-            <h3 class="masthead-brand">
+            <h3 class="masthead-brand perifquillo">
                 Notebook
             </h3>
             {{ elements.getMenuEn() }}

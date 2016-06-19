@@ -10,8 +10,8 @@
     {{ stylesheet_link("css/fontello.css") }}
     {{ stylesheet_link("bower_components/bootstrap/dist/css/bootstrap.min.css") }}
     {% if fondo %}
-    {{ stylesheet_link("css/bootstrap-themecloud.css") }}
-    {{ stylesheet_link("css/clarito.css") }}
+        {{ stylesheet_link("css/bootstrap-themecloud.css") }}
+        {{ stylesheet_link("css/clarito.css") }}
     {% else %}
         {{ stylesheet_link("css/bootstrap-theme.css") }}
         {{ stylesheet_link("css/notebook.css") }}
@@ -19,9 +19,16 @@
     {{ stylesheet_link("css/familytree.css") }}
     {{ stylesheet_link("bower_components/animate.css/animate.min.css") }}
     {{ stylesheet_link("bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css") }}
-    {{ stylesheet_link("css/clarito.css") }}
 </head>
-<body>
+<body id="clouds">
+{% if fondo %}
+        <div class="cloud x1"></div>
+        <!-- Time for multiple clouds to dance around -->
+        <div class="cloud x2"></div>
+        <div class="cloud x3"></div>
+        <div class="cloud x4"></div>
+        <div class="cloud x5"></div>
+{% endif %}
 <div class="site-wrapper">
     <div class="site-wrapper-inner">
         <div class="cover-container">
