@@ -9,7 +9,13 @@
     {{ get_title() }}
     {{ stylesheet_link("css/fontello.css") }}
     {{ stylesheet_link("bower_components/bootstrap/dist/css/bootstrap.min.css") }}
-    {{ stylesheet_link("css/bootstrap-theme.css") }}
+    {% if fondo %}
+    {{ stylesheet_link("css/bootstrap-themecloud.css") }}
+    {{ stylesheet_link("css/clarito.css") }}
+    {% else %}
+        {{ stylesheet_link("css/bootstrap-theme.css") }}
+        {{ stylesheet_link("css/notebook.css") }}
+    {% endif %}
     {{ stylesheet_link("css/familytree.css") }}
     {{ stylesheet_link("bower_components/animate.css/animate.min.css") }}
     {{ stylesheet_link("bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css") }}

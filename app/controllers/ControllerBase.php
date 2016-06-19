@@ -8,14 +8,20 @@ class ControllerBase extends Controller
     protected function beforeExecuteRoute($dispatcher)
     {
         $language = $this->session->get("language");
-        if (!$language) {
-            $this->session->set("language", 0);
+        if (!$language) {   
             $this->view->setVar("language", False);
         }
         if ($language == 0) {
             $this->view->setVar("language", True);
         } else {
             $this->view->setVar("language", False);
+        }
+        $fondo = $this->session->get("fondo");
+
+        if ($fondo == 0) {
+            $this->view->setVar("fondo", False);
+        } else {
+            $this->view->setVar("fondo", True);
         }
     }
 

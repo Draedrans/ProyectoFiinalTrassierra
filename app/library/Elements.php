@@ -18,12 +18,13 @@ class Elements extends Component
             'action' => ''
         ),
         'languages'=>array(
-            'caption' => 'Idiomas',
+            'caption' => 'Opciones',
             'action' => '',
             'dropdown' => true,
             'menu' => array(
                 'Español' => 'languages/spanish',
-                'Ingles'=>'languages/english'
+                'Ingles'=>'languages/english',
+                'Cambiar Fondo'=> 'cambiarfondo/index'
             )
         ),
         /* Menú DESPLEGABLE. Lleva la opción dropdown a true
@@ -64,12 +65,13 @@ private $_headerMenu_en = array(
             'action' => ''
         ),
         'languages'=>array(
-            'caption' => 'Languages',
+            'caption' => 'Options',
             'action' => '',
             'dropdown' => true,
             'menu' => array(
                 'Spanish' => 'languages/spanish',
-                'English'=>'languages/english'
+                'English'=>'languages/english',
+                'Swap Theme'=>'cambiarfondo/index'
             )
         ),
         /* Menú DESPLEGABLE. Lleva la opción dropdown a true

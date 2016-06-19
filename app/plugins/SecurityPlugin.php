@@ -108,6 +108,7 @@ class SecurityPlugin extends Plugin
             }
             //Recursos accesibles por invitados (de momento pagina Home, Session para tener acceso a login, y Errors
             $publicResources = array(
+                'cambiarfondo'=>array('index'),
                 'index' => array('index', 'easteregg'),
                 'session' => array('start', 'end', 'index'),
                 'errors' => array('show401', 'show404', 'show500'),
