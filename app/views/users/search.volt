@@ -102,7 +102,7 @@
         {% for user in page.items %}
             {% if user.username == actual_user %}
                 <tr>
-                    <td>{{ user.username }} (You)</td>
+                    <td>{{ user.username }} (Tu)</td>
                     <td>
                         {% if user.is_admin %}
                             Dirección/Orientación
